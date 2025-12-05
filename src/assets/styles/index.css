@@ -11,6 +11,28 @@
 .label {
   @apply block font-medium mb-1 text-gray-700;
 }
+.nav-btn {
+  position: relative;
+}
+
+.nav-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 2px;
+  background: linear-gradient(to right, #2563eb, #16a34a);
+  border-radius: 999px;
+  transform: scaleX(0);
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+.nav-btn:hover::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
 
 
 * {

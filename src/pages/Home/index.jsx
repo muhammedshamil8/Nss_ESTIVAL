@@ -111,19 +111,25 @@ const HomePage = () => {
         </div>
 
         {/* HERO IMAGE */}
+        {/* HERO IMAGE */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="flex-1 flex justify-center"
+          initial={{ opacity: 0, scale: 0.95, rotate: -5 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.8, type: "spring" }}
+          className="flex-1 flex justify-center relative"
         >
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl w-[90%] max-w-[420px]">
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-green-400 rounded-3xl blur-2xl opacity-30" />
             <img
               src={HERO}
               alt="Estival Hero"
-              className="w-full object-cover"
+              className="relative w-[90%] max-w-[440px] rounded-3xl shadow-2xl"
             />
-          </div>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -220,51 +226,69 @@ const HomePage = () => {
       </section>
 
       {/* CONTACT SECTION */}
-      {/* CONTACT SECTION */}
-      <section
-        id="contact"
-        className="w-full py-20 px-6 bg-gradient-to-r from-blue-600 to-green-600 text-white text-center rounded-2xl mt-20 shadow-xl"
-      >
-        <h2 className="text-4xl font-bold">Have Questions?</h2>
+<section
+  id="contact"
+  className="w-full py-20 px-6 bg-gradient-to-r from-blue-600 to-green-600 text-white text-center rounded-2xl mt-20 shadow-xl"
+>
+  {/* Title */}
+  <h2 className="text-4xl font-bold">Have Questions?</h2>
 
-        <p className="mt-3 text-lg opacity-90 max-w-xl mx-auto">
-          Reach out to the NSS coordination team at EMEA College. We're here to
-          help.
-        </p>
+  {/* Subtitle */}
+  <p className="mt-3 text-lg opacity-90 max-w-xl mx-auto">
+    Reach out to the NSS coordination team at EMEA College. We're here to help.
+  </p>
 
-        {/* Contact button */}
-        <motion.button
-          whileHover={{ scale: 1.06 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-8 px-10 py-3 bg-white text-blue-700 font-semibold rounded-xl shadow-lg hover:bg-gray-100 transition"
-        >
-          Contact Us
-        </motion.button>
+  {/* Contact Button */}
+  <motion.button
+    whileHover={{ scale: 1.06 }}
+    whileTap={{ scale: 0.95 }}
+    className="mt-8 px-10 py-3 bg-white text-blue-700 font-semibold rounded-xl shadow-xl hover:bg-gray-100 transition"
+  >
+    Contact Us
+  </motion.button>
 
-        {/* Phone + WhatsApp */}
-        <div className="mt-8 flex items-center justify-center gap-4">
-          <a
-            href="tel:+911234567890"
-            className="text-lg underline font-medium hover:text-white"
-          >
-            +91 12345 67890
-          </a>
+  {/* Phone + WhatsApp */}
+  <div className="mt-6 flex items-center justify-center gap-4">
+    <a
+      href="tel:+911234567890"
+      className="text-lg hover:underline font-medium hover:text-white"
+    >
+      +91 12345 67890
+    </a>
 
-          <a
-            href="https://wa.me/911234567890"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition transform flex items-center justify-center"
-          >
-            <FaWhatsapp className="text-green-600 text-2xl" />
-          </a>
-        </div>
+    <a
+      href="https://wa.me/911234567890"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-white/90 p-3 rounded-full shadow-lg hover:scale-110 transition transform flex items-center justify-center"
+    >
+      <FaWhatsapp className="text-green-600 text-2xl" />
+    </a>
+  </div>
+   <div className="mt-2 flex items-center justify-center gap-4">
+    <a
+      href="tel:+911234567890"
+      className="text-lg hover:underline font-medium hover:text-white"
+    >
+      +91 12345 67890
+    </a>
 
-        {/* Small note */}
-        {/* <p className="mt-6 text-white/80 text-sm">
+    <a
+      href="https://wa.me/911234567890"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-white/90 p-3 rounded-full shadow-lg hover:scale-110 transition transform flex items-center justify-center"
+    >
+      <FaWhatsapp className="text-green-600 text-2xl" />
+    </a>
+  </div>
+
+  {/* Small note */}
+  {/* <p className="mt-6 text-white/80 text-sm">
     Available Monday – Friday, 9:00 AM to 6:00 PM IST
   </p> */}
-      </section>
+</section>
+
     </div>
   );
 };
