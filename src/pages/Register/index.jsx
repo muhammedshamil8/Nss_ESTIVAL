@@ -81,7 +81,7 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto py-12 px-4">
+    <div className="max-w-xl mx-auto py-10 px-4">
       {/* Title */}
       <h1 className="text-4xl font-bold text-blue-700">{event.title}</h1>
       <p className="text-green-700 font-semibold text-lg mt-2">
@@ -181,6 +181,8 @@ const Register = () => {
         <p className="text-sm text-gray-600 mb-3">
           Online payment is optional. You may pay offline. Upload screenshot
           only if paid online.
+           {/* (confirm your slot as soon as possible by paying
+          the fee) */}
         </p>
 
         <div className="p-4 border rounded-xl bg-gray-50">
