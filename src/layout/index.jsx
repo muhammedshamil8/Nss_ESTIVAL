@@ -122,8 +122,8 @@ const Layout = () => {
           <div className="border-t border-gray-300 mt-6 pt-4 flex flex-col items-center text-sm text-gray-700">
             <span className="px-4 py-1.5 rounded-full bg-white shadow-sm border text-gray-600">
               Developed with <span className="animate-pulse text-red-500">❤️</span> by
-              <a href="https://www.linkedin.com/in/dayyan-ali/" target="_blank" className="text-blue-600 font-semibold mx-1 hover:underline">Dayyan</a>
-              &
+              {/* <a href="https://www.linkedin.com/in/dayyan-ali/" target="_blank" className="text-blue-600 font-semibold mx-1 hover:underline">Dayyan</a>
+              & */}
               <a href="https://zamil.vercel.app" target="_blank" className="text-green-600 font-semibold mx-1 hover:underline">Shamil</a>
             </span>
           </div>
