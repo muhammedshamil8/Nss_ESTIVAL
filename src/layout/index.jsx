@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import { X, LayoutGrid, MapPin, Globe, Mail } from "lucide-react";
 import ESTIVALLOGO from "@/assets/logo/Estival.jpg";
+import EMEALOGO from "@/assets/logo/EMEAlogo.svg";
 
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +45,7 @@ const Layout = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex gap-6 items-center">
-            <button onClick={() => navigate("/")} className="nav-btn">Home</button>
+            <button onClick={() => scrollToSection("home")} className="nav-btn">Home</button>
             <button onClick={() => scrollToSection("about")} className="nav-btn">About</button>
             <button onClick={() => scrollToSection("events")} className="nav-btn">Events</button>
             <button onClick={() => scrollToSection("contact")} className="nav-btn">Contact</button>
@@ -91,8 +92,9 @@ const Layout = () => {
 
           {/* Contact Block */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b pb-6">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
               <MapPin strokeWidth={1} size={30} />
+              <img src={EMEALOGO} alt="EMEA Logo" className="h-8" />
               <p className="text-sm leading-5">
                 EMEA College of Arts & Science,<br />
                 Kondotty, Kerala – 673638

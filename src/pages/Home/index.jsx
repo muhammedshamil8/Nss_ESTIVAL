@@ -32,7 +32,7 @@ const HomePage = () => {
     <div className="w-full">
 
       {/* HERO SECTION */}
-      <section className="w-full flex flex-col-reverse md:flex-row items-center justify-between py-16 gap-10">
+      <section id="home" className="w-full flex flex-col-reverse md:flex-row items-center justify-between py-16 gap-10">
         
         <div className="flex-1 text-left">
           <motion.h1
