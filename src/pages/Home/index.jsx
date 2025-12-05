@@ -62,7 +62,10 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [hoveredEvent, setHoveredEvent] = useState(null);
 
-  const openEvent = (slug) => navigate(`/register/${slug}`);
+  const openEvent = (slug) => {
+    document.documentElement.scrollIntoView({ top: 0, behavior: "smooth" });
+    navigate(`/register/${slug}`);
+  }
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
