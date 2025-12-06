@@ -4,21 +4,34 @@ import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import HERO from "@/assets/logo/Estival.jpg";
 import { FaWhatsapp } from "react-icons/fa";
+import FashionShowImg from "@/assets/images/fashion_show.png";
+import GroupDanceImg from "@/assets/images/group_dance.png";
 
-// EVENTS
 const EVENTS = [
   {
     name: "Fashion Show",
     prize: "₹1,00,000",
     slug: "fashion-show",
-    emoji: "👗",
+    emoji: (
+      <img
+        src={FashionShowImg}
+        alt="Fashion Show"
+        className="w-full h-full object-cover rounded-lg p-2"
+      />
+    ),
     color: "from-pink-500 to-purple-600",
   },
   {
     name: "Group Dance",
     prize: "₹50,000",
     slug: "group-dance",
-    emoji: "💃",
+    emoji: (
+      <img
+        src={GroupDanceImg}
+        alt="Group Dance"
+        className="w-full h-full object-cover rounded-lg p-3"
+      />
+    ),
     color: "from-blue-500 to-cyan-600",
   },
   {
