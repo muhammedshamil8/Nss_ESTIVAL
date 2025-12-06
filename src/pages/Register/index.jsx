@@ -130,6 +130,7 @@ const Register = () => {
       officer_phone: form.officerPhone,
       participants: form.participants,
       receipt_url: receipt_url || null,
+      payment_verified: 'pending', 
     };
 
     try {
