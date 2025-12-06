@@ -9,6 +9,7 @@ import { Home, Register, Login, Dashboard } from "@/pages";
 import Layout from "@/layout";
 import { useAuth } from "@/libs/useAuth";
 import { AnimatePresence } from "framer-motion";
+import PageTransition from "./PageTransition";
 
 const removePreloader = () => {
   const preloader = document.getElementById("preloader");
@@ -53,9 +54,21 @@ export default function App() {
       <AnimatePresence mode="wait">
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <PageTransition>
+                  <Home />
+                </PageTransition>
+              }
+            />
 
-            <Route path="/register/:slug" element={<Register />} />
+            <Route
+              path="/register/:slug"
+              element={
+                  <Register />
+              }
+            />
           </Route>
 
           <Route path="/admin/login" element={<Login />} />

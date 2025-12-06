@@ -184,7 +184,16 @@ const Register = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+     <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{
+        duration: 0.9,
+        ease: "easeOut"
+      }}
+      className="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8"
+    >
       {/* Header / Hero-style top */}
       <div className="relative mb-8">
         <div className="absolute inset-0 -z-10 rounded-3xl overflow-hidden">
@@ -361,7 +370,7 @@ const Register = () => {
           </button>
         </div>
       </div>
-    </div>
+  </motion.div>
   );
 };
 
