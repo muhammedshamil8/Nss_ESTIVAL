@@ -78,7 +78,7 @@ const HomePage = () => {
   const openEvent = (slug) => {
     document.documentElement.scrollIntoView({ top: 0, behavior: "smooth" });
     navigate(`/register/${slug}`);
-  }
+  };
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -242,69 +242,75 @@ const HomePage = () => {
       </section>
 
       {/* CONTACT SECTION */}
-<section
-  id="contact"
-  className="w-full py-20 px-6 bg-gradient-to-r from-blue-600 to-green-600 text-white text-center rounded-2xl mt-20 shadow-xl"
->
-  {/* Title */}
-  <h2 className="text-4xl font-bold">Have Questions?</h2>
+      <section
+        id="contact"
+        className="w-full py-20 px-6 bg-gradient-to-r from-blue-600 to-green-600 text-white text-center rounded-2xl mt-20 shadow-xl"
+      >
+        {/* Title */}
+        <h2 className="text-4xl font-bold">Have Questions?</h2>
 
-  {/* Subtitle */}
-  <p className="mt-3 text-lg opacity-90 max-w-xl mx-auto">
-    Reach out to the NSS coordination team at EMEA College. We're here to help.
-  </p>
+        {/* Subtitle */}
+        <p className="mt-3 text-lg opacity-90 max-w-xl mx-auto">
+          Reach out to the NSS coordination team at EMEA College. We're here to
+          help.
+        </p>
 
-  {/* Contact Button */}
-  <motion.button
-    whileHover={{ scale: 1.06 }}
-    whileTap={{ scale: 0.95 }}
-    className="mt-8 px-10 py-3 bg-white text-blue-700 font-semibold rounded-xl shadow-xl hover:bg-gray-100 transition"
-  >
-    Contact Us
-  </motion.button>
+        {/* Contact Button */}
+        <motion.button
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.95 }}
+          className="mt-8 px-10 py-3 bg-white text-blue-700 font-semibold rounded-xl shadow-xl hover:bg-gray-100 transition"
+        >
+          Contact Us
+        </motion.button>
 
-  {/* Phone + WhatsApp */}
-  {/* <div className="mt-6 flex items-center justify-center gap-4">
-    <a
-      href="tel:+911234567890"
-      className="text-lg hover:underline font-medium hover:text-white"
-    >
-      +91 12345 67890
-    </a>
+        {/* Phone + WhatsApp Section */}
+        <div className="mt-10 space-y-6">
+          {/* Danish */}
+          <div className="flex flex-col items-center gap-2">
+            <h3 className="text-xl font-semibold">Danish</h3>
+            <div className="flex items-center justify-center gap-4">
+              <a
+                href="tel:+918129908602"
+                className="text-lg hover:underline font-medium hover:text-white"
+              >
+                +91 81299 08602
+              </a>
 
-    <a
-      href="https://wa.me/911234567890"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-white/90 p-3 rounded-full shadow-lg hover:scale-110 transition transform flex items-center justify-center"
-    >
-      <FaWhatsapp className="text-green-600 text-2xl" />
-    </a>
-  </div>
-   <div className="mt-2 flex items-center justify-center gap-4">
-    <a
-      href="tel:+911234567890"
-      className="text-lg hover:underline font-medium hover:text-white"
-    >
-      +91 12345 67890
-    </a>
+              <a
+                href="https://wa.me/918129908602"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/90 p-3 rounded-full shadow-lg hover:scale-110 transition transform flex items-center justify-center"
+              >
+                <FaWhatsapp className="text-green-600 text-2xl" />
+              </a>
+            </div>
+          </div>
 
-    <a
-      href="https://wa.me/911234567890"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-white/90 p-3 rounded-full shadow-lg hover:scale-110 transition transform flex items-center justify-center"
-    >
-      <FaWhatsapp className="text-green-600 text-2xl" />
-    </a>
-  </div> */}
+          {/* Fathima Saniya */}
+          <div className="flex flex-col items-center gap-2">
+            <h3 className="text-xl font-semibold">Fathima Saniya</h3>
+            <div className="flex items-center justify-center gap-4">
+              <a
+                href="tel:+919633650566"
+                className="text-lg hover:underline font-medium hover:text-white"
+              >
+                +91 96336 50566
+              </a>
 
-  {/* Small note */}
-  {/* <p className="mt-6 text-white/80 text-sm">
-    Available Monday – Friday, 9:00 AM to 6:00 PM IST
-  </p> */}
-</section>
-
+              <a
+                href="https://wa.me/919633650566"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/90 p-3 rounded-full shadow-lg hover:scale-110 transition transform flex items-center justify-center"
+              >
+                <FaWhatsapp className="text-green-600 text-2xl" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

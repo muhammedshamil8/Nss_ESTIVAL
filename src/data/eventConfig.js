@@ -1,6 +1,8 @@
 //payment qr codes
-import { Group_dance_QR, Best_volunteer_QR,
-   Fashion_show_QR, Spot_photography_QR, Reel_Making_QR, Treasure_hunt_QR, Face_Painting_QR }
+import {
+  Group_dance_QR, Best_volunteer_QR,
+  Fashion_show_QR, Spot_photography_QR, Reel_Making_QR, Treasure_hunt_QR, Face_Painting_QR
+}
   from "@/assets/paymentqrcodes";
 
 export const EVENTS = {
@@ -90,9 +92,16 @@ export const EVENTS = {
     participants: 2,
     maxParticipants: 4,
     rules: [
-      ".",
-      "",
-      ""
+      "Each team must consist of 2 to 4 members.",
+      "All teams must reach the venue before 10:00 AM (The venue details will be shared in the group).",
+      "The game will begin sharp at 10:30 AM.",
+      "Limited Seats - Participation is on a first-come, first-served basis due to limited slots.",
+      "Teams will be disqualified if they engage in any of the following:",
+      "Damaging college property. , Intergroup discussions. , Entering restricted areas. , Off-limit zones: Library, Prayer Hall, Staff Rooms, Offices, AVT Room, Seminar Hall, and all Labs. , Tampering with or destroying QR codes.",
+      "The event will consist of elimination rounds to shortlist teams.",
+      "Punctuality is crucial – teams must be present at the venue on time.",
+      "If you move any objects while searching for clues, please return them to their original place.",
+      "If you have any doubts, consult an available volunteer for assistance."
     ],
     paymentDetails: {
       Gpay: "8129689112",
@@ -111,8 +120,29 @@ export const EVENTS = {
     participants: 1,
     maxParticipants: 1,
     rules: [
-      "",
-      ""
+      "The event will be conducted under a specific theme/topic announced on the day",
+      "Participants must follow all instructions given by the coordinators.",
+      "Additional rules or last-minute updates may be announced during participation.",
+      "Judges’ decision will be final and binding.",
+      "Contest time: 10:30 AM – 12:30 PM.",
+      "Deadline for submission: 12:30 PM sharp. Late submissions will not be accepted.",
+      "All photos must be submitted in document format (PDF/Doc) as instructed.",
+      "Each participant must send their best two photos along with their chest number to the given phone number",
+      "All photos must be captured strictly within the campus premises during contest time.",
+      "Participants may use any device (phone, camera, tablet, etc.).",
+      "No third-party edits, AI modifications, presets, or external editing apps (Lightroom, Snapseed, AI tools, etc.) are allowed.",
+      "Plagiarism or copying others' work will lead to disqualification.",
+      "Ensure safety while clicking photos; do not disturb ongoing classes or academic activities.",
+      "No damage should be caused to any college property.",
+      "Avoid entering restricted areas unless permitted by coordinators.",
+      "Participants must maintain professional behaviour and respect campus regulations.",
+      "Any kind of misconduct, argument, or rule violation can result in immediate disqualification.",
+      "Photos must be originally captured during the contest duration; pre-taken photos are not allowed.",
+      "Watermarks, signatures, borders, or text overlays are not permitted.",
+      "Only natural lighting and in-camera settings may be used; no external lighting setup (studio lights, ring lights, etc.).",
+      "Participants are responsible for ensuring the quality and clarity of their submitted photos.",
+      "If technical issues occur during submission, participants must inform coordinators before the deadline.",
+      "Grouping or collaboration between participants during shooting is not allowed."
     ],
     paymentDetails: {
       Gpay: "8075236008",

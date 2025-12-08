@@ -243,7 +243,7 @@ const Register = () => {
         duration: 0.9,
         ease: "easeOut",
       }}
-      className="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8"
+      className="max-w-[900px] mx-auto py-10 px-4 sm:px-6 lg:px-8"
     >
       {/* Header / Hero-style top */}
       <div className="relative mb-8">
