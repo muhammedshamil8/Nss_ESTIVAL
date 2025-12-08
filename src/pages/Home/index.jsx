@@ -109,7 +109,7 @@ const HomePage = () => {
             grand platform.
           </p>
 
-          <div className="flex gap-4 mt-8">
+          <div className="flex gap-4 mt-8 flex-wrap">
             <button
               onClick={() => scrollTo("events")}
               className="px-8 py-3 bg-blue-600 text-white rounded-lg shadow-md font-semibold hover:bg-blue-700 transition-all"

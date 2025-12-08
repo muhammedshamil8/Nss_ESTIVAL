@@ -365,7 +365,7 @@ const Register = () => {
             {form.participants.map((p, i) => (
               <div key={i} className="bg-gray-50 p-4 rounded-xl border">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Participant {i + 1} Name
+                  Participant {i + 1} Name {i +1 === 1 ? '*' : ''}
                 </label>
                 <input
                   value={p?.name || ""}
@@ -375,7 +375,7 @@ const Register = () => {
                 />
 
                 <label className="block text-sm font-medium text-gray-700 mt-3 mb-1">
-                  Participant {i + 1} Phone
+                  Participant {i + 1} Phone {i +1 === 1 ? '*' : ''}
                 </label>
                 <input
                   value={p?.phone || ""}
