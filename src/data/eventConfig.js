@@ -7,7 +7,8 @@ export const EVENTS = {
   "fashion-show": {
     title: "Fashion Show",
     fee: 500,
-    participants: 10,
+    participants: 2,
+    maxParticipants: 10,
     rules: [
       "Each team can have a maximum of 10 participants",
       "Present a coordinated theme through outfits and choreography.",
@@ -34,7 +35,8 @@ export const EVENTS = {
   "group-dance": {
     title: "Group Dance",
     fee: 300,
-    participants: 6,
+    participants: 7,
+    maxParticipants: 10,
     rules: [
       "Each team should have 7 to 10 members.",
       "Perform a coordinated dance routine showing teamwork and creativity.",
@@ -60,6 +62,7 @@ export const EVENTS = {
     title: "Best Volunteer",
     fee: 100,
     participants: 1,
+    maxParticipants: 1,
     rules: [
       "Individual event.",
       " Every participant must pay a registration fee of 100 to enter the contest.",
@@ -84,11 +87,12 @@ export const EVENTS = {
   "treasure-hunt": {
     title: "Treasure Hunt",
     fee: 200,
-    participants: 4,
+    participants: 2,
+    maxParticipants: 4,
     rules: [
-      "Team of 4 members.",
-      "No phones allowed.",
-      "Judgment based on time & completion."
+      ".",
+      "",
+      ""
     ],
     paymentDetails: {
       Gpay: "8129689112",
@@ -105,9 +109,10 @@ export const EVENTS = {
     title: "Spot Photography",
     fee: 50,
     participants: 1,
+    maxParticipants: 1,
     rules: [
-      "Participants must bring their own camera/phone.",
-      "Editing allowed within 15 minutes."
+      "",
+      ""
     ],
     paymentDetails: {
       Gpay: "8075236008",
@@ -124,10 +129,11 @@ export const EVENTS = {
     title: "Spot Reel Making",
     fee: 50,
     participants: 1,
+    maxParticipants: 1,
     rules: [
-      "Duration: 20–30 seconds.",
-      "Only mobile phone allowed.",
-      "Theme will be given on spot."
+      ".",
+      "",
+      ""
     ],
     paymentDetails: {
       Gpay: "8089346724",
@@ -144,6 +150,7 @@ export const EVENTS = {
     title: "Face Painting",
     fee: 50,
     participants: 1,
+    maxParticipants: 1,
     rules: [
       "",
       ""

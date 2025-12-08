@@ -4,8 +4,6 @@ import { motion } from "motion/react";
 import { message } from "antd";
 import { EVENTS } from "@/data/eventConfig";
 import { supabase } from "@/libs/createClient";
-// import QRcode from "@/assets/images/qrcode.jpeg";
-import HERO from "@/assets/logo/Estival.jpg";
 import { FaCheckCircle } from "react-icons/fa";
 import { Copy } from "lucide-react";
 
@@ -17,6 +15,7 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [isRulesExpanded, setIsRulesExpanded] = useState(false);
 
   const [form, setForm] = useState({
     college: "",
@@ -27,16 +26,26 @@ const Register = () => {
   });
 
   useEffect(() => {
-    // ensure participants array has correct length (for controlled inputs)
+    // Initialize with minimum required participants
     if (event) {
-      setForm((prev) => {
-        const arr = Array.from({ length: event.participants }).map(
+      setForm(prev => {
+        // Start with minimum required participants
+        const initialParticipants = Array.from({ length: event.participants }).map(
           (_, i) => prev.participants[i] || { name: "", phone: "" }
         );
-        return { ...prev, participants: arr };
+        return { 
+          ...prev, 
+          participants: initialParticipants 
+        };
       });
+      
+      // Default to collapsed on mobile, expanded on desktop
+      if (window.innerWidth > 768) {
+        setIsRulesExpanded(true);
+      }
     }
-    // cleanup preview URL on unmount
+    
+    // Cleanup preview URL on unmount
     return () => {
       if (preview) URL.revokeObjectURL(preview);
     };
@@ -105,13 +114,21 @@ const Register = () => {
       return false;
     }
 
-    // check participants
+    // Check if we have at least the minimum required participants
+    if (form.participants.length < event.participants) {
+      message.warning(
+        `Minimum ${event.participants} participant(s) required. You have ${form.participants.length}.`
+      );
+      return false;
+    }
+
+    // Check all participants are filled
     const allFilled = form.participants.every(
       (p) => p && p.name?.trim() && p.phone?.trim()
     );
     if (!allFilled) {
       message.warning(
-        `Please fill name and phone for all ${event.participants} participant(s).`
+        `Please fill name and phone for all ${form.participants.length} participant(s).`
       );
       return false;
     }
@@ -162,8 +179,9 @@ const Register = () => {
 
       message.success("Registration successful!");
       setSubmitted(true);
+      setIsRulesExpanded(false); // Collapse rules after submission
 
-      // reset
+      // reset form
       setForm({
         college: "",
         officer: "",
@@ -242,76 +260,102 @@ const Register = () => {
           />
         </div>
 
-     <div className="relative bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-blue-50">
+        <div className="relative bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-blue-50">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+            {/* LEFT SIDE: TITLE + TAGS + COORDINATORS */}
+            <div className="sm:max-w-[65%]">
+              {/* Title */}
+              <h1 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+                {event.title}
+              </h1>
 
-  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+              {/* Tags */}
+              <div className="flex items-center gap-3 mt-3 flex-wrap">
+                <span className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold shadow">
+                  💰 ₹{event.fee}
+                </span>
 
-    {/* LEFT SIDE: TITLE + TAGS + COORDINATORS */}
-    <div className="sm:max-w-[65%]">
+                <span className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold shadow">
+                  👥 {event.participants} {event.participants > 1 ? "Members" : "Member"}
+                </span>
 
-      {/* Title */}
-      <h1 className="text-3xl sm:text-4xl font-black 
-        bg-gradient-to-r from-blue-600 to-green-600 
-        bg-clip-text text-transparent">
-        {event.title}
-      </h1>
+                <span className="text-sm text-gray-600 ml-2">
+                  • Please read rules below
+                </span>
+              </div>
 
-      {/* Tags */}
-      <div className="flex items-center gap-3 mt-3 flex-wrap">
+              {/* Coordinators */}
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-blue-700">Coordinators:</h3>
 
-        <span className="inline-flex items-center px-4 py-2 rounded-full 
-          bg-gradient-to-r from-green-500 to-green-600 text-white font-bold shadow">
-          💰 ₹{event.fee}
-        </span>
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 mt-3">
+                  {event.coordinators.map((c, i) => (
+                    <div key={i} className="text-sm text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-200 shadow-sm w-full sm:w-auto">
+                      <p className="font-semibold">{c.name}</p>
+                      <p className="text-gray-500">📞 {c.phone}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-        <span className="inline-flex items-center px-4 py-2 rounded-full 
-          bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold shadow">
-          👥 {event.participants} {event.participants > 1 ? "Members" : "Member"}
-        </span>
-
-        <span className="text-sm text-gray-600 ml-2">
-          • Please read rules below
-        </span>
-      </div>
-
-      {/* Coordinators */}
-      <div className="mt-6">
-        <h3 className="text-lg font-semibold text-blue-700">Coordinators:</h3>
-
-        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 mt-3">
-          {event.coordinators.map((c, i) => (
-            <div key={i} className="text-sm text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-200 shadow-sm w-full sm:w-auto">
-              <p className="font-semibold">{c.name}</p>
-              <p className="text-gray-500">📞 {c.phone}</p>
+              <p className="mt-4 text-gray-700 max-w-xl leading-relaxed">
+                {/* optional summary */}
+              </p>
             </div>
-          ))}
+
+            {/* RIGHT SIDE: (empty for now or hero image later) */}
+            <div className="flex-shrink-0 hidden">
+              {/* Placeholder for hero */}
+            </div>
+          </div>
         </div>
       </div>
 
-      <p className="mt-4 text-gray-700 max-w-xl leading-relaxed">
-        {/* optional summary */}
-      </p>
-    </div>
+      {/* Rules block with toggle */}
+      <div className="mb-8 bg-white rounded-2xl border border-gray-100 p-4 shadow-sm">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-2xl font-semibold text-blue-700">Event Rules</h3>
+          <button
+            onClick={() => setIsRulesExpanded(!isRulesExpanded)}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition"
+          >
+            {isRulesExpanded ? (
+              <>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                </svg>
+                Hide Rules
+              </>
+            ) : (
+              <>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+                Show Rules
+              </>
+            )}
+          </button>
+        </div>
 
-    {/* RIGHT SIDE: (empty for now or hero image later) */}
-    <div className="flex-shrink-0 hidden">
-      {/* Placeholder for hero */}
-    </div>
-  </div>
-</div>
-
-      </div>
-
-      {/* Rules block */}
-      <div className="mb-8">
-        <h3 className="text-2xl font-semibold text-blue-700">Rules</h3>
-        <ul className="list-disc pl-6 mt-3 text-gray-700">
-          {event.rules.map((r, i) => (
-            <li key={i} className="mb-1">
-              {r}
-            </li>
-          ))}
-        </ul>
+        {isRulesExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <ul className="list-disc pl-6 space-y-2">
+                {event.rules.map((r, i) => (
+                  <li key={i} className="text-gray-700">
+                    {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
       </div>
 
       {/* Form */}
@@ -357,15 +401,52 @@ const Register = () => {
 
         {/* Participants */}
         <div>
-          <h3 className="text-xl font-semibold text-blue-700 mb-3">
-            Participants ({event.participants})
-          </h3>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+            <h3 className="text-xl font-semibold text-blue-700">
+              Participants ({form.participants.length} of {event.maxParticipants})
+            </h3>
+          </div>
+
+          {/* Validation message */}
+          {form.participants.length < event.participants && (
+            <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-yellow-700 text-sm">
+                <span className="font-medium">Note:</span> Minimum {event.participants} participant(s) required. 
+                Please add {event.participants - form.participants.length} more.
+              </p>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {form.participants.map((p, i) => (
-              <div key={i} className="bg-gray-50 p-4 rounded-xl border">
+              <div 
+                key={i} 
+                className="bg-gray-50 p-4 rounded-xl border relative"
+                data-participant={i + 1}
+              >
+                {/* Remove button for non-required participants */}
+                {i >= event.participants && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (form.participants.length > event.participants) {
+                        setForm(prev => ({
+                          ...prev,
+                          participants: prev.participants.filter((_, idx) => idx !== i)
+                        }));
+                        message.info(`Removed participant ${i + 1}`);
+                      } else {
+                        message.warning(`Cannot remove - minimum ${event.participants} participants required`);
+                      }
+                    }}
+                    className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center hover:bg-red-600"
+                  >
+                    ×
+                  </button>
+                )}
+                
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Participant {i + 1} Name {i +1 === 1 ? '*' : ''}
+                  Participant {i + 1} Name {i + 1 <= event.participants ? '*' : ''}
                 </label>
                 <input
                   value={p?.name || ""}
@@ -375,7 +456,7 @@ const Register = () => {
                 />
 
                 <label className="block text-sm font-medium text-gray-700 mt-3 mb-1">
-                  Participant {i + 1} Phone {i +1 === 1 ? '*' : ''}
+                  Participant {i + 1} Phone {i + 1 <= event.participants ? '*' : ''}
                 </label>
                 <input
                   value={p?.phone || ""}
@@ -383,16 +464,60 @@ const Register = () => {
                   className="w-full px-3 py-2 rounded-lg border border-gray-200 outline-none"
                   placeholder="Phone"
                 />
+                
+                {/* Required indicator */}
+                {i + 1 <= event.participants && (
+                  <p className="text-xs text-gray-500 mt-2">
+                    Required participant
+                  </p>
+                )}
               </div>
             ))}
           </div>
+          
+          {/* Add Participant Button at bottom - only show if not at max */}
+          {form.participants.length < event.maxParticipants && (
+            <div className="mt-4 flex justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  if (form.participants.length < event.maxParticipants) {
+                    setForm(prev => ({
+                      ...prev,
+                      participants: [...prev.participants, { name: "", phone: "" }]
+                    }));
+                    message.success(`Added participant ${form.participants.length + 1}`);
+                    
+                    // Scroll to the newly added participant
+                    setTimeout(() => {
+                      const lastParticipant = document.querySelector(`[data-participant="${form.participants.length}"]`);
+                      if (lastParticipant) {
+                        lastParticipant.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }
+                    }, 100);
+                  }
+                }}
+                className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition flex items-center gap-2 shadow-md"
+              >
+                <span className="text-lg">+</span> Add Participant
+              </button>
+            </div>
+          )}
+          
+          {/* Max participants message */}
+          {form.participants.length >= event.maxParticipants && (
+            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-blue-700 text-sm">
+                Maximum {event.maxParticipants} participants reached.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Payment - optional */}
         <div>
           <div
-            className="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-100 
-     flex flex-col items-center gap-4"
+            className="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-100 flex flex-col items-center gap-4"
           >
             {/* Payment Text */}
             <div className="flex-1 text-center sm:text-left">
