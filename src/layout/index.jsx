@@ -185,14 +185,14 @@ const Layout = () => {
             {/* Contact Details */}
             <div className="flex flex-col sm:flex-row items-center gap-6">
               <a
-                href="mailto:nss.emea@gmail.com"
+                href="mailto:nssemeadev@gmail.com"
                 className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition group"
               >
                 <Mail
                   size={18}
                   className="text-blue-500 group-hover:scale-110 transition"
                 />
-                nss.emea@gmail.com
+                nssemeadev@gmail.com
               </a>
               <span className="hidden sm:block text-gray-300">|</span>
               <a
