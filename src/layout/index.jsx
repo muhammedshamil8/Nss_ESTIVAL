@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import { X, LayoutGrid, MapPin, Globe, Mail } from "lucide-react";
 
-import ESTIVALLOGO from "@/assets/logo/Estival.jpg";
+import ESTIVALLOGO from "@/assets/logo/EstivalNObg.png";
 import EMEALOGO from "@/assets/logo/EMEAlogo.svg";
 
 const Layout = () => {
@@ -28,11 +28,13 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <header className="w-full fixed top-0 left-0 z-50">
+      <header className="w-[90%] max-w-[1250px] fixed top-2 sm:top-8 left-0 z-50 rounded-xl sm:rounded-full shadow-full mx-auto right-0">
         <div
           className="
       backdrop-blur-xl bg-white/40 
+      sm:rounded-full rounded-xl
       border-b border-white/30 
+      border-l border-white/30
       shadow-[0_8px_32px_rgba(0,0,0,0.1)] 
       supports-backdrop-blur:bg-white/50
       transition-all
@@ -112,19 +114,33 @@ const Layout = () => {
               { id: "about", label: "About" },
               { id: "events", label: "Events" },
               { id: "contact", label: "Contact" },
-            ].map((item) => (
+            ].map((item) => {
+               const isActive =
+                  location.pathname === "/" &&
+                  window.location.hash.replace("#", "") === item.id;
+
+                return (
+
               <li key={item.id}>
                 <button
-                  className="
-              mobile-nav-btn text-gray-800 hover:text-blue-700 
-              transition-all
-            "
+                  className={` mobile-nav-btn text-gray-800 hover:text-blue-700 
+              transition-all ${
+                      isActive ? "text-blue-700 font-bold" : "text-gray-700"
+                    }`}
                   onClick={() => scrollToSection(item.id)}
                 >
                   {item.label}
+                   <span
+                      className={`
+                  absolute left-0 right-0 -bottom-1 h-[2px] 
+                  rounded-full bg-blue-600 transition-all 
+                  ${isActive ? "opacity-100 scale-100" : "opacity-0 scale-0"}
+                `}
+                    />
                 </button>
               </li>
-            ))}
+            );
+          })}
           </ul>
 
           <div className="absolute bottom-0 p-4 w-full">
@@ -149,12 +165,13 @@ const Layout = () => {
           {/* Contact Block */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 border-b pb-6">
             {/* Address */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 justify-center">
               <MapPin size={30} strokeWidth={1} className="text-blue-700" />
-              <div>
-                <img src={EMEALOGO} alt="EMEA Logo" className="h-10 mb-1" />
+              <div className="">
                 <p className="text-sm leading-5 text-gray-800">
-                  EMEA College of Arts & Science,
+                  EMEA College of Arts & Science
+                <img src={EMEALOGO} alt="EMEA Logo" className="inline-block h-5 mb-1" />,
+                  Kumminiparambu P.O. 
                   <br />
                   Kondotty, Kerala – 673638
                 </p>
@@ -191,6 +208,13 @@ const Layout = () => {
                 className="text-green-600 font-semibold ml-1 hover:underline"
               >
                 Shamil
+              </a>  & 
+              <a
+                href="https://www.linkedin.com/in/dayyan-ali/"
+                target="_blank"
+                className="text-blue-600 font-semibold ml-1 hover:underline"
+              >
+                Dayyan
               </a>
             </span>
           </div>

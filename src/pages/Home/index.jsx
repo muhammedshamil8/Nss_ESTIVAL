@@ -264,7 +264,7 @@ const HomePage = () => {
   </motion.button>
 
   {/* Phone + WhatsApp */}
-  <div className="mt-6 flex items-center justify-center gap-4">
+  {/* <div className="mt-6 flex items-center justify-center gap-4">
     <a
       href="tel:+911234567890"
       className="text-lg hover:underline font-medium hover:text-white"
@@ -297,7 +297,7 @@ const HomePage = () => {
     >
       <FaWhatsapp className="text-green-600 text-2xl" />
     </a>
-  </div>
+  </div> */}
 
   {/* Small note */}
   {/* <p className="mt-6 text-white/80 text-sm">

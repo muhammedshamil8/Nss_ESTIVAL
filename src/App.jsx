@@ -29,16 +29,16 @@ export default function App() {
   return (
     <Router>
       <div id="preloader">
-        <div class="loader-container">
-          <div class="estival-ring"></div>
+        <div className="loader-container">
+          <div className="estival-ring"></div>
 
           <img
             src="/estival_logo.jpg"
             alt="Estival Logo"
-            class="estival-logo"
+            className="estival-logo"
           />
 
-          <h1 class="estival-title">
+          <h1 className="estival-title">
             <span>E</span>
             <span>S</span>
             <span>T</span>
@@ -48,7 +48,7 @@ export default function App() {
             <span>L</span>
           </h1>
 
-          <p class="loading-text">Loading the Fest...</p>
+          <p className="loading-text">Loading the Fest...</p>
         </div>
       </div>
       <AnimatePresence mode="wait">
