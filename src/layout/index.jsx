@@ -115,32 +115,31 @@ const Layout = () => {
               { id: "events", label: "Events" },
               { id: "contact", label: "Contact" },
             ].map((item) => {
-               const isActive =
-                  location.pathname === "/" &&
-                  window.location.hash.replace("#", "") === item.id;
+              const isActive =
+                location.pathname === "/" &&
+                window.location.hash.replace("#", "") === item.id;
 
-                return (
-
-              <li key={item.id}>
-                <button
-                  className={` mobile-nav-btn text-gray-800 hover:text-blue-700 
+              return (
+                <li key={item.id}>
+                  <button
+                    className={` mobile-nav-btn text-gray-800 hover:text-blue-700 
               transition-all ${
-                      isActive ? "text-blue-700 font-bold" : "text-gray-700"
-                    }`}
-                  onClick={() => scrollToSection(item.id)}
-                >
-                  {item.label}
-                   <span
+                isActive ? "text-blue-700 font-bold" : "text-gray-700"
+              }`}
+                    onClick={() => scrollToSection(item.id)}
+                  >
+                    {item.label}
+                    <span
                       className={`
                   absolute left-0 right-0 -bottom-1 h-[2px] 
                   rounded-full bg-blue-600 transition-all 
                   ${isActive ? "opacity-100 scale-100" : "opacity-0 scale-0"}
                 `}
                     />
-                </button>
-              </li>
-            );
-          })}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="absolute bottom-0 p-4 w-full">
@@ -160,63 +159,92 @@ const Layout = () => {
       </main>
 
       {/* FOOTER */}
-      <footer id="contact" className="bg-blue-50 p-8 mt-10 border-t">
-        <div className="max-w-[1300px] mx-auto">
+      {/* FOOTER - Minimal Version */}
+      <footer
+        id="contact"
+        className="bg-gradient-to-b from-white to-blue-50 pt-10 pb-6 border-t border-blue-100 mt-12"
+      >
+        <div className="max-w-[1300px] mx-auto px-4">
           {/* Contact Block */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 border-b pb-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-6 border-b border-blue-200">
             {/* Address */}
-            <div className="flex items-center gap-3 justify-center">
-              <MapPin size={30} strokeWidth={1} className="text-blue-700" />
-              <div className="">
-                <p className="text-sm leading-5 text-gray-800">
+            <div className="flex items-center gap-4 text-center md:text-left">
+              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                <MapPin size={24} className="text-blue-600" />
+              </div>
+              <div>
+                <p className="text-gray-800 font-medium">
                   EMEA College of Arts & Science
-                <img src={EMEALOGO} alt="EMEA Logo" className="inline-block h-5 mb-1" />,
-                  Kumminiparambu P.O. 
-                  <br />
-                  Kondotty, Kerala – 673638
+                </p>
+                <p className="text-sm text-gray-600">
+                  Kumminiparambu P.O., Kondotty, Kerala – 673638
                 </p>
               </div>
             </div>
 
             {/* Contact Details */}
-            <div className="flex flex-col gap-3 text-gray-700">
+            <div className="flex flex-col sm:flex-row items-center gap-6">
               <a
                 href="mailto:nss.emea@gmail.com"
-                className="flex items-center gap-3 hover:text-blue-600 transition"
+                className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition group"
               >
-                <Mail strokeWidth={1} /> nss.emea@gmail.com
+                <Mail
+                  size={18}
+                  className="text-blue-500 group-hover:scale-110 transition"
+                />
+                nss.emea@gmail.com
               </a>
-
+              <span className="hidden sm:block text-gray-300">|</span>
               <a
                 href="https://www.emeacollege.ac.in"
                 target="_blank"
-                className="flex items-center gap-3 hover:text-blue-600 transition"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition group"
               >
-                <Globe strokeWidth={1} /> emeacollege.ac.in
+                <Globe
+                  size={18}
+                  className="text-blue-500 group-hover:scale-110 transition"
+                />
+                emeacollege.ac.in
               </a>
             </div>
           </div>
 
           {/* Developer Credit */}
-          <div className="border-t border-gray-300 mt-6 pt-4 flex flex-col items-center text-sm text-gray-700">
-            <span className="px-4 py-1.5 rounded-full bg-white shadow-sm border">
-              Developed <span className="text-red-500 animate-pulse">❤️</span>{" "}
-              by
-              <a
-                href="https://zamil.vercel.app"
-                target="_blank"
-                className="text-green-600 font-semibold ml-1 hover:underline"
-              >
-                Shamil
-              </a>  & 
-              <a
-                href="https://www.linkedin.com/in/dayyan-ali/"
-                target="_blank"
-                className="text-blue-600 font-semibold ml-1 hover:underline"
-              >
-                Dayyan
-              </a>
-            </span>
+          <div className="pt-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              {/* Copyright */}
+              <p className="text-sm text-gray-600">
+                © {new Date().getFullYear()} EMEA Estival • NSS Unit EMEA
+                College
+              </p>
+
+              {/* Developer Credit */}
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-gray-600">Developed with</span>
+                <div className="px-4 py-2 rounded-full bg-white shadow-sm border border-gray-200 hover:shadow transition-shadow flex items-center gap-2">
+                  <span className="text-red-500 animate-pulse">❤️</span>
+                  <span className="text-gray-700">by</span>
+                  <a
+                    href="https://zamil.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-600 font-semibold hover:text-green-700 hover:underline transition"
+                  >
+                    Shamil
+                  </a>
+                  <span className="text-gray-400">&</span>
+                  <a
+                    href="https://www.linkedin.com/in/dayyan-ali/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 font-semibold hover:text-blue-700 hover:underline transition"
+                  >
+                    Dayyan
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
