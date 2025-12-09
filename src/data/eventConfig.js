@@ -9,7 +9,9 @@ export const EVENTS = {
   "fashion-show": {
     title: "Fashion Show",
     fee: 500,
-    participants: 2,
+    perfee: 50,
+    participants: 6,
+    minparticipants: 2,
     maxParticipants: 10,
     rules: [
       "Each team can have a maximum of 10 participants",
@@ -37,10 +39,12 @@ export const EVENTS = {
   "group-dance": {
     title: "Group Dance",
     fee: 300,
-    participants: 7,
+    perfee: 50,
+    minparticipants: 2,
+    participants: 6,
     maxParticipants: 10,
     rules: [
-      "Each team should have 7 to 10 members.",
+      "Each team should have 6 to 10 members.",
       "Perform a coordinated dance routine showing teamwork and creativity.",
       "There is no specific dance item — feel free to choose your style.",
       "Time limit for the performance is 4 to 6 minutes. (an adittional time will be  allotted for prop setup and stage clearance)",
@@ -63,7 +67,9 @@ export const EVENTS = {
   "best-volunteer": {
     title: "Best Volunteer",
     fee: 100,
+    perfee: 50,
     participants: 1,
+    minparticipants: 1,
     maxParticipants: 1,
     rules: [
       "Individual event.",
@@ -89,7 +95,9 @@ export const EVENTS = {
   "treasure-hunt": {
     title: "Treasure Hunt",
     fee: 200,
+    perfee:50,
     participants: 2,
+    minparticipants: 2,
     maxParticipants: 4,
     rules: [
       "Each team must consist of 2 to 4 members.",
@@ -117,7 +125,9 @@ export const EVENTS = {
   "spot-photography": {
     title: "Spot Photography",
     fee: 50,
+    perfee:50,
     participants: 1,
+    minparticipants: 1,
     maxParticipants: 1,
     rules: [
       "The event will be conducted under a specific theme/topic announced on the day",
@@ -158,7 +168,9 @@ export const EVENTS = {
   "spot-reel-making": {
     title: "Spot Reel Making",
     fee: 50,
+    perfee:50,
     participants: 1,
+    minparticipants: 1,
     maxParticipants: 1,
     rules: [
       ".",
@@ -180,6 +192,7 @@ export const EVENTS = {
     title: "Face Painting",
     fee: 50,
     participants: 1,
+    minparticipants: 1,
     maxParticipants: 1,
     rules: [
       "",

@@ -10,7 +10,7 @@ import Layout from "@/layout";
 import { useAuth } from "@/libs/useAuth";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "./PageTransition";
-
+import ScrollToTop from "./ScrollToTop";
 const removePreloader = () => {
   const preloader = document.getElementById("preloader");
   if (preloader) {
@@ -51,6 +51,7 @@ export default function App() {
           <p className="loading-text">Loading the Fest...</p>
         </div>
       </div>
+      <ScrollToTop />
       <AnimatePresence mode="wait">
         <Routes>
           <Route element={<Layout />}>

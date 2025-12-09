@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
             try {
                 const { data: { session }, } = await supabase.auth.getSession();
                 // console.log('session', session.user.user_metadata);
-                setUser(session.user ?? null);
+                setUser(session?.user ?? null);
             } catch (error) {
                 console.error('Error fetching user:', error.message);
 

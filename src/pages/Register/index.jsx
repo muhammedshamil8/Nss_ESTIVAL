@@ -25,26 +25,27 @@ const Register = () => {
     receipt: null, // optional File
   });
 
+
   useEffect(() => {
     // Initialize with minimum required participants
     if (event) {
-      setForm(prev => {
+      setForm((prev) => {
         // Start with minimum required participants
-        const initialParticipants = Array.from({ length: event.participants }).map(
-          (_, i) => prev.participants[i] || { name: "", phone: "" }
-        );
-        return { 
-          ...prev, 
-          participants: initialParticipants 
+        const initialParticipants = Array.from({
+          length: event.minparticipants,
+        }).map((_, i) => prev.participants[i] || { name: "", phone: "" });
+        return {
+          ...prev,
+          participants: initialParticipants,
         };
       });
-      
+
       // Default to collapsed on mobile, expanded on desktop
       if (window.innerWidth > 768) {
         setIsRulesExpanded(true);
       }
     }
-    
+
     // Cleanup preview URL on unmount
     return () => {
       if (preview) URL.revokeObjectURL(preview);
@@ -115,9 +116,9 @@ const Register = () => {
     }
 
     // Check if we have at least the minimum required participants
-    if (form.participants.length < event.participants) {
+    if (form.participants.length < event.minparticipants) {
       message.warning(
-        `Minimum ${event.participants} participant(s) required. You have ${form.participants.length}.`
+        `Minimum ${event.minparticipants} participant(s) required. You have ${form.participants.length}.`
       );
       return false;
     }
@@ -244,6 +245,7 @@ const Register = () => {
         ease: "easeOut",
       }}
       className="max-w-[900px] mx-auto py-10 px-4 sm:px-6 lg:px-8"
+      id="event"
     >
       {/* Header / Hero-style top */}
       <div className="relative mb-8">
@@ -272,27 +274,48 @@ const Register = () => {
               {/* Tags */}
               <div className="flex items-center gap-3 mt-3 flex-wrap">
                 <span className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold shadow">
-                  💰 ₹{event.fee}
+                  💰 {event.maxParticipants > 1 ? "Per Head" : ""} ₹
+                  {event.perfee}
                 </span>
 
                 <span className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold shadow">
-                  👥 {event.participants} {event.participants > 1 ? "Members" : "Member"}
+                  👥{" "}
+                  {event.participants > 1
+                    ? event.participants + " to " + event.maxParticipants
+                    : event.participants}{" "}
+                  {event.participants > 1 ? "Members" : "Member"}
                 </span>
 
                 <span className="text-sm text-gray-600 ml-2">
-                  • Please read rules below
+                  • Please read the rules below
                 </span>
               </div>
 
               {/* Coordinators */}
               <div className="mt-6">
-                <h3 className="text-lg font-semibold text-blue-700">Coordinators:</h3>
+                <h3 className="text-lg font-semibold text-blue-700">
+                  Coordinators:
+                </h3>
 
                 <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 mt-3">
                   {event.coordinators.map((c, i) => (
-                    <div key={i} className="text-sm text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-200 shadow-sm w-full sm:w-auto">
+                    <div
+                      key={i}
+                      className="text-sm text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-200 shadow-sm w-full sm:w-auto"
+                    >
                       <p className="font-semibold">{c.name}</p>
-                      <p className="text-gray-500">📞 {c.phone}</p>
+                      <p className="text-gray-500">
+                        📞 {c.phone}{" "}
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(c.phone);
+                            message.success("Phone number copied!");
+                          }}
+                          className="p-1 rounded hover:bg-gray-200 transition"
+                        >
+                          <Copy className="w-4 h-4 text-blue-600" />
+                        </button>
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -321,15 +344,35 @@ const Register = () => {
           >
             {isRulesExpanded ? (
               <>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 15l7-7 7 7"
+                  />
                 </svg>
                 Hide Rules
               </>
             ) : (
               <>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
                 Show Rules
               </>
@@ -376,7 +419,7 @@ const Register = () => {
         {/* Officer */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Program Officer Name *
+            Name of Program Officer *
           </label>
           <input
             value={form.officer}
@@ -389,7 +432,7 @@ const Register = () => {
         {/* Officer Phone */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Program Officer Phone *
+            Phone No of Program Officer *
           </label>
           <input
             value={form.officerPhone}
@@ -403,40 +446,46 @@ const Register = () => {
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
             <h3 className="text-xl font-semibold text-blue-700">
-              Participants ({form.participants.length} of {event.maxParticipants})
+              Participants ({form.participants.length} of{" "}
+              {event.maxParticipants})
             </h3>
           </div>
 
           {/* Validation message */}
-          {form.participants.length < event.participants && (
+          {form.participants.length < event.minparticipants && (
             <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
               <p className="text-yellow-700 text-sm">
-                <span className="font-medium">Note:</span> Minimum {event.participants} participant(s) required. 
-                Please add {event.participants - form.participants.length} more.
+                <span className="font-medium">Note:</span> Minimum{" "}
+                {event.minparticipants} participant(s) required. Please add{" "}
+                {event.minparticipants - form.participants.length} more.
               </p>
             </div>
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {form.participants.map((p, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="bg-gray-50 p-4 rounded-xl border relative"
                 data-participant={i + 1}
               >
                 {/* Remove button for non-required participants */}
-                {i >= event.participants && (
+                {i >= event.minparticipants && (
                   <button
                     type="button"
                     onClick={() => {
-                      if (form.participants.length > event.participants) {
-                        setForm(prev => ({
+                      if (form.participants.length > event.minparticipants) {
+                        setForm((prev) => ({
                           ...prev,
-                          participants: prev.participants.filter((_, idx) => idx !== i)
+                          participants: prev.participants.filter(
+                            (_, idx) => idx !== i
+                          ),
                         }));
                         message.info(`Removed participant ${i + 1}`);
                       } else {
-                        message.warning(`Cannot remove - minimum ${event.participants} participants required`);
+                        message.warning(
+                          `Cannot remove - minimum ${event.minparticipants} participants required`
+                        );
                       }
                     }}
                     className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center hover:bg-red-600"
@@ -444,9 +493,10 @@ const Register = () => {
                     ×
                   </button>
                 )}
-                
+
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Participant {i + 1} Name {i + 1 <= event.participants ? '*' : ''}
+                  Participant Name {i + 1}{" "}
+                  {i + 1 <= event.participants ? "*" : ""}
                 </label>
                 <input
                   value={p?.name || ""}
@@ -456,7 +506,8 @@ const Register = () => {
                 />
 
                 <label className="block text-sm font-medium text-gray-700 mt-3 mb-1">
-                  Participant {i + 1} Phone {i + 1 <= event.participants ? '*' : ''}
+                  Participant {i + 1} Phone{" "}
+                  {i + 1 <= event.minparticipants ? "*" : ""}
                 </label>
                 <input
                   value={p?.phone || ""}
@@ -464,9 +515,9 @@ const Register = () => {
                   className="w-full px-3 py-2 rounded-lg border border-gray-200 outline-none"
                   placeholder="Phone"
                 />
-                
+
                 {/* Required indicator */}
-                {i + 1 <= event.participants && (
+                {i + 1 <= event.minparticipants && (
                   <p className="text-xs text-gray-500 mt-2">
                     Required participant
                   </p>
@@ -474,7 +525,7 @@ const Register = () => {
               </div>
             ))}
           </div>
-          
+
           {/* Add Participant Button at bottom - only show if not at max */}
           {form.participants.length < event.maxParticipants && (
             <div className="mt-4 flex justify-center">
@@ -482,17 +533,27 @@ const Register = () => {
                 type="button"
                 onClick={() => {
                   if (form.participants.length < event.maxParticipants) {
-                    setForm(prev => ({
+                    setForm((prev) => ({
                       ...prev,
-                      participants: [...prev.participants, { name: "", phone: "" }]
+                      participants: [
+                        ...prev.participants,
+                        { name: "", phone: "" },
+                      ],
                     }));
-                    message.success(`Added participant ${form.participants.length + 1}`);
-                    
+                    message.success(
+                      `Added participant ${form.participants.length + 1}`
+                    );
+
                     // Scroll to the newly added participant
                     setTimeout(() => {
-                      const lastParticipant = document.querySelector(`[data-participant="${form.participants.length}"]`);
+                      const lastParticipant = document.querySelector(
+                        `[data-participant="${form.participants.length}"]`
+                      );
                       if (lastParticipant) {
-                        lastParticipant.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        lastParticipant.scrollIntoView({
+                          behavior: "smooth",
+                          block: "center",
+                        });
                       }
                     }, 100);
                   }
@@ -503,22 +564,21 @@ const Register = () => {
               </button>
             </div>
           )}
-          
+
           {/* Max participants message */}
-          {form.participants.length >= event.maxParticipants && (
-            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-blue-700 text-sm">
-                Maximum {event.maxParticipants} participants reached.
-              </p>
-            </div>
-          )}
+          {event.maxParticipants > 1 &&
+            form.participants.length >= event.maxParticipants && (
+              <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                <p className="text-blue-700 text-sm">
+                  Maximum {event.maxParticipants} participants reached.
+                </p>
+              </div>
+            )}
         </div>
 
         {/* Payment - optional */}
         <div>
-          <div
-            className="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-100 flex flex-col items-center gap-4"
-          >
+          <div className="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-100 flex flex-col items-center gap-4">
             {/* Payment Text */}
             <div className="flex-1 text-center sm:text-left">
               <p className="text-sm text-gray-700 flex items-center gap-2 justify-center sm:justify-start">

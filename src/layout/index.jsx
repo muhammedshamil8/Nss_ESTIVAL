@@ -27,7 +27,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-white to-blue-50/50">
       <header className="w-[90%] max-w-[1250px] fixed top-2 sm:top-8 left-0 z-50 rounded-xl sm:rounded-full shadow-full mx-auto right-0">
         <div
           className="
@@ -154,7 +154,7 @@ const Layout = () => {
       </header>
 
       {/* MAIN CONTENT */}
-      <main className="flex-grow max-w-[1300px] mx-auto px-4 pt-28 pb-10">
+      <main className="flex-grow max-w-[1300px] mx-auto px-4 pt-28 pb-10 ">
         <Outlet />
       </main>
 
