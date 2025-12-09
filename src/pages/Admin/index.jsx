@@ -207,8 +207,8 @@ function AdminDashboard() {
         .from('registrations')
         .update({ 
           payment_verified: true,
-          // verified_at: new Date().toISOString(),
-          verified_by: user?.email || 'admin'
+          verified_at: new Date().toISOString(),
+          // verified_by: user?.email || 'admin'
         })
         .eq('id', registrationId);
 
@@ -220,8 +220,8 @@ function AdminDashboard() {
           reg.id === registrationId ? { 
             ...reg, 
             payment_verified: true,
-            // verified_at: new Date().toISOString(),
-            verified_by: user?.email || 'admin'
+            verified_at: new Date().toISOString(),
+            // verified_by: user?.email || 'admin'
           } : reg
         )
       );
@@ -240,8 +240,8 @@ function AdminDashboard() {
         .from('registrations')
         .update({ 
           payment_verified: false,
-          // verified_at: null,
-          verified_by: null
+          verified_at: null,
+          // verified_by: null
         })
         .eq('id', registrationId);
 
@@ -253,8 +253,8 @@ function AdminDashboard() {
           reg.id === registrationId ? { 
             ...reg, 
             payment_verified: false,
-            // verified_at: null,
-            verified_by: null
+            verified_at: null,
+            // verified_by: null
           } : reg
         )
       );
@@ -859,12 +859,12 @@ function AdminDashboard() {
                           ✓ Payment Verified
                         </div>
                         <div>
-                          <strong>Verified By:</strong> {selectedRegistration.verified_by || 'N/A'}
+                          <strong>Verified By:</strong> Admin
                         </div>
-                        {/* <div>
+                        <div>
                           <strong>Verified At:</strong> {selectedRegistration.verified_at ? 
                             new Date(selectedRegistration.verified_at).toLocaleString() : 'N/A'}
-                        </div> */}
+                        </div>
                         <Popconfirm
                           title="Unverify Payment"
                           description="Are you sure you want to mark this payment as unverified?"
