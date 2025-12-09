@@ -17,7 +17,8 @@ const EVENTS = [
     name: "Fashion Show",
     prize: "₹27,000",
     slug: "fashion-show",
-    description: "A runway competition celebrating style, creativity, coordination, and confident presentation.",
+    description:
+      "A runway competition celebrating style, creativity, coordination, and confident presentation.",
     emoji: (
       <img
         src={FashionShowImg}
@@ -31,7 +32,8 @@ const EVENTS = [
     name: "Group Dance",
     prize: "₹27,000",
     slug: "group-dance",
-    description: "A high-energy team performance event showcasing choreography, rhythm, and synchronized teamwork.",
+    description:
+      "A high-energy team performance event showcasing choreography, rhythm, and synchronized teamwork.",
     emoji: (
       <img
         src={GroupDanceImg}
@@ -45,7 +47,8 @@ const EVENTS = [
     name: "Best Volunteer",
     prize: "₹21,000",
     slug: "best-volunteer",
-    description: "An excellence award recognizing outstanding leadership, service, discipline, and NSS contribution.",
+    description:
+      "An excellence award recognizing outstanding leadership, service, discipline, and NSS contribution.",
     emoji: "⭐",
     color: "from-yellow-500 to-orange-600",
   },
@@ -53,7 +56,8 @@ const EVENTS = [
     name: "Treasure Hunt",
     prize: "₹17,000",
     slug: "treasure-hunt",
-    description: "A competitive hunt where teams follow clues and complete challenges to find the hidden treasure.",
+    description:
+      "A competitive hunt where teams follow clues and complete challenges to find the hidden treasure.",
 
     emoji: "🗺️",
     color: "from-green-500 to-teal-600",
@@ -62,7 +66,8 @@ const EVENTS = [
     name: "Spot Photography",
     prize: "₹10,000",
     slug: "spot-photography",
-    description: "A time-bound photography event where participants capture compelling moments based on a given theme.",
+    description:
+      "A time-bound photography event where participants capture compelling moments based on a given theme.",
 
     emoji: "📸",
     color: "from-indigo-500 to-purple-600",
@@ -71,7 +76,8 @@ const EVENTS = [
     name: "Spot Reel Making",
     prize: "₹10,000",
     slug: "spot-reel-making",
-    description: "A real-time reel-making event testing creativity, concept, and execution within a limited time.",
+    description:
+      "A real-time reel-making event testing creativity, concept, and execution within a limited time.",
 
     emoji: "🎬",
     color: "from-red-500 to-pink-600",
@@ -80,7 +86,8 @@ const EVENTS = [
     name: "Face Painting",
     prize: "₹10,000",
     slug: "face-painting",
-    description: "A visually creative contest focused on skillful face art and thematic presentation.",
+    description:
+      "A visually creative contest focused on skillful face art and thematic presentation.",
 
     emoji: "🎨",
     color: "from-violet-500 to-fuchsia-600",
@@ -127,14 +134,8 @@ const HomePage = () => {
   }, []);
 
   const openEvent = (slug) => {
-    // document.documentElement.scrollIntoView({ top: 0, behavior: "smooth" });
-    //  window.scrollTo(0, 0);
-    const id = "event";
+    window.scrollTo({ top: 0, behavior: "instant" });
     navigate(`/register/${slug}`);
-    // setTimeout(() => {
-    //   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    // }, 150);
-
   };
 
   const scrollTo = (id) =>
@@ -334,10 +335,7 @@ const HomePage = () => {
       </section>
 
       {/* EVENTS SECTION */}
-      <section
-        id="events"
-        className="w-full py-24 px-6 md:px-12 lg:px-20 "
-      >
+      <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -387,9 +385,7 @@ const HomePage = () => {
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">
                   {event.name}
                 </h3>
-                <p className="text-gray-600 mb-6">
-                  {event.description}
-                </p>
+                <p className="text-gray-600 mb-6">{event.description}</p>
 
                 <motion.button
                   whileHover={{ scale: 1.05 }}

@@ -25,6 +25,16 @@ const Register = () => {
     receipt: null, // optional File
   });
 
+useEffect(() => {
+  // This ensures we're at top after component mounts
+  const timer = setTimeout(() => {
+    if (window.scrollY > 0) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, 10);
+  
+  return () => clearTimeout(timer);
+}, []);
 
   useEffect(() => {
     // Initialize with minimum required participants
