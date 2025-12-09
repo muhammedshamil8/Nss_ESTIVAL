@@ -154,7 +154,7 @@ const Layout = () => {
       </header>
 
       {/* MAIN CONTENT */}
-      <main className="flex-grow max-w-[1300px] mx-auto px-4 pt-28 pb-10 ">
+      <main className="flex-grow max-w-[1300px] mx-auto px-4 pt-28 pb-10 overflow-x-hidden w-full">
         <Outlet />
       </main>
 
