@@ -404,8 +404,11 @@ const HomePage = () => {
       {/* CONTACT SECTION */}
       <section
         id="contact"
-        className="w-full rounded-xl py-20 px-6 bg-gradient-to-r from-blue-600 via-blue-500 to-green-600 text-white"
+        className="w-full py-4 px-6 md:px-12 lg:px-20"
       >
+        <div
+        className="w-full  rounded-3xl py-16 px-6 md:px-12 bg-gradient-to-r from-blue-600 via-blue-500 to-green-600 text-white"
+>
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -597,6 +600,7 @@ const HomePage = () => {
             </p>
           </motion.div> */}
         </div>
+      </div>
       </section>
     </div>
   );
