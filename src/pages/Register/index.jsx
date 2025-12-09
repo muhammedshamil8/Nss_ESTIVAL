@@ -7,11 +7,13 @@ import { supabase } from "@/libs/createClient";
 import { FaCheckCircle } from "react-icons/fa";
 import { Copy } from "lucide-react";
 import { calc } from "antd/es/theme/internal";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const Register = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const event = EVENTS[slug];
+  const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
 
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
@@ -26,16 +28,16 @@ const Register = () => {
     receipt: null, // optional File
   });
 
-useEffect(() => {
-  // This ensures we're at top after component mounts
-  const timer = setTimeout(() => {
-    if (window.scrollY > 0) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, 10);
-  
-  return () => clearTimeout(timer);
-}, []);
+  useEffect(() => {
+    // This ensures we're at top after component mounts
+    const timer = setTimeout(() => {
+      if (window.scrollY > 0) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }, 10);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     // Initialize with minimum required participants
@@ -392,15 +394,16 @@ useEffect(() => {
         </div>
 
         {isRulesExpanded && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+          <div
+            // initial={{ opacity: 0, height: 0 }}
+            // animate={{ opacity: 1, height: "auto" }}
+            // exit={{ opacity: 0, height: 0 }}
+            // transition={{ duration: 0.3 }}
             className="overflow-hidden"
+            ref={parent}
           >
             <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
-              <ul className="list-disc pl-6 space-y-2">
+              <ul className="list-disc pl-6 space-y-2" ref={parent} >
                 {event.rules.map((r, i) => (
                   <li key={i} className="text-gray-700">
                     {r}
@@ -408,7 +411,7 @@ useEffect(() => {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
 
@@ -473,12 +476,13 @@ useEffect(() => {
             </div>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4" ref={parent}>
             {form.participants.map((p, i) => (
               <div
                 key={i}
                 className="bg-gray-50 p-4 rounded-xl border relative"
                 data-participant={i + 1}
+                ref={parent}
               >
                 {/* Remove button for non-required participants */}
                 {i >= event.minparticipants && (
@@ -679,7 +683,11 @@ useEffect(() => {
             disabled={loading}
             className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold shadow hover:bg-blue-700 transition"
           >
-            {loading ? "Submitting..." : `Submit Registration — ₹${calc(event.perfee * form.participants.length)}`}
+            {loading
+              ? "Submitting..."
+              : `Submit Registration — ₹${
+                  event.perfee * form.participants.length
+                }`}
           </button>
         </div>
       </div>
