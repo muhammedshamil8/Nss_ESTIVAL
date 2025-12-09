@@ -166,7 +166,7 @@ const HomePage = () => {
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg mb-4">
               <FaCalendarAlt className="text-blue-600" />
               <span className="text-blue-700 font-semibold">
-                December 17,18 - 2024
+                December 17,18 - 2025
               </span>
             </div>
 
@@ -593,7 +593,7 @@ const HomePage = () => {
               Available Monday to Friday, 9:00 AM - 5:00 PM
             </p>
             <p className="mt-6 text-white/80 font-semibold">
-              December 18, 2024 • EMEA College, Kondotty
+              December 18, 2025 • EMEA College, Kondotty
             </p>
           </motion.div> */}
         </div>
