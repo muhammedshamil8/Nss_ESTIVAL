@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { motion } from "motion/react";
+import { motion , AnimatePresence } from "motion/react";
 import { message } from "antd";
 import { EVENTS } from "@/data/eventConfig";
 import { supabase } from "@/libs/createClient";
 import { FaCheckCircle } from "react-icons/fa";
 import { Copy } from "lucide-react";
-import { calc } from "antd/es/theme/internal";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const Register = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const event = EVENTS[slug];
-  const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
 
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
@@ -28,16 +25,16 @@ const Register = () => {
     receipt: null, // optional File
   });
 
-  useEffect(() => {
-    // This ensures we're at top after component mounts
-    const timer = setTimeout(() => {
-      if (window.scrollY > 0) {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    }, 10);
-
-    return () => clearTimeout(timer);
-  }, []);
+useEffect(() => {
+  // This ensures we're at top after component mounts
+  const timer = setTimeout(() => {
+    if (window.scrollY > 0) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, 10);
+  
+  return () => clearTimeout(timer);
+}, []);
 
   useEffect(() => {
     // Initialize with minimum required participants
@@ -393,26 +390,50 @@ const Register = () => {
           </button>
         </div>
 
-        {isRulesExpanded && (
-          <div
-            // initial={{ opacity: 0, height: 0 }}
-            // animate={{ opacity: 1, height: "auto" }}
-            // exit={{ opacity: 0, height: 0 }}
-            // transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-            ref={parent}
-          >
-            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
-              <ul className="list-disc pl-6 space-y-2" ref={parent} >
-                {event.rules.map((r, i) => (
-                  <li key={i} className="text-gray-700">
-                    {r}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        )}
+         <AnimatePresence initial={false}>
+          {isRulesExpanded && (
+            <motion.div
+              key="rules-content"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ 
+                opacity: 1, 
+                height: "auto",
+                transition: { 
+                  height: { duration: 0.3, ease: "easeInOut" },
+                  opacity: { duration: 0.2, delay: 0.1 }
+                }
+              }}
+              exit={{ 
+                opacity: 0, 
+                height: 0,
+                transition: { 
+                  opacity: { duration: 0.2 },
+                  height: { duration: 0.3, ease: "easeInOut" }
+                }
+              }}
+              className="overflow-hidden"
+              style={{ overflow: "hidden" }}
+            >
+              <div className="pt-4">
+                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                  <ul className="list-disc pl-6 space-y-2">
+                    {event.rules.map((r, i) => (
+                      <motion.li 
+                        key={i} 
+                        className="text-gray-700"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.05 }}
+                      >
+                        {r}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Form */}
@@ -476,14 +497,22 @@ const Register = () => {
             </div>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4" ref={parent}>
+          <motion.div 
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    layout
+                    transition={{ duration: 0.3 }}
+                  >
             {form.participants.map((p, i) => (
-              <div
-                key={i}
-                className="bg-gray-50 p-4 rounded-xl border relative"
-                data-participant={i + 1}
-                ref={parent}
-              >
+               <motion.div
+                             key={i}
+                             layout
+                             initial={{ opacity: 0, scale: 0.9 }}
+                             animate={{ opacity: 1, scale: 1 }}
+                             exit={{ opacity: 0, scale: 0.9 }}
+                             transition={{ duration: 0.2 }}
+                             className="bg-gray-50 p-4 rounded-xl border relative"
+                             data-participant={i + 1}
+                           >
                 {/* Remove button for non-required participants */}
                 {i >= event.minparticipants && (
                   <button
@@ -537,9 +566,9 @@ const Register = () => {
                     Required participant
                   </p>
                 )}
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Add Participant Button at bottom - only show if not at max */}
           {form.participants.length < event.maxParticipants && (
@@ -683,11 +712,7 @@ const Register = () => {
             disabled={loading}
             className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold shadow hover:bg-blue-700 transition"
           >
-            {loading
-              ? "Submitting..."
-              : `Submit Registration — ₹${
-                  event.perfee * form.participants.length
-                }`}
+            {loading ? "Submitting..." : `Submit Registration — ₹${event.perfee * form.participants.length}`}
           </button>
         </div>
       </div>

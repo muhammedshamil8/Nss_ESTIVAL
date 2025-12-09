@@ -247,7 +247,7 @@ const HomePage = () => {
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-green-400 rounded-3xl blur-2xl opacity-30 -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r sm:from-blue-400 from-blue-200 to-green-200 sm:to-green-400 rounded-3xl blur-2xl opacity-30 -z-10" />
             <img
               src={HERO}
               alt="Estival Hero"
