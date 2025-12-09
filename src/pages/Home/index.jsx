@@ -404,7 +404,7 @@ const HomePage = () => {
       {/* CONTACT SECTION */}
       <section
         id="contact"
-        className="w-full py-4 px-6 md:px-12 lg:px-20"
+        className="w-full py-4  md:px-12 lg:px-20"
       >
         <div
         className="w-full  rounded-3xl py-16 px-6 md:px-12 bg-gradient-to-r from-blue-600 via-blue-500 to-green-600 text-white"
@@ -456,7 +456,7 @@ const HomePage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20"
+              className="bg-white/10 backdrop-blur-sm p-4 sm:p-8 rounded-3xl border border-white/20"
             >
               <div className="mb-8">
                 <h3 className="text-2xl font-bold mb-2 text-white">
@@ -518,7 +518,7 @@ const HomePage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20"
+              className="bg-white/10 backdrop-blur-sm p-4 sm:p-8 rounded-3xl border border-white/20"
             >
               <div className="mb-8">
                 <h3 className="text-2xl font-bold mb-2 text-white">
