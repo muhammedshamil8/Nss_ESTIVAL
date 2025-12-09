@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './index.css'
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import HERO from "@/assets/logo/Estival.jpg";
@@ -95,6 +96,14 @@ const EVENTS = [
 ];
 
 const HomePage = () => {
+   const scrollToSection = (id) => {
+    navigate("/");
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }, 150);
+
+    if (isMenuOpen) toggleMenu();
+  };
   const navigate = useNavigate();
   const [hoveredEvent, setHoveredEvent] = useState(null);
   const [timeLeft, setTimeLeft] = useState({
@@ -144,128 +153,65 @@ const HomePage = () => {
   return (
     <div className="w-full min-h-screen ">
       {/* HERO SECTION */}
-      <section
+    
+          <section
         id="home"
-        className="w-full min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-between py-12 md:py-16 px-6 md:px-12 lg:px-20 gap-8 md:gap-10 relative overflow-hidden"
+        className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
       >
-        {/* Background Decoration */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-          <div className="absolute top-10 right-10 w-64 h-64 bg-blue-100 rounded-full opacity-30 blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-80 h-80 bg-green-100 rounded-full opacity-30 blur-3xl"></div>
-        </div>
+        {/* Background Image */}
+        <img
+          src="/bg.svg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover -z-10"
+        />
 
-        {/* LEFT TEXT */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex-1 max-w-2xl"
+        {/* HEADER — floating on top of image */}
+        <header className="absolute top-6 left-1/2 -translate-x-1/2 z-50">
+          <nav className="flex space-x-6 text-xs font-medium text-gray-700 uppercase bg-white/90 backdrop-blur border border-gray-200 rounded-full px-8 py-2 shadow">
+            <button onClick={() => scrollToSection("home")}>HOME</button>
+            <button onClick={() => scrollToSection("about")}>ABOUT</button>
+            <button onClick={() => scrollToSection("events")}>EVENTS</button>
+            <button onClick={() => scrollToSection("contact")}>CONTACT</button>
+          </nav>
+        </header>
+
+        {/* HERO CONTENT BELOW HEADER */}
+        <div className="text-center ">
+          <motion.img
+            src={HERO}
+            alt="Estival Logo"
+            className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          />
+         <div className="bg-blue-500 text-white rounded-full text-sm py-2 ">2025 DECEMBER 17,18</div>
+         <div className="flex items-center justify-center mt-20">
+        <div className="grid grid-cols-4 bg-white shadow-lg rounded-3xl overflow-hidden">
+          
+          {["DAYS","HRS","MIN","SEC"].map((text, i) => (
+        <div
+          key={i}
+          className={`px-8 py-6 text-center w-24 ${i !== 0 ? "border-l border-gray-200" : ""}`}
         >
-          {/* Countdown Timer */}
-          <div className="mb-8">
-            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg mb-4">
-              <FaCalendarAlt className="text-blue-600" />
-              <span className="text-blue-700 font-semibold">
-                December 17,18 - 2025
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <h2 className="text-xl font-semibold text-gray-600 flex items-center gap-2">
-                <FaClock className="text-blue-500" />
-                Countdown to Estival 2K25
-              </h2>
-              <div className="flex gap-3 md:gap-4">
-                {Object.entries(timeLeft).map(([unit, value], index) => (
-                  <div key={unit} className="flex-1">
-                    <div className="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-3 md:p-4 rounded-xl text-center shadow-lg">
-                      <div className="text-2xl md:text-3xl font-bold">
-                        {value.toString().padStart(2, "0")}
-                      </div>
-                      <div className="text-xs md:text-sm uppercase tracking-wider opacity-90 mt-1">
-                        {unit}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight"
-          >
-            <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 bg-clip-text text-transparent">
-              ESTIVAL 2K25
-            </span>
-          </motion.h1>
-
-          <div className="flex items-center gap-3 mt-4 text-green-700 font-semibold text-lg">
-            <FaMapMarkerAlt className="text-green-600" />
-            <p>NSS State Fest • EMEA College, Kondotty</p>
-          </div>
-
-          <p className="mt-6 text-gray-700 text-lg md:text-xl leading-relaxed max-w-xl">
-            A vibrant celebration of creativity, teamwork, and youth
-            leadership—bringing NSS volunteers across Kerala together on one
-            grand platform.
+          <p className="text-3xl md:text-4xl font-bold text-blue-700 text-nowrap">
+            {Object.values(timeLeft)[i]}
           </p>
+          <p className="text-xs font-semibold tracking-wider text-blue-700 mt-1">
+            {text}
+          </p>
+        </div>
+      ))}
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-10">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => scrollTo("events")}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-lg font-bold text-lg hover:shadow-xl transition-all duration-300"
-            >
-              Explore Events
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => scrollTo("about")}
-              className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all duration-300"
-            >
-              About Fest
-            </motion.button>
-          </div>
-        </motion.div>
-
-        {/* HERO IMAGE */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, type: "spring" }}
-          className="flex-1 flex justify-center relative"
-        >
-          <motion.div
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r sm:from-blue-400 from-blue-200 to-green-200 sm:to-green-400 rounded-3xl blur-2xl opacity-30 -z-10" />
-            <img
-              src={HERO}
-              alt="Estival Hero"
-              className="relative w-full max-w-[500px] rounded-3xl shadow-2xl border-8 border-white"
-            />
-
-            {/* Floating Badge */}
-            <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-xl shadow-2xl font-bold">
-              Starts at 9:00 AM
-            </div>
-          </motion.div>
-        </motion.div>
+        </div>
+      </div>
+        </div>
       </section>
 
       {/* ABOUT SECTION */}
       <section
         id="about"
-        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white"
+        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white "
       >
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -303,36 +249,39 @@ const HomePage = () => {
             of community service through exciting competitions and cultural
             events.
           </motion.p>
+          <div className="flex items-center justify-center gap-1 md:gap-10 mt-5">
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mt-16">
-            {[
-              { value: "4000+", label: "Expected Participants", icon: "👥" },
-              { value: "7", label: "Major Events", icon: "🏆" },
-              { value: "₹3 Lakh+", label: "Total Prize Pool", icon: "💰" },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                whileHover={{ scale: 1.05, translateY: -5 }}
-                className="bg-gradient-to-br from-white to-blue-50 p-8 text-center rounded-2xl shadow-xl border border-blue-100 relative overflow-hidden group"
-              >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-green-600"></div>
-                <div className="text-5xl mb-4">{stat.icon}</div>
-                <p className="text-4xl font-black bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                  {stat.value}
-                </p>
-                <p className="text-gray-600 text-lg mt-2 font-medium">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
+          <div className="bg-blue-800 border rounded-3xl p-3 md:px-5 flex flex-col items-center">
+             <p className="text-xl md:text-4xl font-bold text-white ">
+            {"4000+"}
+          </p>
+          <p className="text-xs font-semibold tracking-wider text-white mt-1">
+            {"Participants"}
+          </p>
           </div>
+          <div className="bg-green-800 border rounded-3xl py-3 px-4 md:px-12 md:py-3 flex flex-col items-center">
+             <p className="text-xl md:text-4xl font-bold text-white text-nowrap">
+            {"7"}
+          </p>
+          <p className="text-xs font-semibold tracking-wider text-white mt-1 text-nowrap">
+            {"Major Events"}
+          </p>
+          </div>
+          <div className="bg-red-800 border rounded-3xl p-3 md:px-5 flex flex-col items-center">
+             <p className="text-xl md:text-4xl font-bold text-white text-nowrap">
+            {"₹3 Lakh+"}
+          </p>
+          <p className="text-xs font-semibold tracking-wider text-white mt-1">
+            {"Total Price"}
+          </p>
+          </div>
+          </div>
+          {/* Stats */}
+          
         </div>
       </section>
+
+     
 
       {/* EVENTS SECTION */}
       <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">
