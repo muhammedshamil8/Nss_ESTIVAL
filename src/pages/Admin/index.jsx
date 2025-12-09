@@ -34,46 +34,53 @@ const { Search } = Input;
 const EVENTS = [
   {
     name: "Fashion Show",
-    prize: "₹1,00,000",
+    prize: "₹27,000",
     slug: "fashion-show",
     emoji: "👗",
     color: "from-pink-500 to-purple-600",
   },
   {
     name: "Group Dance",
-    prize: "₹50,000",
+    prize: "₹27,000",
     slug: "group-dance",
     emoji: "💃",
     color: "from-blue-500 to-cyan-600",
   },
   {
     name: "Best Volunteer",
-    prize: "₹50,000",
+    prize: "₹21,000",
     slug: "best-volunteer",
     emoji: "⭐",
     color: "from-yellow-500 to-orange-600",
   },
   {
     name: "Treasure Hunt",
-    prize: "₹25,000",
+    prize: "₹17,000",
     slug: "treasure-hunt",
     emoji: "🗺️",
     color: "from-green-500 to-teal-600",
   },
   {
     name: "Spot Photography",
-    prize: "₹15,000",
+    prize: "₹10,000",
     slug: "spot-photography",
     emoji: "📸",
     color: "from-indigo-500 to-purple-600",
   },
   {
     name: "Spot Reel Making",
-    prize: "₹15,000",
+    prize: "₹10,000",
     slug: "spot-reel-making",
     emoji: "🎬",
     color: "from-red-500 to-pink-600",
   },
+  {
+    name: "Face Painting",
+    prize: "₹10,000",
+    slug: "face-painting",
+    emoji: "🎨",
+    color: "from-red-500 to-pink-600",
+  }
 ];
 
 function AdminDashboard() {
