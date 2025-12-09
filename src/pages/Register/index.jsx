@@ -6,6 +6,7 @@ import { EVENTS } from "@/data/eventConfig";
 import { supabase } from "@/libs/createClient";
 import { FaCheckCircle } from "react-icons/fa";
 import { Copy } from "lucide-react";
+import { calc } from "antd/es/theme/internal";
 
 const Register = () => {
   const { slug } = useParams();
@@ -678,7 +679,7 @@ useEffect(() => {
             disabled={loading}
             className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold shadow hover:bg-blue-700 transition"
           >
-            {loading ? "Submitting..." : `Submit Registration — ₹${event.fee}`}
+            {loading ? "Submitting..." : `Submit Registration — ₹${calc(event.perfee * form.participants.length)}`}
           </button>
         </div>
       </div>
