@@ -17,36 +17,15 @@ const Layout = () => {
     return () => document.body.classList.remove("overflow-hidden");
   }, [isMenuOpen]);
 
-  const scrollToSection = (id) => {
-    navigate("/");
-    setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }, 150);
-
-    if (isMenuOpen) toggleMenu();
-  };
+ 
 
   return (
-    <div className="flex flex-col min-h-screen  ">
-      <header className="  sticky top-0 z-50 ">
-  <nav className="container mx-auto px-4 py-3 lg:py-6">
-    {/* Navigation */}
-    <div className="flex justify-center items-center mb-3">
-  <div className="flex space-x-6 text-xs font-medium text-gray-600 uppercase bg-white border border-gray-200 rounded-full px-8 py-2 shadow-sm">
-    <button onClick={() => scrollToSection("home")} className="hover:text-black transition-colors">HOME</button>
-    <button onClick={() => scrollToSection("about")} className="hover:text-black transition-colors">ABOUT</button>
-    <button onClick={() => scrollToSection("events")} className="hover:text-black transition-colors">EVENTS</button>
-    <button onClick={() => scrollToSection("contact")} className="hover:text-black transition-colors">CONTACT</button>
-  </div>
-</div>
-
-    {/* Logo in Header */}
+    <div className="flex flex-col min-h-screen">
     
-  </nav>
-</header>
+
 
       {/* MAIN CONTENT */}
-      <main className="flex-grow max-w-[1300px] mx-auto px-4 pt-1 pb-10 overflow-x-hidden w-full">
+      <main className="flex-grow max-w-[1300px] mx-auto   pb-10 overflow-x-hidden w-full">
         <Outlet />
       </main>
 

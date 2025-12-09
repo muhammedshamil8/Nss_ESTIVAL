@@ -1,0 +1,11 @@
+/* Vector */
+.a{
+
+    position: absolute;
+    width: 1600px;
+    height: 1200px;
+    left: calc(50% - 1600px/2 - 0.99px);
+    top: -53px;
+    
+    background: linear-gradient(180deg, rgba(0, 119, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 111.04%);
+}
