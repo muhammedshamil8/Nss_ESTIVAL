@@ -314,8 +314,8 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              <span className="text-red-800">
                 Events & Competitionsd
               </span>
             </h2>
@@ -370,184 +370,69 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      <section id="contact" className="w-full py-4 px-4">
+  <div className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl border-[6px] border-[#0B4E63] bg-[#17776B] py-12 px-6 md:px-12 text-white">
 
-      {/* CONTACT SECTION */}
-      <section
-        id="contact"
-        className="w-full py-4  md:px-12 lg:px-20"
-      >
-        <div
-        className="w-full  rounded-3xl py-16 px-6 md:px-12 bg-gradient-to-r from-blue-600 via-blue-500 to-green-600 text-white"
->
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Have Questions?
-            </h2>
-            <p className="text-xl opacity-90 max-w-2xl mx-auto">
-              Reach out to the NSS coordination team at EMEA College. We're here
-              to help you.
-            </p>
-            <div className="w-24 h-1.5 bg-white/50 rounded-full mx-auto mt-4"></div>
-          </motion.div>
+    {/* Title */}
+    <div className="text-center mb-8">
+      <h2 className="md:text-3xl font-bold mb-3">Have Questions?</h2>
+      <p className="text-sm opacity-90 md:text-base">
+        Reach out to the NSS coordination team at EMEA College.
+        <br /> We're here to help you.
+      </p>
+    </div>
 
-          {/* Contact Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-center mb-16"
-          >
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-              }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => scrollTo("contact")}
-              className="px-12 py-4 bg-white text-blue-700 font-bold text-lg rounded-2xl shadow-2xl hover:bg-gray-50 transition-all duration-300"
-            >
-              Contact Us
-            </motion.button>
-          </motion.div>
+    {/* Contact Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
 
-          {/* Contact Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* NSS Secretary Section */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white/10 backdrop-blur-sm p-4 sm:p-8 rounded-3xl border border-white/20"
-            >
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-2 text-white">
-                  NSS Secretary
-                </h3>
-                <div className="w-16 h-1 bg-white/50 rounded-full"></div>
-              </div>
+      {/* NSS Secretary */}
+      <div>
+        <h3 className="text-xl font-bold underline mb-4">NSS Secretary</h3>
 
-              <div className="space-y-8">
-                {/* Danish */}
-                <div className="space-y-4">
-                  <h4 className="text-xl font-semibold">Danish</h4>
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <a
-                      href="tel:+918129908602"
-                      className="text-lg hover:text-white transition-colors duration-300 flex items-center gap-3"
-                    >
-                      <span className="p-2 bg-white/20 rounded-lg">📞</span>
-                      <span>+91 81299 08602</span>
-                    </a>
-                    <a
-                      href="https://wa.me/918129908602"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/90 p-4 rounded-full shadow-xl hover:scale-110 transition-transform duration-300 hover:shadow-2xl"
-                    >
-                      <FaWhatsapp className="text-green-600 text-3xl" />
-                    </a>
-                  </div>
-                </div>
+        {/* Person 1 */}
+        <div className="flex items-center justify-between mb-4">
+          <span className="font-medium">Danish</span>
+          <a href="tel:+918129908602" className="hover:text-white transition">
+            +91 81299 08602
+          </a>
+        </div>
 
-                {/* Fathima Saniya */}
-                <div className="space-y-4">
-                  <h4 className="text-xl font-semibold">Fathima Saniya</h4>
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <a
-                      href="tel:+919633650566"
-                      className="text-lg hover:text-white transition-colors duration-300 flex items-center gap-3"
-                    >
-                      <span className="p-2 bg-white/20 rounded-lg">📞</span>
-                      <span>+91 96336 50566</span>
-                    </a>
-                    <a
-                      href="https://wa.me/919633650566"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/90 p-4 rounded-full shadow-xl hover:scale-110 transition-transform duration-300 hover:shadow-2xl"
-                    >
-                      <FaWhatsapp className="text-green-600 text-3xl" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Program Officer Section */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white/10 backdrop-blur-sm p-4 sm:p-8 rounded-3xl border border-white/20"
-            >
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-2 text-white">
-                  Program Officer
-                </h3>
-                <div className="w-16 h-1 bg-white/50 rounded-full"></div>
-              </div>
-
-              <div className="space-y-8">
-                {/* Munavar Jazim */}
-                <div className="space-y-4">
-                  <h4 className="text-xl font-semibold">Munavar Jazim</h4>
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <a
-                      href="tel:+918089869477"
-                      className="text-lg hover:text-white transition-colors duration-300 flex items-center gap-3"
-                    >
-                      <span className="p-2 bg-white/20 rounded-lg">📞</span>
-                      <span>+91 80898 69477</span>
-                    </a>
-                    <a
-                      href="https://wa.me/918089869477"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/90 p-4 rounded-full shadow-xl hover:scale-110 transition-transform duration-300 hover:shadow-2xl"
-                    >
-                      <FaWhatsapp className="text-green-600 text-3xl" />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Mubashir K */}
-                <div className="space-y-4">
-                  <h4 className="text-xl font-semibold">Mubashir K</h4>
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <a
-                      href="tel:+919961624530"
-                      className="text-lg hover:text-white transition-colors duration-300 flex items-center gap-3"
-                    >
-                      <span className="p-2 bg-white/20 rounded-lg">📞</span>
-                      <span>+91 99616 24530</span>
-                    </a>
-                    <a
-                      href="https://wa.me/919961624530"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/90 p-4 rounded-full shadow-xl hover:scale-110 transition-transform duration-300 hover:shadow-2xl"
-                    >
-                      <FaWhatsapp className="text-green-600 text-3xl" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-          
+        {/* Person 2 */}
+        <div className="flex items-center justify-between">
+          <span className="font-medium">Fathima Saniya</span>
+          <a href="tel:+919633650566" className="hover:text-white transition">
+            +91 96336 50566
+          </a>
         </div>
       </div>
-      </section>
+
+      {/* Program Officer */}
+      <div>
+        <h3 className="text-xl font-bold underline mb-4">Program Officer</h3>
+
+        {/* Person 1 */}
+        <div className="flex items-center justify-between mb-4">
+          <span className="font-medium">Munavar Jazim</span>
+          <a href="tel:+918089869477" className="hover:text-white transition">
+            +91 80898 69477
+          </a>
+        </div>
+
+        {/* Person 2 */}
+        <div class="flex items-center justify-between">
+          <span className="font-medium">Mubashir K</span>
+          <a href="tel:+919961624530" className="hover:text-white transition">
+            +91 99616 24530
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+      {/* CONTACT SECTION */}
+      
     </div>
   );
 };
