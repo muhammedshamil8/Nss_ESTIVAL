@@ -334,7 +334,8 @@ const HomePage = () => {
                 whileHover={{ scale: 1.03, translateY: -8 }}
                 onMouseEnter={() => setHoveredEvent(idx)}
                 onMouseLeave={() => setHoveredEvent(null)}
-                className="relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group"
+               className={`relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
+      ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
               >
                 {/* EVENT NAME */}
                 <p className="text-base sm:text-base md:text-base font-semibold self-start text-nowrap">
