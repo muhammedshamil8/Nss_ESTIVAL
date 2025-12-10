@@ -149,31 +149,30 @@ const HomePage = () => {
     
           <section
         id="home"
-        className="relative w-full px-4 min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative  w-full px-4  flex items-center justify-center overflow-hidden"
+        style={{background:'#E5F2FF url("/bg.svg")',
+    backgroundSize:"cover",
+    backgroundRepeat:"no-repeat",
+    backgroundPosition:"center"}}
       >
-        {/* Background Image */}
-        <img
-          src="/bg.svg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover -z-10"
-        />
+        
 
         {/* HEADER — floating on top of image */}
         
 
         {/* HERO CONTENT BELOW HEADER */}
-        <div className="text-center ">
+        <div className="text-center mt-20">
           <motion.img
-            src={HERO}
+            src={'./estival_logo_.png'}
             alt="Estival Logo"
-            className=" h-48 mx-auto mb-6"
+            className=" h-48 mx-auto mb-1"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           />
-         <div className="bg-blue-500 text-white rounded-full text-sm py-2 ">2025 DECEMBER 17,18</div>
-         <div className="flex items-center justify-center mt-20">
-        <div className="grid grid-cols-4 bg-white shadow-lg rounded-3xl overflow-hidden">
+         <div className="bg-[#1265BB] w-1/2 text-white rounded-full text-sm py-1 mx-auto mb-5">2025 DECEMBER 17,18</div>
+         <div className="flex items-center justify-center relative z-20 py-4">
+        <div className="grid grid-cols-4 bg-white shadow-lg shadow-blue-50 rounded-3xl">
           
           {["DAYS","HRS","MIN","SEC"].map((text, i) => (
         <div
@@ -197,7 +196,7 @@ const HomePage = () => {
       {/* ABOUT SECTION */}
       <section
         id="about"
-        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white "
+        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white -mt-12 relative z-10"
       >
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -207,12 +206,12 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+            <h2 className="text-xl md:text-2xl font-bold mb-4">
+              <span className="text-[#005ABB]">
                 About Estival
               </span>
             </h2>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-green-600 rounded-full mx-auto"></div>
+            
           </motion.div>
 
           <motion.p
@@ -220,9 +219,9 @@ const HomePage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-4xl mx-auto mt-8 text-center text-gray-700 text-lg md:text-xl leading-relaxed"
+            className="max-w-4xl mx-auto mt-8 text-center text-gray-700 text-sm md:text-base leading-relaxed"
           >
-            <span className="font-bold text-blue-700">Estival 2K25</span> is a{" "}
+            <span className="font-bold text-blue-700 ">Estival 2K25</span> is a{" "}
             <span className="font-semibold text-blue-700">
               state-level NSS Fest
             </span>{" "}
@@ -237,27 +236,27 @@ const HomePage = () => {
           </motion.p>
           <div className="flex items-center justify-center gap-1 md:gap-10 mt-5">
 
-          <div className="bg-blue-800 border rounded-3xl p-3 md:px-5 flex flex-col items-center">
-             <p className="text-xl md:text-4xl font-bold text-white ">
+          <div className="bg-blue-800 border rounded-2xl px-3 py-4 md:px-10 md:py-4 flex flex-col items-center">
+             <p className="text-sm md:text-2xl font-bold text-white ">
             {"4000+"}
           </p>
           <p className="text-xs font-semibold tracking-wider text-white mt-1">
             {"Participants"}
           </p>
           </div>
-          <div className="bg-green-800 border rounded-3xl py-3 px-4 md:px-12 md:py-3 flex flex-col items-center">
-             <p className="text-xl md:text-4xl font-bold text-white text-nowrap">
+          <div className="bg-green-800 border rounded-2xl py-4 px-4 md:px-12 md:py-4 flex flex-col items-center">
+             <p className="text-sm md:text-2xl font-bold text-white text-nowrap">
             {"7"}
           </p>
           <p className="text-xs font-semibold tracking-wider text-white mt-1 text-nowrap">
             {"Major Events"}
           </p>
           </div>
-          <div className="bg-red-800 border rounded-3xl p-3 md:px-5 flex flex-col items-center">
-             <p className="text-xl md:text-4xl font-bold text-white text-nowrap">
+          <div className="bg-red-800 border rounded-2xl px-6 py-4 md:px-8 md:py-4 flex flex-col items-center">
+             <p className="text-sm md:text-2xl font-bold text-white text-nowrap">
             {"₹3 Lakh+"}
           </p>
-          <p className="text-xs font-semibold tracking-wider text-white mt-1">
+          <p className="text-xs font-semibold tracking-wider text-white mt-1 text-nowrap">
             {"Total Price"}
           </p>
           </div>
@@ -268,7 +267,7 @@ const HomePage = () => {
       </section>
 
          <section
-        className='h-12'
+        className='h-12 mt-[55px] '
       >
         <div className='marguee_rotate_1 absolute z-10  w-[150%] sm:w-[110%] -left-10 -right-4 h-12 bg-[#E2BC5F] py-2  text-black uppercase flex items-center '>
           {[...Array(20)].map((_, i) => (
