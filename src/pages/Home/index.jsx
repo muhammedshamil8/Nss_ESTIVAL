@@ -96,14 +96,7 @@ const EVENTS = [
 ];
 
 const HomePage = () => {
-   const scrollToSection = (id) => {
-    navigate("/");
-    setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }, 150);
-
-    if (isMenuOpen) toggleMenu();
-  };
+  
   const navigate = useNavigate();
   const [hoveredEvent, setHoveredEvent] = useState(null);
   const [timeLeft, setTimeLeft] = useState({
@@ -156,7 +149,7 @@ const HomePage = () => {
     
           <section
         id="home"
-        className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative w-full px-4 min-h-screen flex items-center justify-center overflow-hidden"
       >
         {/* Background Image */}
         <img
@@ -166,21 +159,14 @@ const HomePage = () => {
         />
 
         {/* HEADER — floating on top of image */}
-        <header className="absolute top-6 left-1/2 -translate-x-1/2 z-50">
-          <nav className="flex space-x-6 text-xs font-medium text-gray-700 uppercase bg-white/90 backdrop-blur border border-gray-200 rounded-full px-8 py-2 shadow">
-            <button onClick={() => scrollToSection("home")}>HOME</button>
-            <button onClick={() => scrollToSection("about")}>ABOUT</button>
-            <button onClick={() => scrollToSection("events")}>EVENTS</button>
-            <button onClick={() => scrollToSection("contact")}>CONTACT</button>
-          </nav>
-        </header>
+        
 
         {/* HERO CONTENT BELOW HEADER */}
         <div className="text-center ">
           <motion.img
             src={HERO}
             alt="Estival Logo"
-            className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-6"
+            className=" h-48 mx-auto mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -330,7 +316,7 @@ const HomePage = () => {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Events & Competitions
+                Events & Competitionsd
               </span>
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
@@ -558,31 +544,7 @@ const HomePage = () => {
               </div>
             </motion.div>
           </div>
-
-          {/* Footer Info */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-12 pt-8 border-t border-white/20 text-center"
-          >
-            <p className="text-white/90 text-lg">
-              For general inquiries, email us at:{" "}
-              <a
-                href="mailto:nss@emecollege.edu.in"
-                className="font-bold hover:text-white transition-colors duration-300 underline"
-              >
-                nss@emecollege.edu.in
-              </a>
-            </p>
-            <p className="mt-3 text-white/70">
-              Available Monday to Friday, 9:00 AM - 5:00 PM
-            </p>
-            <p className="mt-6 text-white/80 font-semibold">
-              December 18, 2025 • EMEA College, Kondotty
-            </p>
-          </motion.div> */}
+          
         </div>
       </div>
       </section>

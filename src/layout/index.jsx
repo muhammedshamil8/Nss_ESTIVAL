@@ -17,11 +17,25 @@ const Layout = () => {
     return () => document.body.classList.remove("overflow-hidden");
   }, [isMenuOpen]);
 
+  const scrollToSection = (id) => {
+     navigate("/");
+     setTimeout(() => {
+       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+     }, 150);
  
+     if (isMenuOpen) toggleMenu();
+   };
 
   return (
     <div className="flex flex-col min-h-screen relative overflow-x-hidden">
-    
+    <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+          <nav className="flex space-x-6 text-xs font-medium text-gray-700 uppercase bg-white/90 backdrop-blur border border-gray-200 rounded-full px-8 py-2 shadow">
+            <button onClick={() => scrollToSection("home")}>HOME</button>
+            <button onClick={() => scrollToSection("about")}>ABOUT</button>
+            <button onClick={() => scrollToSection("events")}>EVENTS</button>
+            <button onClick={() => scrollToSection("contact")}>CONTACT</button>
+          </nav>
+        </header>
 
 
       {/* MAIN CONTENT */}
