@@ -281,7 +281,42 @@ const HomePage = () => {
         </div>
       </section>
 
-     
+         <section
+        className='h-12'
+      >
+        <div className='marguee_rotate_1 absolute z-10  w-[150%] sm:w-[110%] -left-10 -right-4 h-12 bg-[#E2BC5F] py-2  text-black uppercase flex items-center '>
+          {[...Array(20)].map((_, i) => (
+            <p key={i} className='flex  items-center justify-center'>
+              <span className='h-2 w-2 rounded-full bg-[#111] mx-5' />
+              <span className='whitespace-nowrap'>{`REGISTER NOW`}</span>
+            </p>
+          ))}
+        </div>
+        <div className='absolute  w-[150%] sm:w-[110%] -left-10 -right-4 h-12 bg-[#E2BC5F] py-2 -rotate-[8deg] sm:-rotate-[5deg] text-black uppercase flex items-center '>
+          {[...Array(10)].map((_, i) => (
+            <p key={i} className='flex  items-center justify-center'>
+              {/* <span className='h-2 w-2 rounded-full bg-[#068585] mx-5' /> */}
+              {/* <span className='whitespace-nowrap'>{`Submission Guidelines`}</span> */}
+            </p>
+          ))}
+        </div>
+        <div className='marguee_rotate_2 z-30 absolute w-[150%] sm:w-[110%] -left-10 -right-4 h-12 bg-[#17776B] py-2  text-white uppercase flex items-center'>
+          {[...Array(20)].map((_, i) => (
+            <p key={i} className='flex items-center justify-center'>
+              <span className='h-2 w-2 rounded-full bg-[#fff] mx-5' />
+              <span className='whitespace-nowrap'>{`REGISTER NOW`}</span>
+            </p>
+          ))}
+        </div>
+        <div className='absolute w-[150%] z-20  sm:w-[110%] -left-10 -right-4 h-12 bg-[#17776B] py-2 rotate-[4deg] sm:rotate-[3deg] text-white uppercase flex items-center'>
+          {[...Array(10)].map((_, i) => (
+            <p key={i} className='flex items-center justify-center'>
+              {/* <span className='h-2 w-2 rounded-full bg-[#B0FFFF] mx-5' /> */}
+              {/* <span className='whitespace-nowrap'>{`Submission Guidelines`}</span> */}
+            </p>
+          ))}
+        </div>
+      </section>
 
       {/* EVENTS SECTION */}
       <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">

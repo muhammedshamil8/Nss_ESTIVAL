@@ -20,12 +20,12 @@ const Layout = () => {
  
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen relative overflow-x-hidden">
     
 
 
       {/* MAIN CONTENT */}
-      <main className="flex-grow max-w-[1300px] mx-auto   pb-10 overflow-x-hidden w-full">
+      <main className="flex-grow max-w-[1300px] mx-auto   pb-10 overflow-x-hidden w-full ">
         <Outlet />
       </main>
 
