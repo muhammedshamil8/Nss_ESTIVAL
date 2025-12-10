@@ -156,7 +156,7 @@ const HomePage = () => {
     
           <section
         id="home"
-        className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative w-full px-4 min-h-screen flex items-center justify-center overflow-hidden"
       >
         {/* Background Image */}
         <img
@@ -180,7 +180,7 @@ const HomePage = () => {
           <motion.img
             src={HERO}
             alt="Estival Logo"
-            className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-6"
+            className="w-48 h-48 mx-auto mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -281,7 +281,28 @@ const HomePage = () => {
         </div>
       </section>
 
-     
+     <section className="relative bg-white">
+  {/* First ribbon */}
+  <div
+    className="absolute top-[-40px] left-0 w-full h-[85px] bg-[#2E7D32] origin-top-left rotate-[-4deg] flex items-center justify-center text-white font-semibold"
+  >
+    REGISTER NOW • REGISTER NOW • REGISTER NOW • REGISTER NOW
+  </div>
+
+  {/* Second ribbon */}
+  <div
+    className="absolute top-[-60px] left-0 w-full h-[85px] bg-[#D0A650] origin-top-left rotate-[4deg] flex items-center justify-center text-white font-semibold"
+  >
+    REGISTER NOW • REGISTER NOW • REGISTER NOW • REGISTER NOW
+  </div>
+
+  {/* content */}
+  <div className="pt-[80px] pb-20">
+    <h2 className="text-center text-3xl font-bold text-[#7A0000]">
+      Events & Competitions
+    </h2>
+  </div>
+</section>
 
       {/* EVENTS SECTION */}
       <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">
@@ -295,7 +316,7 @@ const HomePage = () => {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Events & Competitions
+                Events & Competitionsd
               </span>
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
@@ -523,31 +544,7 @@ const HomePage = () => {
               </div>
             </motion.div>
           </div>
-
-          {/* Footer Info */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-12 pt-8 border-t border-white/20 text-center"
-          >
-            <p className="text-white/90 text-lg">
-              For general inquiries, email us at:{" "}
-              <a
-                href="mailto:nss@emecollege.edu.in"
-                className="font-bold hover:text-white transition-colors duration-300 underline"
-              >
-                nss@emecollege.edu.in
-              </a>
-            </p>
-            <p className="mt-3 text-white/70">
-              Available Monday to Friday, 9:00 AM - 5:00 PM
-            </p>
-            <p className="mt-6 text-white/80 font-semibold">
-              December 18, 2025 • EMEA College, Kondotty
-            </p>
-          </motion.div> */}
+          
         </div>
       </div>
       </section>
