@@ -96,14 +96,7 @@ const EVENTS = [
 ];
 
 const HomePage = () => {
-   const scrollToSection = (id) => {
-    navigate("/");
-    setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }, 150);
-
-    if (isMenuOpen) toggleMenu();
-  };
+  
   const navigate = useNavigate();
   const [hoveredEvent, setHoveredEvent] = useState(null);
   const [timeLeft, setTimeLeft] = useState({
@@ -166,14 +159,7 @@ const HomePage = () => {
         />
 
         {/* HEADER — floating on top of image */}
-        <header className="absolute top-6 left-1/2 -translate-x-1/2 z-50">
-          <nav className="flex space-x-6 text-xs font-medium text-gray-700 uppercase bg-white/90 backdrop-blur border border-gray-200 rounded-full px-8 py-2 shadow">
-            <button onClick={() => scrollToSection("home")}>HOME</button>
-            <button onClick={() => scrollToSection("about")}>ABOUT</button>
-            <button onClick={() => scrollToSection("events")}>EVENTS</button>
-            <button onClick={() => scrollToSection("contact")}>CONTACT</button>
-          </nav>
-        </header>
+        
 
         {/* HERO CONTENT BELOW HEADER */}
         <div className="text-center ">
@@ -281,28 +267,7 @@ const HomePage = () => {
         </div>
       </section>
 
-     <section className="relative bg-white">
-  {/* First ribbon */}
-  <div
-    className="absolute top-[-40px] left-0 w-full h-[85px] bg-[#2E7D32] origin-top-left rotate-[-4deg] flex items-center justify-center text-white font-semibold"
-  >
-    REGISTER NOW • REGISTER NOW • REGISTER NOW • REGISTER NOW
-  </div>
-
-  {/* Second ribbon */}
-  <div
-    className="absolute top-[-60px] left-0 w-full h-[85px] bg-[#D0A650] origin-top-left rotate-[4deg] flex items-center justify-center text-white font-semibold"
-  >
-    REGISTER NOW • REGISTER NOW • REGISTER NOW • REGISTER NOW
-  </div>
-
-  {/* content */}
-  <div className="pt-[80px] pb-20">
-    <h2 className="text-center text-3xl font-bold text-[#7A0000]">
-      Events & Competitions
-    </h2>
-  </div>
-</section>
+     
 
       {/* EVENTS SECTION */}
       <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">
