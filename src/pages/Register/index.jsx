@@ -712,7 +712,8 @@ useEffect(() => {
             disabled={loading}
             className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold shadow hover:bg-blue-700 transition"
           >
-            {loading ? "Submitting..." : `Submit Registration — ₹${event.perfee * form.participants.length}`}
+            {loading ? "Submitting..." : `Submit Registration`}
+            {/* — ₹${event.perfee * form.participants.length} */}
           </button>
         </div>
       </div>
