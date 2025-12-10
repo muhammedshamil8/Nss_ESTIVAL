@@ -106,4 +106,4 @@ Each event page dynamically loads:
 | `npm run build` | Build for production |
 | `npm run preview` | Preview the production build |
 
----
+
