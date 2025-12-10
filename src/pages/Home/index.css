@@ -9,3 +9,57 @@
     
     background: linear-gradient(180deg, rgba(0, 119, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 111.04%);
 }
+
+
+.marquee {
+  display: flex;
+  animation: marqueeAnimation 15s linear infinite;
+
+}
+
+
+/* Unique speeds for layers for parallax effect */
+
+.marguee_rotate_2 {
+  animation: marqueeAnimationOpp 20s linear infinite;
+  rotate: 4deg;
+}
+
+.marguee_rotate_1 {
+  animation: marqueeAnimation 20s linear infinite;
+  rotate: -8deg;
+}
+
+/* Keyframes for animation */
+@keyframes marqueeAnimation {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marqueeAnimationOpp {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+
+@media (min-width: 640px) {
+  .marguee_rotate_2 {
+    animation: marqueeAnimationOpp 20s linear infinite;
+    rotate: 3deg;
+  }
+
+  .marguee_rotate_1 {
+    animation: marqueeAnimation 20s linear infinite;
+    rotate: -5deg;
+  }
+}

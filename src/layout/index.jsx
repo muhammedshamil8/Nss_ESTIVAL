@@ -27,7 +27,7 @@ const Layout = () => {
    };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen relative overflow-x-hidden">
     <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
           <nav className="flex space-x-6 text-xs font-medium text-gray-700 uppercase bg-white/90 backdrop-blur border border-gray-200 rounded-full px-8 py-2 shadow">
             <button onClick={() => scrollToSection("home")}>HOME</button>
@@ -39,7 +39,7 @@ const Layout = () => {
 
 
       {/* MAIN CONTENT */}
-      <main className="flex-grow max-w-[1300px] mx-auto   pb-10 overflow-x-hidden w-full">
+      <main className="flex-grow max-w-[1300px] mx-auto   pb-10 overflow-x-hidden w-full ">
         <Outlet />
       </main>
 
