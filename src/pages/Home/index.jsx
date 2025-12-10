@@ -27,7 +27,7 @@ const EVENTS = [
         className="w-full h-full object-cover rounded-lg p-2"
       />
     ),
-    color: "from-pink-500 to-purple-600",
+    color: "bg-purple-600",
   },
   {
     name: "Group Dance",
@@ -42,7 +42,7 @@ const EVENTS = [
         className="w-full h-full object-cover rounded-lg p-3"
       />
     ),
-    color: "from-blue-500 to-cyan-600",
+    color: "bg-cyan-600",
   },
   {
     name: "Best Volunteer",
@@ -51,7 +51,7 @@ const EVENTS = [
     description:
       "An excellence award recognizing outstanding leadership, service, discipline, and NSS contribution.",
     emoji: "⭐",
-    color: "from-yellow-500 to-orange-600",
+    color: "bg-orange-600",
   },
   {
     name: "Treasure Hunt",
@@ -61,7 +61,7 @@ const EVENTS = [
       "A competitive hunt where teams follow clues and complete challenges to find the hidden treasure.",
 
     emoji: "🗺️",
-    color: "from-green-500 to-teal-600",
+    color: "bg-teal-600",
   },
   {
     name: "Spot Photography",
@@ -71,7 +71,7 @@ const EVENTS = [
       "A time-bound photography event where participants capture compelling moments based on a given theme.",
 
     emoji: "📸",
-    color: "from-indigo-500 to-purple-600",
+    color: "bg-purple-600",
   },
   {
     name: "Spot Reel Making",
@@ -81,7 +81,7 @@ const EVENTS = [
       "A real-time reel-making event testing creativity, concept, and execution within a limited time.",
 
     emoji: "🎬",
-    color: "from-red-500 to-pink-600",
+    color: "bg-pink-600",
   },
   {
     name: "Face Painting",
@@ -91,7 +91,7 @@ const EVENTS = [
       "A visually creative contest focused on skillful face art and thematic presentation.",
 
     emoji: "🎨",
-    color: "from-violet-500 to-fuchsia-600",
+    color: "bg-fuchsia-600",
   },
 ];
 
@@ -151,9 +151,9 @@ const HomePage = () => {
         id="home"
         className="relative  w-full px-4  flex items-center justify-center overflow-hidden"
         style={{background:'#E5F2FF url("/bg.svg")',
-    backgroundSize:"cover",
-    backgroundRepeat:"no-repeat",
-    backgroundPosition:"center"}}
+        bakgroundRepeat:"no-repeat",
+        backgrockgroundSize:"cover",
+        bacundPosition:"center"}}
       >
         
 
@@ -302,7 +302,7 @@ const HomePage = () => {
           ))}
         </div>
       </section>
-
+          
       {/* EVENTS SECTION */}
       <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">
         <div className="max-w-7xl mx-auto">
@@ -323,9 +323,8 @@ const HomePage = () => {
             </p>
             <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-4"></div>
           </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {EVENTS.map((event, idx) => (
+            <div className="grid md:grid-cols-3 gap-3 px-4 mt-12 ">
+            {EVENTS.map((event, idx)=>(
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 40 }}
@@ -335,38 +334,37 @@ const HomePage = () => {
                 whileHover={{ scale: 1.03, translateY: -8 }}
                 onMouseEnter={() => setHoveredEvent(idx)}
                 onMouseLeave={() => setHoveredEvent(null)}
-                className="relative bg-white p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-center text-center transition-all duration-300 hover:shadow-2xl group"
+                className="relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group"
               >
-                {/* Prize Badge */}
-                <div
-                  className={`absolute -top-4 -right-4 bg-gradient-to-r ${event.color} text-white px-5 py-2.5 rounded-xl shadow-lg font-bold text-sm z-10`}
-                >
-                  🏆 {event.prize}
-                </div>
-
-                {/* Icon Container */}
-                <div
-                  className={`w-24 h-24 bg-gradient-to-br ${event.color} rounded-2xl flex items-center justify-center shadow-xl text-4xl text-white mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-300`}
-                >
-                  {event.emoji}
-                </div>
-
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                {/* EVENT NAME */}
+                <p className="text-base sm:text-base md:text-base font-semibold self-start text-nowrap">
                   {event.name}
-                </h3>
-                <p className="text-gray-600 mb-6">{event.description}</p>
+                </p>
 
+                {/* FASHION ICON (MOVE TO RIGHT TOP) */}
+                <img
+                  src="./fashion.svg"
+                  alt=""
+                  className="absolute top-2 right-2 w-8 sm:w-6 md:w-8"
+                />
+                {/* EVENT DESCRIPTION */}
+                <p className="mt-4 text-xs md:text-xs text-gray-600 flex-grow">
+                  {event.description}
+                </p>
+                {/* MAIN EVENT IMAGE */}
+                <img src="./event.png" alt="" className="mt-6" />
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => openEvent(event.slug)}
-                  className={`w-full py-3.5 bg-gradient-to-r ${event.color} text-white rounded-xl font-bold shadow-md hover:shadow-xl transition-all duration-300`}
+                  className={`w-full py-3.5  ${event.color} text-white rounded-xl font-bold shadow-md hover:shadow-xl transition-all duration-300`}
                 >
                   Register Now →
                 </motion.button>
               </motion.div>
             ))}
-          </div>
+            </div>
+         
         </div>
       </section>
       <section id="contact" className="w-full py-4 px-4 ">

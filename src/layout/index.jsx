@@ -106,14 +106,14 @@ const Layout = () => {
 
               {/* Developer Credit */}
               <div className="flex items-center gap-3">
-                <span className="text-sm text-gray-600">Developed with <a href="https://zamil.vercel.app"
+                <span className="text-sm text-gray-600">Developed by <a href="https://wa.me/+918089465673?text=Hello%20Shamil,%20I%20am%20looking%20to%20build%20a%20website.%20Please%20provide%20details%20about%20your%20services."
                     target="_blank"
                     className="hover:underline"
-                    rel="noopener noreferrer"> Shamil </a>, <a href="https://www.linkedin.com/in/dayyan-ali/"
+                    rel="noopener noreferrer"> Shamil </a>, <a href="https://wa.me/919061084323?text=Hello%20Dayyan,%20I%20am%20looking%20to%20build%20a%20website.%20Please%20provide%20details%20about%20your%20services."
                     target="_blank"
                     className="hover:underline"
                     rel="noopener noreferrer">Dayyan </a> & 
-                    <a href="https://linkedin.com/in/irshadudheenp" className="hover:underline" target="_blank" rel="noopener noreferrer"> Irshad</a></span>
+                    <a href="https://wa.me/+919061306799?text=Hello%20Irshad,%20I%20am%20looking%20to%20build%20a%20website.%20Please%20provide%20details%20about%20your%20services." className="hover:underline" target="_blank" rel="noopener noreferrer"> Irshad</a></span>
               
               </div>
             </div>
