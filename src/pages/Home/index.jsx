@@ -370,8 +370,13 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section id="contact" className="w-full py-4 px-4">
-  <div className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl border-[6px] border-[#0B4E63] bg-[#17776B] py-12 px-6 md:px-12 text-white">
+      <section id="contact" className="w-full py-4 px-4 ">
+  <div className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl border-[6px] border-[#005AAB] bg-[#17776B] py-12 px-6 md:px-12 text-white"
+  style={{background:'#17776B url("/bg.svg")',
+    backgroundSize:"cover",
+    backgroundRepeat:"no-repeat",
+    backgroundPosition:"center"
+  }}>
 
     {/* Title */}
     <div className="text-center mb-8">
@@ -387,7 +392,7 @@ const HomePage = () => {
 
       {/* NSS Secretary */}
       <div>
-        <h3 className="text-xl font-bold underline mb-4">NSS Secretary</h3>
+        <h3 className="text-sm md:text-xl font-bold underline mb-4">NSS Secretary</h3>
 
         {/* Person 1 */}
         <div className="flex items-center justify-between mb-4">
@@ -408,7 +413,7 @@ const HomePage = () => {
 
       {/* Program Officer */}
       <div>
-        <h3 className="text-xl font-bold underline mb-4">Program Officer</h3>
+        <h3 className="text-sm md:text-xl font-bold underline mb-4">Program Officer</h3>
 
         {/* Person 1 */}
         <div className="flex items-center justify-between mb-4">
