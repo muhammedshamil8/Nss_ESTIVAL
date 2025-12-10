@@ -118,7 +118,7 @@ const Layout = () => {
                   >
                     Shamil
                   </a>
-                  <span className="text-gray-400">&</span>
+                  <span className="text-gray-400">,</span>
                   <a
                     href="https://www.linkedin.com/in/dayyan-ali/"
                     target="_blank"
@@ -127,6 +127,12 @@ const Layout = () => {
                   >
                     Dayyan
                   </a>
+                  <span className="text-gray-400">&</span>
+
+                    <a href="https://linkedin.com/in/irshadudheenp" target="_blank" rel="noopener noreferrer"
+                      className="text-purple-600 font-semibold hover:text-purple-700 hover:underline transition">
+                      Irshad
+                    </a>
                 </div>
               </div>
             </div>
