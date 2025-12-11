@@ -258,11 +258,8 @@ const Register = () => {
       id="event"
     >
       <div className="max-w-[1000px] mx-auto">
-        {/* Header / Hero-style top */}
-        {/* idh update akkyaa madhii */}
         <div className="w-full bg-[#eaf4ff] rounded-3xl mb-6">
           <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-blue-100 flex flex-col sm:flex-row justify-between gap-8">
-            {/* LEFT SECTION */}
             <div className="flex-grow">
               <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
                 {event.title}
@@ -272,7 +269,6 @@ const Register = () => {
                 {event.description}
               </p>
 
-              {/* FEES + PARTICIPANTS */}
               <div className="flex gap-3 mt-5 flex-wrap">
                 <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-medium">
                   <svg
@@ -319,7 +315,6 @@ const Register = () => {
               </div>
             </div>
 
-            {/* RIGHT SECTION */}
             <div className="flex flex-col min-w-[220px] justify-center  ">
               <h3 className="text-md font-semibold text-blue-700 underline mb-2">
                 Coordinators
@@ -337,7 +332,6 @@ const Register = () => {
           </div>
         </div>
 
-        {/* Rules block with toggle */}
         <div className="mb-8 bg-white rounded-2xl border border-gray-100  shadow-sm p-4 sm:p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-2xl font-semibold text-blue-700">
@@ -431,9 +425,7 @@ const Register = () => {
           </AnimatePresence>
         </div>
 
-        {/* Form */}
         <div className="space-y-6">
-          {/* College */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Name of College *
@@ -446,7 +438,6 @@ const Register = () => {
             />
           </div>
 
-          {/* Officer */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Name of Program Officer *
@@ -459,7 +450,6 @@ const Register = () => {
             />
           </div>
 
-          {/* Officer Phone */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Phone No of Program Officer *
@@ -472,7 +462,6 @@ const Register = () => {
             />
           </div>
 
-          {/* Participants */}
           <div>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
               <h3 className="text-xl font-semibold text-blue-700">
@@ -481,7 +470,6 @@ const Register = () => {
               </h3>
             </div>
 
-            {/* Validation message */}
             {form.participants.length < event.minparticipants && (
               <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                 <p className="text-yellow-700 text-sm">
@@ -508,7 +496,6 @@ const Register = () => {
                   className="bg-gray-50 p-4 rounded-xl border relative"
                   data-participant={i + 1}
                 >
-                  {/* Remove button for non-required participants */}
                   {i >= event.minparticipants && (
                     <button
                       type="button"
@@ -555,7 +542,6 @@ const Register = () => {
                     placeholder="Phone"
                   />
 
-                  {/* Required indicator */}
                   {i + 1 <= event.minparticipants && (
                     <p className="text-xs text-gray-500 mt-2">
                       Required participant
@@ -565,7 +551,6 @@ const Register = () => {
               ))}
             </motion.div>
 
-            {/* Add Participant Button at bottom - only show if not at max */}
             {form.participants.length < event.maxParticipants && (
               <div className="mt-4 flex justify-center">
                 <button
@@ -583,7 +568,6 @@ const Register = () => {
                         `Added participant ${form.participants.length + 1}`
                       );
 
-                      // Scroll to the newly added participant
                       setTimeout(() => {
                         const lastParticipant = document.querySelector(
                           `[data-participant="${form.participants.length}"]`
@@ -604,7 +588,6 @@ const Register = () => {
               </div>
             )}
 
-            {/* Max participants message */}
             {event.maxParticipants > 1 &&
               form.participants.length >= event.maxParticipants && (
                 <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
@@ -615,10 +598,8 @@ const Register = () => {
               )}
           </div>
 
-          {/* Payment - optional */}
           <div>
             <div className="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-100 flex flex-col items-center gap-4">
-              {/* Payment Text */}
               <div className="flex-1 text-center sm:text-left">
                 <p className="text-sm text-gray-700 flex items-center gap-2 justify-center sm:justify-start">
                   <strong>UPI ID:</strong> {event.paymentDetails.upi_id}
@@ -649,7 +630,6 @@ const Register = () => {
                 </p>
               </div>
 
-              {/* QR Code */}
               <div>
                 <img
                   src={event.paymentDetails.qrcode}
@@ -659,7 +639,6 @@ const Register = () => {
               </div>
             </div>
 
-            {/* Upload box */}
             <div className="mt-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Upload Payment Screenshot (optional)
@@ -702,7 +681,6 @@ const Register = () => {
             </div>
           </div>
 
-          {/* Submit button */}
           <div>
             <button
               onClick={submit}
