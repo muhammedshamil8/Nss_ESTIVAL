@@ -205,8 +205,8 @@ const EVENTS = [
 ];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 const fade = {
@@ -286,7 +286,6 @@ const HomePage = () => {
       animate="show"
       variants={staggerContainer}
     >
-
       <motion.section
         id="home"
         variants={fadeUp}
@@ -319,7 +318,7 @@ const HomePage = () => {
           >
             <img
               src={SponserLogo}
-              draggable={false} 
+              draggable={false}
               alt="Sponsor Logo"
               className="h-10 sm:h-14"
             />
@@ -437,7 +436,6 @@ const HomePage = () => {
         </div>
       </motion.section>
 
-
       <div
         className="pb-[160px]"
         style={{
@@ -458,8 +456,7 @@ const HomePage = () => {
           </div>
           <div className="absolute  w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#E2BC5F] py-2 -rotate-[6deg] sm:-rotate-[3deg] text-black uppercase flex items-center ">
             {[...Array(10)].map((_, i) => (
-              <p key={i} className="flex  items-center justify-center">
-              </p>
+              <p key={i} className="flex  items-center justify-center"></p>
             ))}
           </div>
           <div className="marguee_rotate_2 z-30 absolute w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#17776B] py-2  text-white uppercase flex items-center">
@@ -472,13 +469,14 @@ const HomePage = () => {
           </div>
           <div className="absolute w-[150%] z-20  sm:w-[110%] -left-10 -right-4 h-10 bg-[#17776B] py-2 rotate-[4deg] sm:rotate-[3deg] text-white uppercase flex items-center">
             {[...Array(10)].map((_, i) => (
-              <p key={i} className="flex items-center justify-center">
-              </p>
+              <p key={i} className="flex items-center justify-center"></p>
             ))}
           </div>
         </section>
-
-        <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">
+        <section
+          id="events"
+          className="w-full select-none py-24 px-6 md:px-12 lg:px-20 "
+        >
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -495,7 +493,13 @@ const HomePage = () => {
               </p>
               <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-4"></div>
             </motion.div>
-            <div className="grid md:grid-cols-3 gap-3 px-4 mt-12 ">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mt-12 "
+            >
               {EVENTS.map((event, idx) => (
                 <motion.div
                   key={idx}
@@ -507,34 +511,46 @@ const HomePage = () => {
                   onClick={() => openEvent(event.slug)}
                   onMouseEnter={() => setHoveredEvent(idx)}
                   onMouseLeave={() => setHoveredEvent(null)}
-                  className={`relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
+                  className={`relative bg-white p-5 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
       ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
                 >
                   {/* EVENT NAME */}
-                  <p className="text-base sm:text-base md:text-base font-semibold self-start text-nowrap">
-                    {event.name}
-                  </p>
+                  <div className="flex items-center justify-between w-full gap-3 mb-3">
+                    <div className="flex flex-col">
+                      <p className="text-base sm:text-xl md:text-xl font-semibold self-start text-nowrap">
+                        {event.name}
+                      </p>
+                      <p className="mt-1 text-xs md:text-xs text-gray-500 flex-grow">
+                        {event.description}
+                      </p>
+                    </div>
 
-                  {/* FASHION ICON (MOVE TO RIGHT TOP) */}
-                  {React.cloneElement(event.arrow, {
-                    className: "absolute -top-3 right-2 w-8 sm:w-6 md:w-8",
-                  })}
+                    {/* FASHION ICON (MOVE TO RIGHT TOP) */}
+                    {React.cloneElement(event.arrow, {
+                      className:
+                        "w-full h-full max-w-[55px] max-h-[55px] min-w-[50px] object-contain",
+                    })}
+                  </div>
                   {/* EVENT DESCRIPTION */}
-                  <p className="mt-4 text-xs md:text-xs text-gray-600 flex-grow">
-                    {event.description}
-                  </p>
                   {/* MAIN EVENT IMAGE */}
 
-                  <img src={event.img} alt="" className="" draggable={false} />
+                  <img
+                    src={event.img}
+                    alt=""
+                    className="object-cover w-full "
+                  />
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
       </div>
 
-
-      <section id="contact" className="w-full py-4 px-4 -mt-48 pb-10 select-text">
+      <motion.section
+        id="contact"
+        variants={fadeUp}
+        className="w-full py-4 px-4 -mt-48 pb-10 select-text"
+      >
         <div
           className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl   bg-[#17776B] py-12 px-6 md:px-12 text-white"
           style={{
@@ -614,9 +630,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </section>
-
-
+      </motion.section>
     </motion.div>
   );
 };
