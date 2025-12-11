@@ -369,7 +369,7 @@ const HomePage = () => {
             </p>
             <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-4"></div>
           </motion.div>
-            <div className="grid md:grid-cols-3 gap-3 px-4 mt-12 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mt-12   ">
             {EVENTS.map((event, idx)=>(
               <motion.div
                 key={idx}
@@ -381,29 +381,34 @@ const HomePage = () => {
                  onClick={() => openEvent(event.slug)}
                 onMouseEnter={() => setHoveredEvent(idx)}
                 onMouseLeave={() => setHoveredEvent(null)}
-               className={`relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
+               className={`relative bg-white p-5 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
       ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
               >
                 {/* EVENT NAME */}
-                <p className="text-base sm:text-base md:text-base font-semibold self-start text-nowrap">
+                <div className="flex items-center justify-between w-full gap-3 mb-3">
+                <div className="flex flex-col">
+
+                <p className="text-base sm:text-xl md:text-xl font-semibold self-start text-nowrap">
                   {event.name}
                 </p>
+                <p className="mt-1 text-xs md:text-xs text-gray-500 flex-grow">
+                  {event.description}
+                </p>
+                </div>
                 
 
                 {/* FASHION ICON (MOVE TO RIGHT TOP) */}
                 {React.cloneElement(event.arrow, {
-                className: "absolute -top-3 right-2 w-8 sm:w-6 md:w-8"
-              })}
+                  className: "w-full h-full max-w-[55px] max-h-[55px] min-w-[50px] object-contain",
+                })}
+                </div>
                 {/* EVENT DESCRIPTION */}
-                <p className="mt-4 text-xs md:text-xs text-gray-600 flex-grow">
-                  {event.description}
-                </p>
                 {/* MAIN EVENT IMAGE */}
                 
                   <img
                     src={event.img}
                     alt=""
-                    className=""
+                    className="object-cover w-full "
                   />
            
               
