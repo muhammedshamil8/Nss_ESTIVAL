@@ -30,14 +30,18 @@
   rotate: -5deg;
 }
 
+.marquee_sponsors {
+  display: inline-flex;
+  animation: marqueeAnimation 15s linear infinite;
+}
+
 /* Keyframes for animation */
 @keyframes marqueeAnimation {
-  0% {
+  from {
     transform: translateX(0);
   }
-
-  100% {
-    transform: translateX(-100%);
+  to {
+    transform: translateX(-50%);
   }
 }
 

@@ -205,6 +205,66 @@ const EVENTS = [
   },
 ];
 
+const Sponsers = [
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+  {
+    name: "MyMelova",
+    logo: SponserLogo,
+    url: "https://mymelova.com/",
+  },
+];
+
 const fadeUp = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
@@ -312,7 +372,7 @@ const HomePage = () => {
             2025 DECEMBER 17,18
           </div>
 
-          <a
+          {/* <a
             href="https://mymelova.com/"
             target="_blank"
             className="flex flex-col items-center items-center justify-center gap-2 mx-auto"
@@ -326,7 +386,7 @@ const HomePage = () => {
             <span className="text-sm text-gray-700 -mt-6 font-semibold -rotate-[8deg]">
               Sponsered by
             </span>
-          </a>
+          </a> */}
 
           <motion.div
             variants={scaleIn}
@@ -487,12 +547,12 @@ const HomePage = () => {
               className="text-center mb-16"
             >
               <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                <span className="text-red-800">Events & Competitionsd</span>
+                <span className="text-red-800">Events & Competitions</span>
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
                 Choose your arena and showcase your talent
               </p>
-              <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-4"></div>
+              {/* <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-4"></div> */}
             </motion.div>
             <motion.div
               variants={staggerContainer}
@@ -541,6 +601,36 @@ const HomePage = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* soponsers section marquee*/}
+        <motion.section
+          id="sponsors"
+          variants={fadeUp}
+          className="w-full mb-14"
+        >
+          <h3 className="text-center text-xl md:text-3xl font-bold mb-6 text-red-800">
+            Our Proud Sponsors
+          </h3>
+          <div className="mx-auto overflow-hidden relative py-4 px-4 bg-white ">
+            <div className="marquee_sponsors whitespace-nowrap flex items-center">
+              {Sponsers.map((sponser, index) => (
+                <a
+                  key={index}
+                  href={sponser.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mx-8 flex items-center justify-center"
+                >
+                  <img
+                    src={sponser.logo}
+                    alt={sponser.name}
+                    className="h-16 sm:h-24 object-contain"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+        </motion.section>
       </div>
 
       <motion.section
