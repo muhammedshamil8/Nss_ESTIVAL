@@ -211,58 +211,6 @@ const Sponsers = [
     logo: SponserLogo,
     url: "https://mymelova.com/",
   },
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
-
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
-
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
-  {
-    name: "MyMelova",
-    logo: SponserLogo,
-    url: "https://mymelova.com/",
-  },
 ];
 
 const fadeUp = {
@@ -611,8 +559,8 @@ const HomePage = () => {
           <h3 className="text-center text-xl md:text-3xl font-bold mb-6 text-red-800">
             Our Proud Sponsors
           </h3>
-          <div className="mx-auto overflow-hidden relative py-4 px-4 bg-white ">
-            <div className="marquee_sponsors whitespace-nowrap flex items-center">
+          <div className=" relative py-4 px-4 bg-white">
+            <marquee width="100%" direction="left" height="100px">
               {Sponsers.map((sponser, index) => (
                 <a
                   key={index}
@@ -628,7 +576,7 @@ const HomePage = () => {
                   />
                 </a>
               ))}
-            </div>
+            </marquee>
           </div>
         </motion.section>
       </div>
