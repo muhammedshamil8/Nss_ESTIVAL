@@ -27,7 +27,7 @@ const EVENTS = [
         className="w-full h-full object-cover rounded-lg p-2"
       />
     ),
-    color: "from-pink-500 to-purple-600",
+    color: "bg-purple-600",
   },
   {
     name: "Group Dance",
@@ -42,7 +42,7 @@ const EVENTS = [
         className="w-full h-full object-cover rounded-lg p-3"
       />
     ),
-    color: "from-blue-500 to-cyan-600",
+    color: "bg-cyan-600",
   },
   {
     name: "Best Volunteer",
@@ -51,7 +51,7 @@ const EVENTS = [
     description:
       "An excellence award recognizing outstanding leadership, service, discipline, and NSS contribution.",
     emoji: "⭐",
-    color: "from-yellow-500 to-orange-600",
+    color: "bg-orange-600",
   },
   {
     name: "Treasure Hunt",
@@ -61,7 +61,7 @@ const EVENTS = [
       "A competitive hunt where teams follow clues and complete challenges to find the hidden treasure.",
 
     emoji: "🗺️",
-    color: "from-green-500 to-teal-600",
+    color: "bg-teal-600",
   },
   {
     name: "Spot Photography",
@@ -71,7 +71,7 @@ const EVENTS = [
       "A time-bound photography event where participants capture compelling moments based on a given theme.",
 
     emoji: "📸",
-    color: "from-indigo-500 to-purple-600",
+    color: "bg-purple-600",
   },
   {
     name: "Spot Reel Making",
@@ -81,7 +81,7 @@ const EVENTS = [
       "A real-time reel-making event testing creativity, concept, and execution within a limited time.",
 
     emoji: "🎬",
-    color: "from-red-500 to-pink-600",
+    color: "bg-pink-600",
   },
   {
     name: "Face Painting",
@@ -91,7 +91,7 @@ const EVENTS = [
       "A visually creative contest focused on skillful face art and thematic presentation.",
 
     emoji: "🎨",
-    color: "from-violet-500 to-fuchsia-600",
+    color: "bg-fuchsia-600",
   },
 ];
 
@@ -149,31 +149,30 @@ const HomePage = () => {
     
           <section
         id="home"
-        className="relative w-full px-4 min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative  w-full px-4  flex items-center justify-center overflow-hidden"
+        style={{background:'#E5F2FF url("/bg.svg")',
+        bakgroundRepeat:"no-repeat",
+        backgrockgroundSize:"cover",
+        bacundPosition:"center"}}
       >
-        {/* Background Image */}
-        <img
-          src="/bg.svg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover -z-10"
-        />
+        
 
         {/* HEADER — floating on top of image */}
         
 
         {/* HERO CONTENT BELOW HEADER */}
-        <div className="text-center ">
+        <div className="text-center mt-20">
           <motion.img
-            src={HERO}
+            src={'./estival_logo_.png'}
             alt="Estival Logo"
-            className=" h-48 mx-auto mb-6"
+            className=" h-48 mx-auto mb-1"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           />
-         <div className="bg-blue-500 text-white rounded-full text-sm py-2 ">2025 DECEMBER 17,18</div>
-         <div className="flex items-center justify-center mt-20">
-        <div className="grid grid-cols-4 bg-white shadow-lg rounded-3xl overflow-hidden">
+         <div className="bg-[#1265BB] w-1/2 text-white rounded-full text-sm py-1 mx-auto mb-5">2025 DECEMBER 17,18</div>
+         <div className="flex items-center justify-center relative z-20 py-4">
+        <div className="grid grid-cols-4 bg-white shadow-lg shadow-blue-50 rounded-3xl">
           
           {["DAYS","HRS","MIN","SEC"].map((text, i) => (
         <div
@@ -197,7 +196,7 @@ const HomePage = () => {
       {/* ABOUT SECTION */}
       <section
         id="about"
-        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white "
+        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white -mt-12 relative z-10"
       >
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -207,12 +206,12 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+            <h2 className="text-xl md:text-2xl font-bold mb-4">
+              <span className="text-[#005ABB]">
                 About Estival
               </span>
             </h2>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-green-600 rounded-full mx-auto"></div>
+            
           </motion.div>
 
           <motion.p
@@ -220,9 +219,9 @@ const HomePage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-4xl mx-auto mt-8 text-center text-gray-700 text-lg md:text-xl leading-relaxed"
+            className="max-w-4xl mx-auto mt-8 text-center text-gray-700 text-sm md:text-base leading-relaxed"
           >
-            <span className="font-bold text-blue-700">Estival 2K25</span> is a{" "}
+            <span className="font-bold text-blue-700 ">Estival 2K25</span> is a{" "}
             <span className="font-semibold text-blue-700">
               state-level NSS Fest
             </span>{" "}
@@ -237,27 +236,27 @@ const HomePage = () => {
           </motion.p>
           <div className="flex items-center justify-center gap-1 md:gap-10 mt-5">
 
-          <div className="bg-blue-800 border rounded-3xl p-3 md:px-5 flex flex-col items-center">
-             <p className="text-xl md:text-4xl font-bold text-white ">
+          <div className="bg-blue-800 border rounded-2xl px-3 py-4 md:px-10 md:py-4 flex flex-col items-center">
+             <p className="text-sm md:text-2xl font-bold text-white ">
             {"4000+"}
           </p>
           <p className="text-xs font-semibold tracking-wider text-white mt-1">
             {"Participants"}
           </p>
           </div>
-          <div className="bg-green-800 border rounded-3xl py-3 px-4 md:px-12 md:py-3 flex flex-col items-center">
-             <p className="text-xl md:text-4xl font-bold text-white text-nowrap">
+          <div className="bg-green-800 border rounded-2xl py-4 px-4 md:px-12 md:py-4 flex flex-col items-center">
+             <p className="text-sm md:text-2xl font-bold text-white text-nowrap">
             {"7"}
           </p>
           <p className="text-xs font-semibold tracking-wider text-white mt-1 text-nowrap">
             {"Major Events"}
           </p>
           </div>
-          <div className="bg-red-800 border rounded-3xl p-3 md:px-5 flex flex-col items-center">
-             <p className="text-xl md:text-4xl font-bold text-white text-nowrap">
+          <div className="bg-red-800 border rounded-2xl px-6 py-4 md:px-8 md:py-4 flex flex-col items-center">
+             <p className="text-sm md:text-2xl font-bold text-white text-nowrap">
             {"₹3 Lakh+"}
           </p>
-          <p className="text-xs font-semibold tracking-wider text-white mt-1">
+          <p className="text-xs font-semibold tracking-wider text-white mt-1 text-nowrap">
             {"Total Price"}
           </p>
           </div>
@@ -268,7 +267,7 @@ const HomePage = () => {
       </section>
 
          <section
-        className='h-12'
+        className='h-12 mt-[55px] '
       >
         <div className='marguee_rotate_1 absolute z-10  w-[150%] sm:w-[110%] -left-10 -right-4 h-12 bg-[#E2BC5F] py-2  text-black uppercase flex items-center '>
           {[...Array(20)].map((_, i) => (
@@ -303,7 +302,7 @@ const HomePage = () => {
           ))}
         </div>
       </section>
-
+          
       {/* EVENTS SECTION */}
       <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">
         <div className="max-w-7xl mx-auto">
@@ -324,9 +323,8 @@ const HomePage = () => {
             </p>
             <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-4"></div>
           </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {EVENTS.map((event, idx) => (
+            <div className="grid md:grid-cols-3 gap-3 px-4 mt-12 ">
+            {EVENTS.map((event, idx)=>(
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 40 }}
@@ -336,42 +334,47 @@ const HomePage = () => {
                 whileHover={{ scale: 1.03, translateY: -8 }}
                 onMouseEnter={() => setHoveredEvent(idx)}
                 onMouseLeave={() => setHoveredEvent(null)}
-                className="relative bg-white p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-center text-center transition-all duration-300 hover:shadow-2xl group"
+               className={`relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
+      ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
               >
-                {/* Prize Badge */}
-                <div
-                  className={`absolute -top-4 -right-4 bg-gradient-to-r ${event.color} text-white px-5 py-2.5 rounded-xl shadow-lg font-bold text-sm z-10`}
-                >
-                  🏆 {event.prize}
-                </div>
-
-                {/* Icon Container */}
-                <div
-                  className={`w-24 h-24 bg-gradient-to-br ${event.color} rounded-2xl flex items-center justify-center shadow-xl text-4xl text-white mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-300`}
-                >
-                  {event.emoji}
-                </div>
-
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                {/* EVENT NAME */}
+                <p className="text-base sm:text-base md:text-base font-semibold self-start text-nowrap">
                   {event.name}
-                </h3>
-                <p className="text-gray-600 mb-6">{event.description}</p>
+                </p>
 
+                {/* FASHION ICON (MOVE TO RIGHT TOP) */}
+                <img
+                  src="./fashion.svg"
+                  alt=""
+                  className="absolute top-2 right-2 w-8 sm:w-6 md:w-8"
+                />
+                {/* EVENT DESCRIPTION */}
+                <p className="mt-4 text-xs md:text-xs text-gray-600 flex-grow">
+                  {event.description}
+                </p>
+                {/* MAIN EVENT IMAGE */}
+                <img src="./event.png" alt="" className="mt-6" />
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => openEvent(event.slug)}
-                  className={`w-full py-3.5 bg-gradient-to-r ${event.color} text-white rounded-xl font-bold shadow-md hover:shadow-xl transition-all duration-300`}
+                  className={`w-full py-3.5  ${event.color} text-white rounded-xl font-bold shadow-md hover:shadow-xl transition-all duration-300`}
                 >
                   Register Now →
                 </motion.button>
               </motion.div>
             ))}
-          </div>
+            </div>
+         
         </div>
       </section>
-      <section id="contact" className="w-full py-4 px-4">
-  <div className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl border-[6px] border-[#0B4E63] bg-[#17776B] py-12 px-6 md:px-12 text-white">
+      <section id="contact" className="w-full py-4 px-4 ">
+  <div className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl border-[6px] border-[#005AAB] bg-[#17776B] py-12 px-6 md:px-12 text-white"
+  style={{background:'#17776B url("/bg.svg")',
+    backgroundSize:"cover",
+    backgroundRepeat:"no-repeat",
+    backgroundPosition:"center"
+  }}>
 
     {/* Title */}
     <div className="text-center mb-8">
@@ -387,7 +390,7 @@ const HomePage = () => {
 
       {/* NSS Secretary */}
       <div>
-        <h3 className="text-xl font-bold underline mb-4">NSS Secretary</h3>
+        <h3 className="text-sm md:text-xl font-bold underline mb-4">NSS Secretary</h3>
 
         {/* Person 1 */}
         <div className="flex items-center justify-between mb-4">
@@ -408,7 +411,7 @@ const HomePage = () => {
 
       {/* Program Officer */}
       <div>
-        <h3 className="text-xl font-bold underline mb-4">Program Officer</h3>
+        <h3 className="text-sm md:text-xl font-bold underline mb-4">Program Officer</h3>
 
         {/* Person 1 */}
         <div className="flex items-center justify-between mb-4">

@@ -106,34 +106,15 @@ const Layout = () => {
 
               {/* Developer Credit */}
               <div className="flex items-center gap-3">
-                <span className="text-sm text-gray-600">Developed with</span>
-                <div className="px-4 py-2 rounded-full bg-white shadow-sm border border-gray-200 hover:shadow transition-shadow flex items-center gap-2">
-                  <span className="text-red-500 animate-pulse">❤️</span>
-                  <span className="text-gray-700">by</span>
-                  <a
-                    href="https://zamil.vercel.app"
+                <span className="text-sm text-gray-600">Developed by <a href="https://wa.me/+918089465673?text=Hello%20Shamil,%20I%20am%20looking%20to%20build%20a%20website.%20Please%20provide%20details%20about%20your%20services."
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-600 font-semibold hover:text-green-700 hover:underline transition"
-                  >
-                    Shamil
-                  </a>
-                  <span className="text-gray-400">,</span>
-                  <a
-                    href="https://www.linkedin.com/in/dayyan-ali/"
+                    className="hover:underline"
+                    rel="noopener noreferrer"> Shamil </a>, <a href="https://wa.me/919061084323?text=Hello%20Dayyan,%20I%20am%20looking%20to%20build%20a%20website.%20Please%20provide%20details%20about%20your%20services."
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 font-semibold hover:text-blue-700 hover:underline transition"
-                  >
-                    Dayyan
-                  </a>
-                  <span className="text-gray-400">&</span>
-
-                    <a href="https://linkedin.com/in/irshadudheenp" target="_blank" rel="noopener noreferrer"
-                      className="text-purple-600 font-semibold hover:text-purple-700 hover:underline transition">
-                      Irshad
-                    </a>
-                </div>
+                    className="hover:underline"
+                    rel="noopener noreferrer">Dayyan </a> & 
+                    <a href="https://wa.me/+919061306799?text=Hello%20Irshad,%20I%20am%20looking%20to%20build%20a%20website.%20Please%20provide%20details%20about%20your%20services." className="hover:underline" target="_blank" rel="noopener noreferrer"> Irshad</a></span>
+              
               </div>
             </div>
           </div>
