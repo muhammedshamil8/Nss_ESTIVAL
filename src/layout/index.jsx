@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import { MapPin, Globe, Instagram } from "lucide-react";
 
-import SponserLogo from "@/assets/logo/sponser.webp";
 
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,24 +27,18 @@ const Layout = () => {
   return (
     <div className="flex flex-col min-h-screen relative overflow-x-hidden">
       <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-around w-full max-w-5xl px-4">
-        <nav className="flex space-x-6 sm:space-x-8 text-xs sm:text-sm font-medium text-gray-700 uppercase bg-white/80 backdrop-blur border border-gray-200 rounded-full px-8 py-2 shadow">
+        <nav className="flex space-x-6 sm:space-x-10 text-xs sm:text-sm font-medium text-gray-700 uppercase bg-white/80 backdrop-blur border border-gray-200 rounded-full px-8 sm:px-12 py-2 sm:py-3 shadow">
           <button onClick={() => scrollToSection("home")}>HOME</button>
           <button onClick={() => scrollToSection("about")}>ABOUT</button>
           <button onClick={() => scrollToSection("events")}>EVENTS</button>
           <button onClick={() => scrollToSection("contact")}>CONTACT</button>
         </nav>
 
-
-        {/* sponser logo https://mymelova.com/ */}
-        <a href="https://mymelova.com/" target="_blank" className="
-          
-        ">
-        <img src={SponserLogo} alt="Sponsor Logo" className="h-12 sm:h-16" />
-       </a>
+      
       </header>
 
       {/* MAIN CONTENT */}
-      <main className="flex-grow   pb-10 overflow-x-hidden w-full ">
+      <main className="flex-grow  overflow-x-hidden w-full ">
         <Outlet />
       </main>
 

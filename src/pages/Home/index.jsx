@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import HERO from "@/assets/logo/Estival.jpg";
 import TresasureHuntImg from "@/assets/images/tresasurehunt.svg";
 import groupdance from "@/assets/images/groupdance.svg";
 import spotphotography from "@/assets/images/spotphotography.svg";
@@ -10,15 +9,9 @@ import spotreelmaking from "@/assets/images/spotreelmaking.svg";
 import facepainting from "@/assets/images/facepanting.svg";
 import bestvolunteer from "@/assets/images/bestvolunteer.svg";
 import fashionshow from "@/assets/images/fashionshow.svg";
-import {
-  FaWhatsapp,
-  FaMapMarkerAlt,
-  FaCalendarAlt,
-  FaClock,
-} from "react-icons/fa";
 import FashionShowImg from "@/assets/images/fashion_show.png";
 import GroupDanceImg from "@/assets/images/group_dance.png";
-import { desc } from "motion/react-client";
+import SponserLogo from "@/assets/logo/sponser.webp";
 
 const EVENTS = [
   {
@@ -211,6 +204,30 @@ const EVENTS = [
   },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const fade = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.6 } },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.96 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+};
+
+const staggerContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
 const HomePage = () => {
   const navigate = useNavigate();
   const [hoveredEvent, setHoveredEvent] = useState(null);
@@ -258,12 +275,21 @@ const HomePage = () => {
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
+  const valuesArray = () => {
+    const { days, hours, minutes, seconds } = timeLeft;
+    return [days, hours, minutes, seconds];
+  };
   return (
-    <div className="w-full min-h-screen ">
-      {/* HERO SECTION */}
+    <motion.div
+      className="w-full min-h-screen"
+      initial="hidden"
+      animate="show"
+      variants={staggerContainer}
+    >
 
-      <section
+      <motion.section
         id="home"
+        variants={fadeUp}
         className="relative mx-auto w-full px-4  flex items-center justify-center overflow-hidden "
         style={{
           background: '#E5F2FF url("/bg.svg")',
@@ -272,9 +298,6 @@ const HomePage = () => {
           bacundPosition: "center",
         }}
       >
-        {/* HEADER — floating on top of image */}
-
-        {/* HERO CONTENT BELOW HEADER */}
         <div className="text-center mt-24 ">
           <motion.img
             src={"./estival_logo_.png"}
@@ -287,32 +310,68 @@ const HomePage = () => {
           <div className="bg-[#005AAB] w-1/2 text-white rounded-full text-[10px] sm:text-sm py-1 sm:py-[] mt-2 mx-auto mb-5 max-w-[240px]">
             2025 DECEMBER 17,18
           </div>
-          <div className="flex items-center justify-center relative z-20 py-4">
-            <div className="grid grid-cols-4 bg-white shadow-lg shadow-blue-50 rounded-3xl">
-              {["DAYS", "HRS", "MIN", "SEC"].map((text, i) => (
-                <div
-                  key={i}
-                  className={`px-8 py-6 text-center  ${
-                    i !== 0 ? "border-l border-gray-100" : ""
-                  }`}
-                >
-                  <p className="text-3xl md:text-4xl font-bold text-blue-700 text-nowrap">
-                    {Object.values(timeLeft)[i]}
-                  </p>
-                  <p className="text-xs font-semibold tracking-wider text-blue-700 mt-1">
-                    {text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ABOUT SECTION */}
-      <section
+          <a
+            href="https://mymelova.com/"
+            target="_blank"
+            className="flex flex-col items-center items-center justify-center gap-2 mx-auto"
+          >
+            <img
+              src={SponserLogo}
+              alt="Sponsor Logo"
+              className="h-10 sm:h-14"
+            />
+            <span className="text-sm text-gray-700 -mt-6 font-semibold -rotate-[8deg]">
+              Sponsered by
+            </span>
+          </a>
+
+          <motion.div
+            variants={scaleIn}
+            className="flex items-center justify-center relative z-20 py-6"
+          >
+            <motion.div
+              className="grid grid-cols-4 bg-white shadow-lg shadow-blue-50 rounded-3xl"
+              layout
+            >
+              {["DAYS", "HRS", "MIN", "SEC"].map((text, i) => {
+                const value = valuesArray()[i];
+                const padded = String(value).padStart(2, "0");
+                return (
+                  <div
+                    key={i}
+                    className={`px-4 sm:px-8 py-6 text-center ${
+                      i !== 0 ? "border-l border-gray-100" : ""
+                    }`}
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.p
+                        key={padded}
+                        initial={{ opacity: 0, y: -12, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 12, scale: 0.98 }}
+                        transition={{ duration: 0.28, ease: "easeOut" }}
+                        className="text-2xl md:text-4xl text-[#005AAB] font-mono tabular-nums w-12 mx-auto text-center font-black"
+                      >
+                        {padded}
+                      </motion.p>
+                    </AnimatePresence>
+
+                    <p className="text-xs font-semibold tracking-wider text-[#005AAB] mt-1">
+                      {text}
+                    </p>
+                  </div>
+                );
+              })}
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section
         id="about"
-        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white -mt-16 relative z-10"
+        variants={fadeUp}
+        className="w-full pt-20 px-6 md:px-12 lg:px-20 bg-white -mt-16 relative z-10"
       >
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -373,108 +432,103 @@ const HomePage = () => {
               </p>
             </div>
           </div>
-          {/* Stats */}
         </div>
-      </section>
-<div className=""
-  style={{
+      </motion.section>
+      <div
+        className="pb-[160px]"
+        style={{
           background: '#E5F2FF url("/bg.svg")',
           bakgroundRepeat: "no-repeat",
           backgrockgroundSize: "cover",
           bacundPosition: "center",
         }}
-        >
-      <section className="h-12 mt-12">
-        <div className="marguee_rotate_1 absolute z-10  w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#E2BC5F] py-2  text-black uppercase flex items-center ">
-          {[...Array(20)].map((_, i) => (
-            <p key={i} className="flex  items-center justify-center">
-              <span className="h-2 w-2 rounded-full bg-[#111] mx-5" />
-              <span className="whitespace-nowrap">{`REGISTER NOW`}</span>
-            </p>
-          ))}
-        </div>
-        <div className="absolute  w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#E2BC5F] py-2 -rotate-[6deg] sm:-rotate-[3deg] text-black uppercase flex items-center ">
-          {[...Array(10)].map((_, i) => (
-            <p key={i} className="flex  items-center justify-center">
-              {/* <span className='h-2 w-2 rounded-full bg-[#068585] mx-5' /> */}
-              {/* <span className='whitespace-nowrap'>{`Submission Guidelines`}</span> */}
-            </p>
-          ))}
-        </div>
-        <div className="marguee_rotate_2 z-30 absolute w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#17776B] py-2  text-white uppercase flex items-center">
-          {[...Array(20)].map((_, i) => (
-            <p key={i} className="flex items-center justify-center">
-              <span className="h-2 w-2 rounded-full bg-[#fff] mx-5" />
-              <span className="whitespace-nowrap">{`REGISTER NOW`}</span>
-            </p>
-          ))}
-        </div>
-        <div className="absolute w-[150%] z-20  sm:w-[110%] -left-10 -right-4 h-10 bg-[#17776B] py-2 rotate-[4deg] sm:rotate-[3deg] text-white uppercase flex items-center">
-          {[...Array(10)].map((_, i) => (
-            <p key={i} className="flex items-center justify-center">
-              {/* <span className='h-2 w-2 rounded-full bg-[#B0FFFF] mx-5' /> */}
-              {/* <span className='whitespace-nowrap'>{`Submission Guidelines`}</span> */}
-            </p>
-          ))}
-        </div>
-      </section>
-
-      {/* EVENTS SECTION */}
-      <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 "
-     >
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              <span className="text-red-800">Events & Competitionsd</span>
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose your arena and showcase your talent
-            </p>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-4"></div>
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-3 px-4 mt-12 ">
-            {EVENTS.map((event, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.03, translateY: -8 }}
-                onClick={() => openEvent(event.slug)}
-                onMouseEnter={() => setHoveredEvent(idx)}
-                onMouseLeave={() => setHoveredEvent(null)}
-                className={`relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
-      ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
-              >
-                {/* EVENT NAME */}
-                <p className="text-base sm:text-base md:text-base font-semibold self-start text-nowrap">
-                  {event.name}
-                </p>
-
-                {/* FASHION ICON (MOVE TO RIGHT TOP) */}
-                {React.cloneElement(event.arrow, {
-                  className: "absolute -top-3 right-2 w-8 sm:w-6 md:w-8",
-                })}
-                {/* EVENT DESCRIPTION */}
-                <p className="mt-4 text-xs md:text-xs text-gray-600 flex-grow">
-                  {event.description}
-                </p>
-                {/* MAIN EVENT IMAGE */}
-
-                <img src={event.img} alt="" className="" />
-              </motion.div>
+      >
+        <section className="h-12 mt-12">
+          <div className="marguee_rotate_1 absolute z-10  w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#E2BC5F] py-2  text-black uppercase flex items-center ">
+            {[...Array(20)].map((_, i) => (
+              <p key={i} className="flex  items-center justify-center">
+                <span className="h-2 w-2 rounded-full bg-[#111] mx-5" />
+                <span className="whitespace-nowrap">{`REGISTER NOW`}</span>
+              </p>
             ))}
           </div>
-        </div>
-      </section>
-      <section id="contact" className="w-full py-4 px-4 ">
+          <div className="absolute  w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#E2BC5F] py-2 -rotate-[6deg] sm:-rotate-[3deg] text-black uppercase flex items-center ">
+            {[...Array(10)].map((_, i) => (
+              <p key={i} className="flex  items-center justify-center">
+              </p>
+            ))}
+          </div>
+          <div className="marguee_rotate_2 z-30 absolute w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#17776B] py-2  text-white uppercase flex items-center">
+            {[...Array(20)].map((_, i) => (
+              <p key={i} className="flex items-center justify-center">
+                <span className="h-2 w-2 rounded-full bg-[#fff] mx-5" />
+                <span className="whitespace-nowrap">{`REGISTER NOW`}</span>
+              </p>
+            ))}
+          </div>
+          <div className="absolute w-[150%] z-20  sm:w-[110%] -left-10 -right-4 h-10 bg-[#17776B] py-2 rotate-[4deg] sm:rotate-[3deg] text-white uppercase flex items-center">
+            {[...Array(10)].map((_, i) => (
+              <p key={i} className="flex items-center justify-center">
+              </p>
+            ))}
+          </div>
+        </section>
+
+        <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                <span className="text-red-800">Events & Competitionsd</span>
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                Choose your arena and showcase your talent
+              </p>
+              <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-4"></div>
+            </motion.div>
+            <div className="grid md:grid-cols-3 gap-3 px-4 mt-12 ">
+              {EVENTS.map((event, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ scale: 1.03, translateY: -8 }}
+                  onClick={() => openEvent(event.slug)}
+                  onMouseEnter={() => setHoveredEvent(idx)}
+                  onMouseLeave={() => setHoveredEvent(null)}
+                  className={`relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
+      ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
+                >
+                  {/* EVENT NAME */}
+                  <p className="text-base sm:text-base md:text-base font-semibold self-start text-nowrap">
+                    {event.name}
+                  </p>
+
+                  {/* FASHION ICON (MOVE TO RIGHT TOP) */}
+                  {React.cloneElement(event.arrow, {
+                    className: "absolute -top-3 right-2 w-8 sm:w-6 md:w-8",
+                  })}
+                  {/* EVENT DESCRIPTION */}
+                  <p className="mt-4 text-xs md:text-xs text-gray-600 flex-grow">
+                    {event.description}
+                  </p>
+                  {/* MAIN EVENT IMAGE */}
+
+                  <img src={event.img} alt="" className="" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+      <section id="contact" className="w-full py-4 px-4 -mt-48 pb-10">
         <div
           className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl   bg-[#17776B] py-12 px-6 md:px-12 text-white"
           style={{
@@ -555,9 +609,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-</div>
-      {/* CONTACT SECTION */}
-    </div>
+
+
+    </motion.div>
   );
 };
 

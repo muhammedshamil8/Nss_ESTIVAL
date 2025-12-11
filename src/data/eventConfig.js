@@ -10,6 +10,8 @@ export const EVENTS = {
     title: "Fashion Show",
     fee: 500,
     perfee: 50,
+    description:
+      "A runway competition celebrating style, creativity, coordination, and confident presentation.",
     participants: 6,
     minparticipants: 2,
     maxParticipants: 10,
@@ -41,6 +43,8 @@ export const EVENTS = {
     title: "Group Dance",
     fee: 300,
     perfee: 50,
+    description:
+      "A high-energy team performance event showcasing choreography, rhythm, and synchronized teamwork.",
     minparticipants: 2,
     participants: 6,
     maxParticipants: 10,
@@ -72,6 +76,8 @@ export const EVENTS = {
     title: "Best Volunteer",
     fee: 100,
     perfee: 50,
+    description:
+      "An excellence award recognizing outstanding leadership, service, discipline, and NSS contribution.",
     participants: 1,
     minparticipants: 1,
     maxParticipants: 1,
@@ -101,6 +107,8 @@ export const EVENTS = {
     title: "Treasure Hunt",
     fee: 200,
     perfee: 50,
+    description:
+      "A competitive hunt where teams follow clues and complete challenges to find the hidden treasure.",
     participants: 2,
     minparticipants: 2,
     maxParticipants: 4,
@@ -136,6 +144,8 @@ export const EVENTS = {
     title: "Spot Photography",
     fee: 50,
     perfee: 50,
+    description:
+      "A time-bound photography event where participants capture compelling moments based on a given theme.",
     participants: 1,
     minparticipants: 1,
     maxParticipants: 1,
@@ -170,6 +180,8 @@ export const EVENTS = {
     title: "Spot Reel Making",
     fee: 50,
     perfee: 50,
+    description:
+      "A real-time reel-making event testing creativity, concept, and execution within a limited time.",
     participants: 1,
     minparticipants: 1,
     maxParticipants: 1,
@@ -200,6 +212,8 @@ export const EVENTS = {
   "face-painting": {
     title: "Face Painting",
     fee: 50,
+    description:
+      "A visually creative contest focused on skillful face art and thematic presentation.",
     participants: 1,
     minparticipants: 1,
     maxParticipants: 1,
