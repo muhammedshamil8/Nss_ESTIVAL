@@ -15,7 +15,7 @@ import { desc } from "motion/react-client";
 const EVENTS = [
   {
     name: "Fashion Show",
-    prize: "₹21,000",
+    prize: "₹27,000",
     slug: "fashion-show",
     description:
       "A runway competition celebrating style, creativity, coordination, and confident presentation.",
