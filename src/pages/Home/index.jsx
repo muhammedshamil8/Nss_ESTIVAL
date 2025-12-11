@@ -264,7 +264,7 @@ const HomePage = () => {
 
       <section
         id="home"
-        className="relative mx-auto w-full px-4  flex items-center justify-center overflow-hidden "
+        className="relative select-none mx-auto w-full px-4  flex items-center justify-center overflow-hidden "
         style={{
           background: '#E5F2FF url("/bg.svg")',
           bakgroundRepeat: "no-repeat",
@@ -280,6 +280,7 @@ const HomePage = () => {
             src={"./estival_logo_.png"}
             alt="Estival Logo"
             className="max-h-48 mx-auto mb-1"
+            draggable={false}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -292,7 +293,7 @@ const HomePage = () => {
               {["DAYS", "HRS", "MIN", "SEC"].map((text, i) => (
                 <div
                   key={i}
-                  className={`px-8 py-6 text-center  ${
+                  className={`px-8 py-6 text-center w-25 ${
                     i !== 0 ? "border-l border-gray-100" : ""
                   }`}
                 >
@@ -312,7 +313,7 @@ const HomePage = () => {
       {/* ABOUT SECTION */}
       <section
         id="about"
-        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white -mt-16 relative z-10"
+        className="w-full select-none py-20 px-6 md:px-12 lg:px-20 bg-white -mt-16 relative z-10"
       >
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -376,15 +377,15 @@ const HomePage = () => {
           {/* Stats */}
         </div>
       </section>
-<div className=""
-  style={{
-          background: '#E5F2FF url("/bg.svg")',
-          bakgroundRepeat: "no-repeat",
-          backgrockgroundSize: "cover",
-          bacundPosition: "center",
-        }}
-        >
-      <section className="h-12 mt-12">
+        <div className=""
+          style={{
+                  background: '#E5F2FF url("/bg.svg")',
+                  bakgroundRepeat: "no-repeat",
+                  backgrockgroundSize: "cover",
+                  bacundPosition: "center",
+                }}
+                >
+      <section className="h-12 mt-12 select-none">
         <div className="marguee_rotate_1 absolute z-10  w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#E2BC5F] py-2  text-black uppercase flex items-center ">
           {[...Array(20)].map((_, i) => (
             <p key={i} className="flex  items-center justify-center">
@@ -420,7 +421,7 @@ const HomePage = () => {
       </section>
 
       {/* EVENTS SECTION */}
-      <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 "
+      <section id="events" className="w-full select-none py-24 px-6 md:px-12 lg:px-20 "
      >
         <div className="max-w-7xl mx-auto">
           <motion.div
