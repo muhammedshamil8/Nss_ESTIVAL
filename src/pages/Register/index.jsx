@@ -597,7 +597,7 @@ const Register = () => {
                       }, 100);
                     }
                   }}
-                  className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition flex items-center gap-2 shadow-md"
+                  className="px-6 py-3 bg-[#17776B] text-white rounded-lg hover:bg-[#145A4D] transition flex items-center gap-2 shadow-md"
                 >
                   <span className="text-lg">+</span> Add Participant
                 </button>
@@ -707,7 +707,7 @@ const Register = () => {
             <button
               onClick={submit}
               disabled={loading}
-              className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold shadow hover:bg-blue-700 transition"
+              className="w-full bg-[#005AAB] text-white py-3 rounded-xl text-lg font-semibold shadow hover:bg-[#004080] transition"
             >
               {loading ? "Submitting..." : `Submit Registration `}
             </button>

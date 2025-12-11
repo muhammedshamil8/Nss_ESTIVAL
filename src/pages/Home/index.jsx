@@ -498,7 +498,7 @@ const HomePage = () => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mt-12 "
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mt-12  "
             >
               {EVENTS.map((event, idx) => (
                 <motion.div
@@ -511,10 +511,9 @@ const HomePage = () => {
                   onClick={() => openEvent(event.slug)}
                   onMouseEnter={() => setHoveredEvent(idx)}
                   onMouseLeave={() => setHoveredEvent(null)}
-                  className={`relative bg-white p-5 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
+                  className={`relative cursor-pointer bg-white p-5 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
       ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
                 >
-                  {/* EVENT NAME */}
                   <div className="flex items-center justify-between w-full gap-3 mb-3">
                     <div className="flex flex-col">
                       <p className="text-base sm:text-xl md:text-xl font-semibold self-start text-nowrap">
@@ -525,14 +524,11 @@ const HomePage = () => {
                       </p>
                     </div>
 
-                    {/* FASHION ICON (MOVE TO RIGHT TOP) */}
                     {React.cloneElement(event.arrow, {
                       className:
                         "w-full h-full max-w-[55px] max-h-[55px] min-w-[50px] object-contain",
                     })}
                   </div>
-                  {/* EVENT DESCRIPTION */}
-                  {/* MAIN EVENT IMAGE */}
 
                   <img
                     src={event.img}
