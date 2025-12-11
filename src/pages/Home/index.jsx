@@ -3,6 +3,13 @@ import './index.css'
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import HERO from "@/assets/logo/Estival.jpg";
+import TresasureHuntImg from '@/assets/images/tresasurehunt.svg'
+import groupdance from '@/assets/images/groupdance.svg'
+import spotphotography from '@/assets/images/spotphotography.svg'
+import spotreelmaking from '@/assets/images/spotreelmaking.svg'
+import facepainting from '@/assets/images/facepanting.svg'
+import bestvolunteer from '@/assets/images/bestvolunteer.svg'
+import fashionshow from '@/assets/images/fashionshow.svg'
 import {
   FaWhatsapp,
   FaMapMarkerAlt,
@@ -20,13 +27,19 @@ const EVENTS = [
     slug: "fashion-show",
     description:
       "A runway competition celebrating style, creativity, coordination, and confident presentation.",
-    emoji: (
+      img: fashionshow,
+      emoji: (
       <img
         src={FashionShowImg}
         alt="Fashion Show"
         className="w-full h-full object-cover rounded-lg p-2"
       />
     ),
+    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="32.5" cy="32.5" r="32.5" fill="#22635B"/>
+<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
+</svg>
+),
     color: "bg-purple-600",
   },
   {
@@ -35,13 +48,19 @@ const EVENTS = [
     slug: "group-dance",
     description:
       "A high-energy team performance event showcasing choreography, rhythm, and synchronized teamwork.",
-    emoji: (
+    img: groupdance,
+      emoji: (
       <img
         src={GroupDanceImg}
         alt="Group Dance"
         className="w-full h-full object-cover rounded-lg p-3"
       />
     ),
+    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="32.5" cy="32.5" r="32.5" fill="#A41E2B"/>
+<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
+</svg>
+),
     color: "bg-cyan-600",
   },
   {
@@ -50,26 +69,43 @@ const EVENTS = [
     slug: "best-volunteer",
     description:
       "An excellence award recognizing outstanding leadership, service, discipline, and NSS contribution.",
-    emoji: "⭐",
+      img: bestvolunteer,
+      emoji: "⭐",
+    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="32.5" cy="32.5" r="32.5" fill="#1667B0"/>
+<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
+</svg>
+),
     color: "bg-orange-600",
   },
   {
     name: "Treasure Hunt",
     prize: "₹17,000",
     slug: "treasure-hunt",
+    img: TresasureHuntImg,
     description:
       "A competitive hunt where teams follow clues and complete challenges to find the hidden treasure.",
 
     emoji: "🗺️",
+    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="32.5" cy="32.5" r="32.5" fill="#D9B44F"/>
+<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
+</svg>
+),
     color: "bg-teal-600",
   },
   {
     name: "Spot Photography",
     prize: "₹10,000",
     slug: "spot-photography",
+    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="32.5" cy="32.5" r="32.5" fill="#22635B"/>
+<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
+</svg>
+),
     description:
       "A time-bound photography event where participants capture compelling moments based on a given theme.",
-
+      img: spotphotography,
     emoji: "📸",
     color: "bg-purple-600",
   },
@@ -79,8 +115,13 @@ const EVENTS = [
     slug: "spot-reel-making",
     description:
       "A real-time reel-making event testing creativity, concept, and execution within a limited time.",
-
+      img: spotreelmaking,
     emoji: "🎬",
+    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="32.5" cy="32.5" r="32.5" fill="#A41E2B"/>
+<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
+</svg>
+),
     color: "bg-pink-600",
   },
   {
@@ -89,8 +130,13 @@ const EVENTS = [
     slug: "face-painting",
     description:
       "A visually creative contest focused on skillful face art and thematic presentation.",
-
+      img: facepainting,
     emoji: "🎨",
+    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="32.5" cy="32.5" r="32.5" fill="#1667B0"/>
+<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
+</svg>
+),
     color: "bg-fuchsia-600",
   },
 ];
@@ -332,6 +378,7 @@ const HomePage = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ scale: 1.03, translateY: -8 }}
+                 onClick={() => openEvent(event.slug)}
                 onMouseEnter={() => setHoveredEvent(idx)}
                 onMouseLeave={() => setHoveredEvent(null)}
                className={`relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
@@ -341,27 +388,25 @@ const HomePage = () => {
                 <p className="text-base sm:text-base md:text-base font-semibold self-start text-nowrap">
                   {event.name}
                 </p>
+                
 
                 {/* FASHION ICON (MOVE TO RIGHT TOP) */}
-                <img
-                  src="./fashion.svg"
-                  alt=""
-                  className="absolute top-2 right-2 w-8 sm:w-6 md:w-8"
-                />
+                {React.cloneElement(event.arrow, {
+                className: "absolute -top-3 right-2 w-8 sm:w-6 md:w-8"
+              })}
                 {/* EVENT DESCRIPTION */}
                 <p className="mt-4 text-xs md:text-xs text-gray-600 flex-grow">
                   {event.description}
                 </p>
                 {/* MAIN EVENT IMAGE */}
-                <img src="./event.png" alt="" className="mt-6" />
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => openEvent(event.slug)}
-                  className={`w-full py-3.5  ${event.color} text-white rounded-xl font-bold shadow-md hover:shadow-xl transition-all duration-300`}
-                >
-                  Register Now →
-                </motion.button>
+                
+                  <img
+                    src={event.img}
+                    alt=""
+                    className=""
+                  />
+           
+              
               </motion.div>
             ))}
             </div>
@@ -369,7 +414,7 @@ const HomePage = () => {
         </div>
       </section>
       <section id="contact" className="w-full py-4 px-4 ">
-  <div className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl border-[6px] border-[#005AAB] bg-[#17776B] py-12 px-6 md:px-12 text-white"
+  <div className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl   bg-[#17776B] py-12 px-6 md:px-12 text-white"
   style={{background:'#17776B url("/bg.svg")',
     backgroundSize:"cover",
     backgroundRepeat:"no-repeat",
