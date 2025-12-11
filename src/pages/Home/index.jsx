@@ -12,6 +12,7 @@ import fashionshow from "@/assets/images/fashionshow.svg";
 import FashionShowImg from "@/assets/images/fashion_show.png";
 import GroupDanceImg from "@/assets/images/group_dance.png";
 import SponserLogo from "@/assets/logo/sponser.webp";
+import Logo from "@/assets/logo/EstivalNObg.webp";
 
 const EVENTS = [
   {
@@ -299,7 +300,7 @@ const HomePage = () => {
       >
         <div className="text-center mt-24 ">
           <motion.img
-            src={"./estival_logo_.png"}
+            src={Logo}
             alt="Estival Logo"
             className="max-h-48 mx-auto mb-1"
             draggable={false}
