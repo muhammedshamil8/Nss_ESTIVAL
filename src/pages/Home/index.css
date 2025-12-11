@@ -27,7 +27,7 @@
 
 .marguee_rotate_1 {
   animation: marqueeAnimation 20s linear infinite;
-  rotate: -8deg;
+  rotate: -5deg;
 }
 
 /* Keyframes for animation */
@@ -60,7 +60,7 @@
 
   .marguee_rotate_1 {
     animation: marqueeAnimation 20s linear infinite;
-    rotate: -5deg;
+    rotate: -3deg;
   }
 }
 
