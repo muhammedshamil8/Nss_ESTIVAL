@@ -254,10 +254,13 @@ useEffect(() => {
         duration: 0.9,
         ease: "easeOut",
       }}
-      className="max-w-[900px] mx-auto py-10 px-4 sm:px-6 lg:px-8"
+      className=" mx-auto py-10 px-4 sm:px-6 lg:px-8 pt-20 bg-[#E5F2FF]"
       id="event"
     >
+      <div className="max-w-[900px] mx-auto">
+
       {/* Header / Hero-style top */}
+      {/* idh update akkyaa madhii */}
       <div className="relative mb-8">
         <div className="absolute inset-0 -z-10 rounded-3xl overflow-hidden">
           <motion.div
@@ -345,7 +348,7 @@ useEffect(() => {
       </div>
 
       {/* Rules block with toggle */}
-      <div className="mb-8 bg-white rounded-2xl border border-gray-100 p-4 shadow-sm">
+      <div className="mb-8 bg-white rounded-2xl border border-gray-100  shadow-sm p-4 sm:p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-2xl font-semibold text-blue-700">Event Rules</h3>
           <button
@@ -716,6 +719,7 @@ useEffect(() => {
           </button>
         </div>
       </div>
+       </div>
     </motion.div>
   );
 };

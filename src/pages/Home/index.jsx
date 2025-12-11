@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import './index.css'
+import "./index.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import HERO from "@/assets/logo/Estival.jpg";
-import TresasureHuntImg from '@/assets/images/tresasurehunt.svg'
-import groupdance from '@/assets/images/groupdance.svg'
-import spotphotography from '@/assets/images/spotphotography.svg'
-import spotreelmaking from '@/assets/images/spotreelmaking.svg'
-import facepainting from '@/assets/images/facepanting.svg'
-import bestvolunteer from '@/assets/images/bestvolunteer.svg'
-import fashionshow from '@/assets/images/fashionshow.svg'
+import TresasureHuntImg from "@/assets/images/tresasurehunt.svg";
+import groupdance from "@/assets/images/groupdance.svg";
+import spotphotography from "@/assets/images/spotphotography.svg";
+import spotreelmaking from "@/assets/images/spotreelmaking.svg";
+import facepainting from "@/assets/images/facepanting.svg";
+import bestvolunteer from "@/assets/images/bestvolunteer.svg";
+import fashionshow from "@/assets/images/fashionshow.svg";
 import {
   FaWhatsapp,
   FaMapMarkerAlt,
@@ -27,19 +27,29 @@ const EVENTS = [
     slug: "fashion-show",
     description:
       "A runway competition celebrating style, creativity, coordination, and confident presentation.",
-      img: fashionshow,
-      emoji: (
+    img: fashionshow,
+    emoji: (
       <img
         src={FashionShowImg}
         alt="Fashion Show"
         className="w-full h-full object-cover rounded-lg p-2"
       />
     ),
-    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="32.5" cy="32.5" r="32.5" fill="#22635B"/>
-<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
-</svg>
-),
+    arrow: (
+      <svg
+        width="65"
+        height="65"
+        viewBox="0 0 65 65"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="32.5" cy="32.5" r="32.5" fill="#22635B" />
+        <path
+          d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z"
+          fill="white"
+        />
+      </svg>
+    ),
     color: "bg-purple-600",
   },
   {
@@ -49,18 +59,28 @@ const EVENTS = [
     description:
       "A high-energy team performance event showcasing choreography, rhythm, and synchronized teamwork.",
     img: groupdance,
-      emoji: (
+    emoji: (
       <img
         src={GroupDanceImg}
         alt="Group Dance"
         className="w-full h-full object-cover rounded-lg p-3"
       />
     ),
-    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="32.5" cy="32.5" r="32.5" fill="#A41E2B"/>
-<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
-</svg>
-),
+    arrow: (
+      <svg
+        width="65"
+        height="65"
+        viewBox="0 0 65 65"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="32.5" cy="32.5" r="32.5" fill="#A41E2B" />
+        <path
+          d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z"
+          fill="white"
+        />
+      </svg>
+    ),
     color: "bg-cyan-600",
   },
   {
@@ -69,13 +89,23 @@ const EVENTS = [
     slug: "best-volunteer",
     description:
       "An excellence award recognizing outstanding leadership, service, discipline, and NSS contribution.",
-      img: bestvolunteer,
-      emoji: "⭐",
-    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="32.5" cy="32.5" r="32.5" fill="#1667B0"/>
-<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
-</svg>
-),
+    img: bestvolunteer,
+    emoji: "⭐",
+    arrow: (
+      <svg
+        width="65"
+        height="65"
+        viewBox="0 0 65 65"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="32.5" cy="32.5" r="32.5" fill="#1667B0" />
+        <path
+          d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z"
+          fill="white"
+        />
+      </svg>
+    ),
     color: "bg-orange-600",
   },
   {
@@ -87,25 +117,45 @@ const EVENTS = [
       "A competitive hunt where teams follow clues and complete challenges to find the hidden treasure.",
 
     emoji: "🗺️",
-    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="32.5" cy="32.5" r="32.5" fill="#D9B44F"/>
-<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
-</svg>
-),
+    arrow: (
+      <svg
+        width="65"
+        height="65"
+        viewBox="0 0 65 65"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="32.5" cy="32.5" r="32.5" fill="#D9B44F" />
+        <path
+          d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z"
+          fill="white"
+        />
+      </svg>
+    ),
     color: "bg-teal-600",
   },
   {
     name: "Spot Photography",
     prize: "₹10,000",
     slug: "spot-photography",
-    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="32.5" cy="32.5" r="32.5" fill="#22635B"/>
-<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
-</svg>
-),
+    arrow: (
+      <svg
+        width="65"
+        height="65"
+        viewBox="0 0 65 65"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="32.5" cy="32.5" r="32.5" fill="#22635B" />
+        <path
+          d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z"
+          fill="white"
+        />
+      </svg>
+    ),
     description:
       "A time-bound photography event where participants capture compelling moments based on a given theme.",
-      img: spotphotography,
+    img: spotphotography,
     emoji: "📸",
     color: "bg-purple-600",
   },
@@ -115,13 +165,23 @@ const EVENTS = [
     slug: "spot-reel-making",
     description:
       "A real-time reel-making event testing creativity, concept, and execution within a limited time.",
-      img: spotreelmaking,
+    img: spotreelmaking,
     emoji: "🎬",
-    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="32.5" cy="32.5" r="32.5" fill="#A41E2B"/>
-<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
-</svg>
-),
+    arrow: (
+      <svg
+        width="65"
+        height="65"
+        viewBox="0 0 65 65"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="32.5" cy="32.5" r="32.5" fill="#A41E2B" />
+        <path
+          d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z"
+          fill="white"
+        />
+      </svg>
+    ),
     color: "bg-pink-600",
   },
   {
@@ -130,19 +190,28 @@ const EVENTS = [
     slug: "face-painting",
     description:
       "A visually creative contest focused on skillful face art and thematic presentation.",
-      img: facepainting,
+    img: facepainting,
     emoji: "🎨",
-    arrow:(<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="32.5" cy="32.5" r="32.5" fill="#1667B0"/>
-<path d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z" fill="white"/>
-</svg>
-),
+    arrow: (
+      <svg
+        width="65"
+        height="65"
+        viewBox="0 0 65 65"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="32.5" cy="32.5" r="32.5" fill="#1667B0" />
+        <path
+          d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z"
+          fill="white"
+        />
+      </svg>
+    ),
     color: "bg-fuchsia-600",
   },
 ];
 
 const HomePage = () => {
-  
   const navigate = useNavigate();
   const [hoveredEvent, setHoveredEvent] = useState(null);
   const [timeLeft, setTimeLeft] = useState({
@@ -192,57 +261,58 @@ const HomePage = () => {
   return (
     <div className="w-full min-h-screen ">
       {/* HERO SECTION */}
-    
-          <section
-        id="home"
-        className="relative  w-full px-4  flex items-center justify-center overflow-hidden"
-        style={{background:'#E5F2FF url("/bg.svg")',
-        bakgroundRepeat:"no-repeat",
-        backgrockgroundSize:"cover",
-        bacundPosition:"center"}}
-      >
-        
 
+      <section
+        id="home"
+        className="relative mx-auto w-full px-4  flex items-center justify-center overflow-hidden "
+        style={{
+          background: '#E5F2FF url("/bg.svg")',
+          bakgroundRepeat: "no-repeat",
+          backgrockgroundSize: "cover",
+          bacundPosition: "center",
+        }}
+      >
         {/* HEADER — floating on top of image */}
-        
 
         {/* HERO CONTENT BELOW HEADER */}
-        <div className="text-center mt-20">
+        <div className="text-center mt-24 ">
           <motion.img
-            src={'./estival_logo_.png'}
+            src={"./estival_logo_.png"}
             alt="Estival Logo"
-            className=" h-48 mx-auto mb-1"
+            className="max-h-48 mx-auto mb-1"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           />
-         <div className="bg-[#1265BB] w-1/2 text-white rounded-full text-sm py-1 mx-auto mb-5">2025 DECEMBER 17,18</div>
-         <div className="flex items-center justify-center relative z-20 py-4">
-        <div className="grid grid-cols-4 bg-white shadow-lg shadow-blue-50 rounded-3xl">
-          
-          {["DAYS","HRS","MIN","SEC"].map((text, i) => (
-        <div
-          key={i}
-          className={`px-8 py-6 text-center w-24 ${i !== 0 ? "border-l border-gray-200" : ""}`}
-        >
-          <p className="text-3xl md:text-4xl font-bold text-blue-700 text-nowrap">
-            {Object.values(timeLeft)[i]}
-          </p>
-          <p className="text-xs font-semibold tracking-wider text-blue-700 mt-1">
-            {text}
-          </p>
-        </div>
-      ))}
-
-        </div>
-      </div>
+          <div className="bg-[#005AAB] w-1/2 text-white rounded-full text-[10px] sm:text-sm py-1 sm:py-[] mt-2 mx-auto mb-5 max-w-[240px]">
+            2025 DECEMBER 17,18
+          </div>
+          <div className="flex items-center justify-center relative z-20 py-4">
+            <div className="grid grid-cols-4 bg-white shadow-lg shadow-blue-50 rounded-3xl">
+              {["DAYS", "HRS", "MIN", "SEC"].map((text, i) => (
+                <div
+                  key={i}
+                  className={`px-8 py-6 text-center  ${
+                    i !== 0 ? "border-l border-gray-100" : ""
+                  }`}
+                >
+                  <p className="text-3xl md:text-4xl font-bold text-blue-700 text-nowrap">
+                    {Object.values(timeLeft)[i]}
+                  </p>
+                  <p className="text-xs font-semibold tracking-wider text-blue-700 mt-1">
+                    {text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ABOUT SECTION */}
       <section
         id="about"
-        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white -mt-12 relative z-10"
+        className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white -mt-16 relative z-10"
       >
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -253,11 +323,8 @@ const HomePage = () => {
             className="text-center"
           >
             <h2 className="text-xl md:text-2xl font-bold mb-4">
-              <span className="text-[#005ABB]">
-                About Estival
-              </span>
+              <span className="text-[#005ABB]">About Estival</span>
             </h2>
-            
           </motion.div>
 
           <motion.p
@@ -281,76 +348,80 @@ const HomePage = () => {
             events.
           </motion.p>
           <div className="flex items-center justify-center gap-1 md:gap-10 mt-5">
-
-          <div className="bg-blue-800 border rounded-2xl px-3 py-4 md:px-10 md:py-4 flex flex-col items-center">
-             <p className="text-sm md:text-2xl font-bold text-white ">
-            {"4000+"}
-          </p>
-          <p className="text-xs font-semibold tracking-wider text-white mt-1">
-            {"Participants"}
-          </p>
-          </div>
-          <div className="bg-green-800 border rounded-2xl py-4 px-4 md:px-12 md:py-4 flex flex-col items-center">
-             <p className="text-sm md:text-2xl font-bold text-white text-nowrap">
-            {"7"}
-          </p>
-          <p className="text-xs font-semibold tracking-wider text-white mt-1 text-nowrap">
-            {"Major Events"}
-          </p>
-          </div>
-          <div className="bg-red-800 border rounded-2xl px-6 py-4 md:px-8 md:py-4 flex flex-col items-center">
-             <p className="text-sm md:text-2xl font-bold text-white text-nowrap">
-            {"₹3 Lakh+"}
-          </p>
-          <p className="text-xs font-semibold tracking-wider text-white mt-1 text-nowrap">
-            {"Total Price"}
-          </p>
-          </div>
+            <div className="bg-[#005AAB] border rounded-2xl px-3 py-4 md:px-10 md:py-4 flex flex-col items-center">
+              <p className="text-sm md:text-2xl font-bold text-white ">
+                {"4000+"}
+              </p>
+              <p className="text-xs font-semibold tracking-wider text-white mt-1">
+                {"Participants"}
+              </p>
+            </div>
+            <div className="bg-[#17776B] border rounded-2xl py-4 px-4 md:px-12 md:py-4 flex flex-col items-center">
+              <p className="text-sm md:text-2xl font-bold text-white text-nowrap">
+                {"7"}
+              </p>
+              <p className="text-xs font-semibold tracking-wider text-white mt-1 text-nowrap">
+                {"Major Events"}
+              </p>
+            </div>
+            <div className="bg-[#A41E2B] border rounded-2xl px-6 py-4 md:px-8 md:py-4 flex flex-col items-center">
+              <p className="text-sm md:text-2xl font-bold text-white text-nowrap">
+                {"₹3 Lakh+"}
+              </p>
+              <p className="text-xs font-semibold tracking-wider text-white mt-1 text-nowrap">
+                {"Total Price"}
+              </p>
+            </div>
           </div>
           {/* Stats */}
-          
         </div>
       </section>
-
-         <section
-        className='h-12 mt-[55px] '
-      >
-        <div className='marguee_rotate_1 absolute z-10  w-[150%] sm:w-[110%] -left-10 -right-4 h-12 bg-[#E2BC5F] py-2  text-black uppercase flex items-center '>
+<div className=""
+  style={{
+          background: '#E5F2FF url("/bg.svg")',
+          bakgroundRepeat: "no-repeat",
+          backgrockgroundSize: "cover",
+          bacundPosition: "center",
+        }}
+        >
+      <section className="h-12 mt-12">
+        <div className="marguee_rotate_1 absolute z-10  w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#E2BC5F] py-2  text-black uppercase flex items-center ">
           {[...Array(20)].map((_, i) => (
-            <p key={i} className='flex  items-center justify-center'>
-              <span className='h-2 w-2 rounded-full bg-[#111] mx-5' />
-              <span className='whitespace-nowrap'>{`REGISTER NOW`}</span>
+            <p key={i} className="flex  items-center justify-center">
+              <span className="h-2 w-2 rounded-full bg-[#111] mx-5" />
+              <span className="whitespace-nowrap">{`REGISTER NOW`}</span>
             </p>
           ))}
         </div>
-        <div className='absolute  w-[150%] sm:w-[110%] -left-10 -right-4 h-12 bg-[#E2BC5F] py-2 -rotate-[8deg] sm:-rotate-[5deg] text-black uppercase flex items-center '>
+        <div className="absolute  w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#E2BC5F] py-2 -rotate-[6deg] sm:-rotate-[3deg] text-black uppercase flex items-center ">
           {[...Array(10)].map((_, i) => (
-            <p key={i} className='flex  items-center justify-center'>
+            <p key={i} className="flex  items-center justify-center">
               {/* <span className='h-2 w-2 rounded-full bg-[#068585] mx-5' /> */}
               {/* <span className='whitespace-nowrap'>{`Submission Guidelines`}</span> */}
             </p>
           ))}
         </div>
-        <div className='marguee_rotate_2 z-30 absolute w-[150%] sm:w-[110%] -left-10 -right-4 h-12 bg-[#17776B] py-2  text-white uppercase flex items-center'>
+        <div className="marguee_rotate_2 z-30 absolute w-[150%] sm:w-[110%] -left-10 -right-4 h-10 bg-[#17776B] py-2  text-white uppercase flex items-center">
           {[...Array(20)].map((_, i) => (
-            <p key={i} className='flex items-center justify-center'>
-              <span className='h-2 w-2 rounded-full bg-[#fff] mx-5' />
-              <span className='whitespace-nowrap'>{`REGISTER NOW`}</span>
+            <p key={i} className="flex items-center justify-center">
+              <span className="h-2 w-2 rounded-full bg-[#fff] mx-5" />
+              <span className="whitespace-nowrap">{`REGISTER NOW`}</span>
             </p>
           ))}
         </div>
-        <div className='absolute w-[150%] z-20  sm:w-[110%] -left-10 -right-4 h-12 bg-[#17776B] py-2 rotate-[4deg] sm:rotate-[3deg] text-white uppercase flex items-center'>
+        <div className="absolute w-[150%] z-20  sm:w-[110%] -left-10 -right-4 h-10 bg-[#17776B] py-2 rotate-[4deg] sm:rotate-[3deg] text-white uppercase flex items-center">
           {[...Array(10)].map((_, i) => (
-            <p key={i} className='flex items-center justify-center'>
+            <p key={i} className="flex items-center justify-center">
               {/* <span className='h-2 w-2 rounded-full bg-[#B0FFFF] mx-5' /> */}
               {/* <span className='whitespace-nowrap'>{`Submission Guidelines`}</span> */}
             </p>
           ))}
         </div>
       </section>
-          
+
       {/* EVENTS SECTION */}
-      <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 ">
+      <section id="events" className="w-full py-24 px-6 md:px-12 lg:px-20 "
+     >
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -360,17 +431,15 @@ const HomePage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              <span className="text-red-800">
-                Events & Competitionsd
-              </span>
+              <span className="text-red-800">Events & Competitionsd</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
               Choose your arena and showcase your talent
             </p>
             <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-4"></div>
           </motion.div>
-            <div className="grid md:grid-cols-3 gap-3 px-4 mt-12 ">
-            {EVENTS.map((event, idx)=>(
+          <div className="grid md:grid-cols-3 gap-3 px-4 mt-12 ">
+            {EVENTS.map((event, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 40 }}
@@ -378,109 +447,116 @@ const HomePage = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ scale: 1.03, translateY: -8 }}
-                 onClick={() => openEvent(event.slug)}
+                onClick={() => openEvent(event.slug)}
                 onMouseEnter={() => setHoveredEvent(idx)}
                 onMouseLeave={() => setHoveredEvent(null)}
-               className={`relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
+                className={`relative bg-white p-3 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
       ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
               >
                 {/* EVENT NAME */}
                 <p className="text-base sm:text-base md:text-base font-semibold self-start text-nowrap">
                   {event.name}
                 </p>
-                
 
                 {/* FASHION ICON (MOVE TO RIGHT TOP) */}
                 {React.cloneElement(event.arrow, {
-                className: "absolute -top-3 right-2 w-8 sm:w-6 md:w-8"
-              })}
+                  className: "absolute -top-3 right-2 w-8 sm:w-6 md:w-8",
+                })}
                 {/* EVENT DESCRIPTION */}
                 <p className="mt-4 text-xs md:text-xs text-gray-600 flex-grow">
                   {event.description}
                 </p>
                 {/* MAIN EVENT IMAGE */}
-                
-                  <img
-                    src={event.img}
-                    alt=""
-                    className=""
-                  />
-           
-              
+
+                <img src={event.img} alt="" className="" />
               </motion.div>
             ))}
-            </div>
-         
+          </div>
         </div>
       </section>
       <section id="contact" className="w-full py-4 px-4 ">
-  <div className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl   bg-[#17776B] py-12 px-6 md:px-12 text-white"
-  style={{background:'#17776B url("/bg.svg")',
-    backgroundSize:"cover",
-    backgroundRepeat:"no-repeat",
-    backgroundPosition:"center"
-  }}>
+        <div
+          className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl   bg-[#17776B] py-12 px-6 md:px-12 text-white"
+          style={{
+            background: '#17776B url("/bg.svg")',
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Title */}
+          <div className="text-center mb-8">
+            <h2 className="md:text-3xl font-bold mb-3">Have Questions?</h2>
+            <p className="text-sm opacity-90 md:text-base">
+              Reach out to the NSS coordination team at EMEA College.
+              <br /> We're here to help you.
+            </p>
+          </div>
 
-    {/* Title */}
-    <div className="text-center mb-8">
-      <h2 className="md:text-3xl font-bold mb-3">Have Questions?</h2>
-      <p className="text-sm opacity-90 md:text-base">
-        Reach out to the NSS coordination team at EMEA College.
-        <br /> We're here to help you.
-      </p>
-    </div>
+          {/* Contact Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+            {/* NSS Secretary */}
+            <div>
+              <h3 className="text-sm md:text-xl font-bold underline mb-4">
+                NSS Secretary
+              </h3>
 
-    {/* Contact Grid */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+              {/* Person 1 */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-medium">Danish</span>
+                <a
+                  href="tel:+918129908602"
+                  className="hover:text-white transition"
+                >
+                  +91 81299 08602
+                </a>
+              </div>
 
-      {/* NSS Secretary */}
-      <div>
-        <h3 className="text-sm md:text-xl font-bold underline mb-4">NSS Secretary</h3>
+              {/* Person 2 */}
+              <div className="flex items-center justify-between">
+                <span className="font-medium">Fathima Saniya</span>
+                <a
+                  href="tel:+919633650566"
+                  className="hover:text-white transition"
+                >
+                  +91 96336 50566
+                </a>
+              </div>
+            </div>
 
-        {/* Person 1 */}
-        <div className="flex items-center justify-between mb-4">
-          <span className="font-medium">Danish</span>
-          <a href="tel:+918129908602" className="hover:text-white transition">
-            +91 81299 08602
-          </a>
+            {/* Program Officer */}
+            <div>
+              <h3 className="text-sm md:text-xl font-bold underline mb-4">
+                Program Officer
+              </h3>
+
+              {/* Person 1 */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-medium">Munavar Jazim</span>
+                <a
+                  href="tel:+918089869477"
+                  className="hover:text-white transition"
+                >
+                  +91 80898 69477
+                </a>
+              </div>
+
+              {/* Person 2 */}
+              <div className="flex items-center justify-between">
+                <span className="font-medium">Mubashir K</span>
+                <a
+                  href="tel:+919961624530"
+                  className="hover:text-white transition"
+                >
+                  +91 99616 24530
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-
-        {/* Person 2 */}
-        <div className="flex items-center justify-between">
-          <span className="font-medium">Fathima Saniya</span>
-          <a href="tel:+919633650566" className="hover:text-white transition">
-            +91 96336 50566
-          </a>
-        </div>
-      </div>
-
-      {/* Program Officer */}
-      <div>
-        <h3 className="text-sm md:text-xl font-bold underline mb-4">Program Officer</h3>
-
-        {/* Person 1 */}
-        <div className="flex items-center justify-between mb-4">
-          <span className="font-medium">Munavar Jazim</span>
-          <a href="tel:+918089869477" className="hover:text-white transition">
-            +91 80898 69477
-          </a>
-        </div>
-
-        {/* Person 2 */}
-        <div class="flex items-center justify-between">
-          <span className="font-medium">Mubashir K</span>
-          <a href="tel:+919961624530" className="hover:text-white transition">
-            +91 99616 24530
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+      </section>
+</div>
       {/* CONTACT SECTION */}
-      
     </div>
   );
 };
