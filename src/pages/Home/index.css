@@ -31,17 +31,17 @@
 }
 
 .marquee_sponsors {
-  display: inline-flex;
-  animation: marqueeAnimation 15s linear infinite;
+  animation: marqueeAnimation 20s linear infinite;
 }
 
 /* Keyframes for animation */
 @keyframes marqueeAnimation {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(-50%);
+
+  100% {
+    transform: translateX(-100%);
   }
 }
 
