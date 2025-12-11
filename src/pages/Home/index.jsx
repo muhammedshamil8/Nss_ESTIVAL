@@ -281,7 +281,7 @@ const HomePage = () => {
   };
   return (
     <motion.div
-      className="w-full min-h-screen"
+      className="w-full min-h-screen select-none"
       initial="hidden"
       animate="show"
       variants={staggerContainer}
@@ -303,6 +303,7 @@ const HomePage = () => {
             src={"./estival_logo_.png"}
             alt="Estival Logo"
             className="max-h-48 mx-auto mb-1"
+            draggable={false}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -318,6 +319,7 @@ const HomePage = () => {
           >
             <img
               src={SponserLogo}
+              draggable={false} 
               alt="Sponsor Logo"
               className="h-10 sm:h-14"
             />
@@ -434,6 +436,8 @@ const HomePage = () => {
           </div>
         </div>
       </motion.section>
+
+
       <div
         className="pb-[160px]"
         style={{
@@ -521,14 +525,16 @@ const HomePage = () => {
                   </p>
                   {/* MAIN EVENT IMAGE */}
 
-                  <img src={event.img} alt="" className="" />
+                  <img src={event.img} alt="" className="" draggable={false} />
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
       </div>
-      <section id="contact" className="w-full py-4 px-4 -mt-48 pb-10">
+
+
+      <section id="contact" className="w-full py-4 px-4 -mt-48 pb-10 select-text">
         <div
           className="max-w-[90%] sm:max-w-3xl mx-auto rounded-3xl   bg-[#17776B] py-12 px-6 md:px-12 text-white"
           style={{
