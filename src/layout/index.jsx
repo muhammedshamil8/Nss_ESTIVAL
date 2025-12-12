@@ -68,6 +68,23 @@ const Layout = () => {
 
             {/* Contact Details */}
             <div className="flex flex-col sm:flex-row items-center gap-6">
+              
+                <a
+                target="_blank"
+                href="https://www.instagram.com/estival_2k25"
+                className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition group"
+              >
+                {/* <Mail
+                  size={18}
+                  className="text-blue-500 group-hover:scale-110 transition"
+                />
+                nssemeadev@gmail.com */}
+                <Instagram
+                  size={18}
+                  className="text-pink-500 group-hover:scale-110 transition"
+                />
+                <span>estival_2k25</span>
+              </a>
               <a
                 target="_blank"
                 href="https://www.instagram.com/nss_emea_college"
@@ -80,7 +97,7 @@ const Layout = () => {
                 nssemeadev@gmail.com */}
                 <Instagram
                   size={18}
-                  className="text-green-500 group-hover:scale-110 transition"
+                  className="text-pink-500 group-hover:scale-110 transition"
                 />
                 <span>nss_emea_college</span>
               </a>

@@ -12,12 +12,12 @@ import fashionshow from "@/assets/images/fashionshow.svg";
 import FashionShowImg from "@/assets/images/fashion_show.png";
 import GroupDanceImg from "@/assets/images/group_dance.png";
 import SponserLogo from "@/assets/logo/sponser.webp";
-import Sponser2 from "@/assets/sponsers/image1.svg"
-import Sponser3 from "@/assets/sponsers/image2.svg"
-import Sponser4 from "@/assets/sponsers/image3.svg"
-import Sponser5 from "@/assets/sponsers/image4.svg"
-import Sponser6 from "@/assets/sponsers/image5.svg"
-import Sponser7 from "@/assets/sponsers/image6.svg"
+import Sponser2 from "@/assets/sponsers/image1.svg";
+import Sponser3 from "@/assets/sponsers/image2.svg";
+import Sponser4 from "@/assets/sponsers/image3.svg";
+import Sponser5 from "@/assets/sponsers/image4.svg";
+import Sponser6 from "@/assets/sponsers/image5.svg";
+import Sponser7 from "@/assets/sponsers/image6.svg";
 import Logo from "@/assets/logo/EstivalNObg.webp";
 
 const EVENTS = [
@@ -220,33 +220,27 @@ const Sponsers = [
   {
     name: "ServiceBank",
     logo: Sponser2,
-
   },
   {
     name: "ServiceBank",
     logo: Sponser3,
-
   },
   {
     name: "ServiceBank",
     logo: Sponser4,
-
   },
   {
     name: "ServiceBank",
     logo: Sponser5,
-
   },
   {
     name: "ServiceBank",
     logo: Sponser6,
-
   },
   {
     name: "ServiceBank",
     logo: Sponser7,
-
-  }
+  },
 ];
 
 const fadeUp = {
@@ -324,6 +318,16 @@ const HomePage = () => {
     const { days, hours, minutes, seconds } = timeLeft;
     return [days, hours, minutes, seconds];
   };
+
+  const nssSecretaries = [
+    { name: "Danish", phone: "+918129908602" },
+    { name: "Fathima Saniya", phone: "+919633650566" },
+    { name: "Ajlan", phone: "+917510241597" },
+    { name: "Liyana", phone: "+919048616489" },
+    { name: "Nihla", phone: "+917736727623" },
+    { name: "Shaheel", phone: "+919544121932" },
+  ];
+
   return (
     <motion.div
       className="w-full min-h-screen select-none"
@@ -354,6 +358,28 @@ const HomePage = () => {
           />
           <div className="bg-[#005AAB] w-1/2 text-white rounded-full text-[10px] sm:text-sm py-1 sm:py-[] mt-2 mx-auto mb-5 max-w-[240px]">
             2025 DECEMBER 17,18
+          </div>
+
+          {/* join our whatsapp  */}
+          <div className="flex items-center justify-center gap-2 my-10">
+            <a
+              href="https://chat.whatsapp.com/Dp8FQOhu8dH3bjgn3Hucfb?mode=hqrt3"
+              target="_blank"
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm sm:text-base font-semibold flex items-center gap-2 shadow-lg transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                className="bi bi-whatsapp"
+                viewBox="0 0 16 16"
+              >
+                <path d="M13.601 2.326A7.95 7.95 0 0 0 8.06.008a7.936 7.936 0 0 0-5.63 2.34A7.91 7.91 0 0 0 .432 8.01a7.987 7.987 0 0 0 1.3 4.144L.01 15.25l3.276-1.084a7.936 7.936 0 0 0 4.773 1.48h.005c2.112-.002 4.102-.823 5.605-2.32a7.936 7.936 0 0 0 2.327-5.63c-.003-2.113-.825-4.104-2.32-5.606zM8.06 14.557h-.004a6.927 6.927 0 0 1-3.743-1.086l-.27-.162-1.944.644.654-1.897-.176-.28a6.92 6.92 0 0 1-1.05-3.612c0-3.84 3.117-6.956 6.955-6.956 1.856 0 3.603.722 4.908 2.03a6.93 6.93 0 0 1-4.28 11.329z" />
+                <path d="M11.204 9.013c-.174-.087-1.033-.51-1.193-.57-.16-.06-.276-.087-.393.087-.117.174-.45.57-.55.686-.1.117-.2.13-.374.044-.174-.087-.733-.27-1.4-.864-.518-.462-.868-1.03-.97-1.204-.102-.174-.011-.269.077-.356.079-.078.174-.202.26-.303.087-.101.116-.174.174-.29.058-.117.029-.22-.015-.304-.044-.087-.393-.945-.538-1.293-.142-.34-.287-.294-.393-.299l-.334-.006c-.117 0-.304.044-.463.22s-.61.597-.61 1.455c0 .857.624 1.683.711 1.801.087.117 1.2 1.834 2.91 2.576 1.71.742 1.71.495 2.016.464.306-.03 1.033-.42 1.177-.827.145-.407.145-.756.102-.827-.044-.07-.16-.101-.334-.188z" />
+              </svg>
+              Join our WhatsApp
+            </a>
           </div>
 
           {/* <a
@@ -595,24 +621,24 @@ const HomePage = () => {
           <h3 className="text-center text-xl md:text-3xl font-bold mb-6 text-red-800">
             Our Proud Sponsors
           </h3>
-          <div className=" relative py-4 px-4 bg-white">
-           <marquee width="100%" direction="left" height="100px">
-            {Sponsers.map((sponser, index) => (
-              <a
-                key={index}
-                href={sponser.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mx-8 inline-flex items-center justify-center"
-              >
-                <img
-                  src={sponser.logo}
-                  alt={sponser.name}
-                  className="h-16 sm:h-24 object-contain"
-                />
-              </a>
-            ))}
-          </marquee>
+          <div className="overflow-hidden relative bg-white h-32 flex items-center">
+            <div className="flex animate-scroll whitespace-nowrap">
+              {Sponsers.concat(Sponsers).map((s, i) => (
+                <a
+                  key={i}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mx-8 inline-flex items-center justify-center flex-none"
+                >
+                  <img
+                    src={s.logo}
+                    alt={s.name}
+                    className="h-24 object-contain flex-none"
+                  />
+                </a>
+              ))}
+            </div>
           </div>
         </motion.section>
       </div>
@@ -642,35 +668,6 @@ const HomePage = () => {
 
           {/* Contact Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-            {/* NSS Secretary */}
-            <div>
-              <h3 className="text-sm md:text-xl font-bold underline mb-4">
-                NSS Secretary
-              </h3>
-
-              {/* Person 1 */}
-              <div className="flex items-center justify-between mb-4">
-                <span className="font-medium">Danish</span>
-                <a
-                  href="tel:+918129908602"
-                  className="hover:text-white transition"
-                >
-                  +91 81299 08602
-                </a>
-              </div>
-
-              {/* Person 2 */}
-              <div className="flex items-center justify-between">
-                <span className="font-medium">Fathima Saniya</span>
-                <a
-                  href="tel:+919633650566"
-                  className="hover:text-white transition"
-                >
-                  +91 96336 50566
-                </a>
-              </div>
-            </div>
-
             {/* Program Officer */}
             <div>
               <h3 className="text-sm md:text-xl font-bold underline mb-4">
@@ -698,6 +695,28 @@ const HomePage = () => {
                   +91 99616 24530
                 </a>
               </div>
+            </div>
+
+            {/* NSS Secretary */}
+            <div>
+              <h3 className="text-sm md:text-xl font-bold underline mb-4">
+                NSS Secretary
+              </h3>
+
+              {nssSecretaries.map((person, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-between mb-4 last:mb-0"
+                >
+                  <span className="font-medium">{person.name}</span>
+                  <a
+                    href={`tel:${person.phone}`}
+                    className="hover:text-white transition"
+                  >
+                    {person.phone.replace("+91", "+91 ")}
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -329,7 +329,11 @@ const Register = () => {
                 ))}
               </div>
             </div>
+            
           </div>
+           <p className="flex items-center justify-center bg-[#17776B] text-white shadow w-fit mx-auto px-4 py-1 rounded-2xl mt-4">
+                Only for NSS volunteers
+              </p>
         </div>
 
         <div className="mb-8 bg-white rounded-2xl border border-gray-100  shadow-sm p-4 sm:p-6">
