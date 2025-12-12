@@ -120,7 +120,7 @@ const Layout = () => {
                   <br className="sm:hidden"/>
                   <br className="sm:hidden"/>
                   <a
-                    href="https://wa.me/+918089465673?text=Hello%20Shamil,%20I%20am%20looking%20to%20build%20a%20website.%20Please%20provide%20details%20about%20your%20services."
+                    href="https://www.instagram.com/shamil._.kp/"
                     target="_blank"
                     className="hover:underline hover:text-blue-600"
                     rel="noopener noreferrer"
@@ -130,7 +130,7 @@ const Layout = () => {
                   </a>
                   ,{" "}
                   <a
-                    href="https://wa.me/919061084323?text=Hello%20Dayyan,%20I%20am%20looking%20to%20build%20a%20website.%20Please%20provide%20details%20about%20your%20services."
+                    href="https://www.instagram.com/dayyan._ali/"
                     target="_blank"
                     className="hover:underline hover:text-blue-600"
                     rel="noopener noreferrer"
@@ -139,7 +139,7 @@ const Layout = () => {
                   </a>{" "}
                   &
                   <a
-                    href="https://wa.me/+919061306799?text=Hello%20Irshad,%20I%20am%20looking%20to%20build%20a%20website.%20Please%20provide%20details%20about%20your%20services."
+                    href="https://www.instagram.com/irsha.adtogro/"
                     className="hover:underline hover:text-blue-600"
                     target="_blank"
                     rel="noopener noreferrer"

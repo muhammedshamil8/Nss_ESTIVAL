@@ -12,6 +12,12 @@ import fashionshow from "@/assets/images/fashionshow.svg";
 import FashionShowImg from "@/assets/images/fashion_show.png";
 import GroupDanceImg from "@/assets/images/group_dance.png";
 import SponserLogo from "@/assets/logo/sponser.webp";
+import Sponser2 from "@/assets/sponsers/image1.svg"
+import Sponser3 from "@/assets/sponsers/image2.svg"
+import Sponser4 from "@/assets/sponsers/image3.svg"
+import Sponser5 from "@/assets/sponsers/image4.svg"
+import Sponser6 from "@/assets/sponsers/image5.svg"
+import Sponser7 from "@/assets/sponsers/image6.svg"
 import Logo from "@/assets/logo/EstivalNObg.webp";
 
 const EVENTS = [
@@ -211,6 +217,36 @@ const Sponsers = [
     logo: SponserLogo,
     url: "https://mymelova.com/",
   },
+  {
+    name: "ServiceBank",
+    logo: Sponser2,
+
+  },
+  {
+    name: "ServiceBank",
+    logo: Sponser3,
+
+  },
+  {
+    name: "ServiceBank",
+    logo: Sponser4,
+
+  },
+  {
+    name: "ServiceBank",
+    logo: Sponser5,
+
+  },
+  {
+    name: "ServiceBank",
+    logo: Sponser6,
+
+  },
+  {
+    name: "ServiceBank",
+    logo: Sponser7,
+
+  }
 ];
 
 const fadeUp = {
@@ -560,23 +596,23 @@ const HomePage = () => {
             Our Proud Sponsors
           </h3>
           <div className=" relative py-4 px-4 bg-white">
-            <marquee width="100%" direction="left" height="100px">
-              {Sponsers.map((sponser, index) => (
-                <a
-                  key={index}
-                  href={sponser.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mx-8 flex items-center justify-center"
-                >
-                  <img
-                    src={sponser.logo}
-                    alt={sponser.name}
-                    className="h-16 sm:h-24 object-contain"
-                  />
-                </a>
-              ))}
-            </marquee>
+           <marquee width="100%" direction="left" height="100px">
+            {Sponsers.map((sponser, index) => (
+              <a
+                key={index}
+                href={sponser.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-8 inline-flex items-center justify-center"
+              >
+                <img
+                  src={sponser.logo}
+                  alt={sponser.name}
+                  className="h-16 sm:h-24 object-contain"
+                />
+              </a>
+            ))}
+          </marquee>
           </div>
         </motion.section>
       </div>
