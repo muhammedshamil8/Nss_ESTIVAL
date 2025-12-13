@@ -5,5 +5,6 @@ import Spot_photography_QR from './Photography.jpeg';
 import Reel_Making_QR from './Reel_QR.jpeg';
 import Treasure_hunt_QR from './Treasure_QR.jpeg';
 import Face_Painting_QR from './Face_p_QR.jpeg';
+import Next_Talk_QR from './Next_Talk_QR.jpeg';
 
-export { Group_dance_QR, Best_volunteer_QR, Fashion_show_QR, Spot_photography_QR, Reel_Making_QR, Treasure_hunt_QR, Face_Painting_QR };
+export {Next_Talk_QR, Group_dance_QR, Best_volunteer_QR, Fashion_show_QR, Spot_photography_QR, Reel_Making_QR, Treasure_hunt_QR, Face_Painting_QR };

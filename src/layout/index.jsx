@@ -2,13 +2,39 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import { MapPin, Globe, Instagram } from "lucide-react";
 
-
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("home");
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  useEffect(() => {
+  const sections = ["home", "about", "events", "contact"];
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: "-50% 0px -40% 0px",
+      threshold: 0,
+    }
+  );
+
+  sections.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  return () => observer.disconnect();
+}, []);
 
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", isMenuOpen);
@@ -16,7 +42,9 @@ const Layout = () => {
   }, [isMenuOpen]);
 
   const scrollToSection = (id) => {
+    setActiveTab(id);
     navigate("/");
+
     setTimeout(() => {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }, 150);
@@ -28,13 +56,50 @@ const Layout = () => {
     <div className="flex flex-col min-h-screen relative overflow-x-hidden">
       <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-around w-full max-w-5xl px-4">
         <nav className="flex space-x-6 sm:space-x-10 text-xs sm:text-sm font-medium text-gray-700 uppercase bg-white/80 backdrop-blur border border-gray-200 rounded-full px-8 sm:px-12 py-2 sm:py-3 shadow">
-          <button onClick={() => scrollToSection("home")}>HOME</button>
-          <button onClick={() => scrollToSection("about")}>ABOUT</button>
-          <button onClick={() => scrollToSection("events")}>EVENTS</button>
-          <button onClick={() => scrollToSection("contact")}>CONTACT</button>
-        </nav>
+          <button
+            onClick={() => scrollToSection("home")}
+            className={`transition ${
+              activeTab === "home"
+                ? "text-blue-600 font-semibold"
+                : "text-gray-700 hover:text-blue-500"
+            }`}
+          >
+            HOME
+          </button>
 
-      
+          <button
+            onClick={() => scrollToSection("about")}
+            className={`transition ${
+              activeTab === "about"
+                ? "text-blue-600 font-semibold"
+                : "text-gray-700 hover:text-blue-500"
+            }`}
+          >
+            ABOUT
+          </button>
+
+          <button
+            onClick={() => scrollToSection("events")}
+            className={`transition ${
+              activeTab === "events"
+                ? "text-blue-600 font-semibold"
+                : "text-gray-700 hover:text-blue-500"
+            }`}
+          >
+            EVENTS
+          </button>
+
+          <button
+            onClick={() => scrollToSection("contact")}
+            className={`transition ${
+              activeTab === "contact"
+                ? "text-blue-600 font-semibold"
+                : "text-gray-700 hover:text-blue-500"
+            }`}
+          >
+            CONTACT
+          </button>
+        </nav>
       </header>
 
       {/* MAIN CONTENT */}
@@ -68,8 +133,7 @@ const Layout = () => {
 
             {/* Contact Details */}
             <div className="flex flex-col sm:flex-row items-center gap-6">
-              
-                <a
+              <a
                 target="_blank"
                 href="https://www.instagram.com/estival_2k25"
                 className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition group"
@@ -133,9 +197,8 @@ const Layout = () => {
                   <span className="inline-block animate-pulse text-red-500">
                     ❤️
                   </span>{" "}
-                  by{" "}
-                  <br className="sm:hidden"/>
-                  <br className="sm:hidden"/>
+                  by <br className="sm:hidden" />
+                  <br className="sm:hidden" />
                   <a
                     href="https://www.instagram.com/shamil._.kp/"
                     target="_blank"

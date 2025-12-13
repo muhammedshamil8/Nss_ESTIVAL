@@ -11,6 +11,7 @@ import bestvolunteer from "@/assets/images/bestvolunteer.svg";
 import fashionshow from "@/assets/images/fashionshow.svg";
 import FashionShowImg from "@/assets/images/fashion_show.png";
 import GroupDanceImg from "@/assets/images/group_dance.png";
+import NextTalkImg from "@/assets/images/next.svg";
 import SponserLogo from "@/assets/logo/sponser.webp";
 import Sponser2 from "@/assets/sponsers/image1.svg";
 import Sponser3 from "@/assets/sponsers/image2.svg";
@@ -18,6 +19,7 @@ import Sponser4 from "@/assets/sponsers/image3.svg";
 import Sponser5 from "@/assets/sponsers/image4.svg";
 import Sponser6 from "@/assets/sponsers/image5.svg";
 import Sponser7 from "@/assets/sponsers/image6.svg";
+import Sponser8 from "@/assets/sponsers/image7.svg";
 import Logo from "@/assets/logo/EstivalNObg.webp";
 
 const EVENTS = [
@@ -209,9 +211,42 @@ const EVENTS = [
     ),
     color: "bg-fuchsia-600",
   },
+  {
+    name: "Next Talk",
+    prize: "0",
+    slug: "next-talk",
+    description:
+      "A powerful talk series featuring achievers from diverse fields-sharing their journey, challenges & success.",
+    img: NextTalkImg,
+    emoji: "🗣️",
+    arrow: (
+      <svg
+        width="65"
+        height="65"
+        viewBox="0 0 65 65"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="32.5" cy="32.5" r="32.5" fill="#1667B0" />
+        <path
+          d="M36.0197 27.4153L23.4679 39.9671L25.5303 42.0295L38.0821 29.4777L38.0821 40.5404L40.9983 40.5404V24.4991H24.957L24.957 27.4153H36.0197Z"
+          fill="white"
+        />
+      </svg>
+    ),
+    color: "bg-[#22635B]",
+  },
 ];
 
 const Sponsers = [
+  {
+    name: "iuf",
+    logo: Sponser3,
+  },
+  {
+    name: "elearning",
+    logo: Sponser4,
+  },
   {
     name: "MyMelova",
     logo: SponserLogo,
@@ -220,14 +255,6 @@ const Sponsers = [
   {
     name: "ServiceBank",
     logo: Sponser2,
-  },
-  {
-    name: "ServiceBank",
-    logo: Sponser3,
-  },
-  {
-    name: "ServiceBank",
-    logo: Sponser4,
   },
   {
     name: "ServiceBank",
@@ -240,6 +267,10 @@ const Sponsers = [
   {
     name: "ServiceBank",
     logo: Sponser7,
+  },
+  {
+    name: "ServiceBank",
+    logo: Sponser8,
   },
 ];
 
@@ -328,6 +359,9 @@ const HomePage = () => {
     { name: "Shaheel", phone: "+919544121932" },
   ];
 
+  const mainSponsors = Sponsers.slice(0, 2);
+  const otherSponsors = Sponsers.slice(2);
+
   return (
     <motion.div
       className="w-full min-h-screen select-none"
@@ -338,15 +372,16 @@ const HomePage = () => {
       <motion.section
         id="home"
         variants={fadeUp}
-        className="relative mx-auto w-full px-4  flex items-center justify-center overflow-hidden "
+        className="relative mx-auto w-full px-4 flex items-center justify-center overflow-hidden"
         style={{
-          background: '#E5F2FF url("/bg.svg")',
-          bakgroundRepeat: "no-repeat",
-          backgrockgroundSize: "cover",
-          bacundPosition: "center",
+          backgroundImage: 'url("/bg.svg")',
+          backgroundColor: "#E5F2FF",
+          backgroundRepeat: "repeat-y",
+          backgroundSize: "contain",
+          backgroundPosition: "top center",
         }}
       >
-        <div className="text-center mt-24 ">
+        <div className="text-center mt-24 py-12">
           <motion.img
             src={Logo}
             alt="Estival Logo"
@@ -443,7 +478,7 @@ const HomePage = () => {
       <motion.section
         id="about"
         variants={fadeUp}
-        className="w-full pt-20 px-6 md:px-12 lg:px-20 bg-white -mt-16 relative z-10"
+        className="w-full pt-20 px-6 md:px-12 lg:px-20 bg-white -mt-28 relative z-10"
       >
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -510,10 +545,11 @@ const HomePage = () => {
       <div
         className="pb-[160px]"
         style={{
-          background: '#E5F2FF url("/bg.svg")',
-          bakgroundRepeat: "no-repeat",
-          backgrockgroundSize: "cover",
-          bacundPosition: "center",
+          backgroundImage: 'url("/bg.svg")',
+          backgroundColor: "#E5F2FF",
+          backgroundRepeat: "repeat-y",
+          backgroundSize: "contain",
+          backgroundPosition: "top center",
         }}
       >
         <section className="h-12 mt-12">
@@ -583,7 +619,7 @@ const HomePage = () => {
                   onMouseEnter={() => setHoveredEvent(idx)}
                   onMouseLeave={() => setHoveredEvent(null)}
                   className={`relative cursor-pointer bg-white p-5 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
-      ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
+                  ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
                 >
                   <div className="flex items-center justify-between w-full gap-3 mb-3">
                     <div className="flex flex-col">
@@ -616,29 +652,56 @@ const HomePage = () => {
         <motion.section
           id="sponsors"
           variants={fadeUp}
-          className="w-full mb-14"
+          className="
+  w-full mb-14 py-14 px-6 md:px-12 lg:px-20
+  bg-white
+  relative
+  before:absolute before:top-0 before:left-0 before:right-0 before:h-16
+  before:bg-gradient-to-b before:from-blue-50 before:to-transparent
+  after:absolute after:bottom-0 after:left-0 after:right-0 after:h-16
+  after:bg-gradient-to-t after:from-blue-50 after:to-transparent
+  before:pointer-events-none after:pointer-events-none
+"
         >
-          <h3 className="text-center text-xl md:text-3xl font-bold mb-6 text-red-800">
-            Our Proud Sponsors
+          <h3 className="text-center text-xl md:text-3xl font-bold mb-6 text-[#005AAB]">
+            Our Sponsors
           </h3>
-          <div className="overflow-hidden relative bg-white h-32 flex items-center">
-            <div className="flex animate-scroll whitespace-nowrap">
-              {Sponsers.concat(Sponsers).map((s, i) => (
-                <a
-                  key={i}
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mx-8 inline-flex items-center justify-center flex-none"
-                >
-                  <img
-                    src={s.logo}
-                    alt={s.name}
-                    className="h-24 object-contain flex-none"
-                  />
-                </a>
-              ))}
-            </div>
+          {/* TOP SPONSORS */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-10 mb-12">
+            {mainSponsors.map((s, i) => (
+              <a
+                key={i}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center"
+              >
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  className="h-28 sm:h-32 md:h-36 object-contain"
+                />
+              </a>
+            ))}
+          </div>
+
+          {/* OTHER SPONSORS */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
+            {otherSponsors.map((s, i) => (
+              <a
+                key={i}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center"
+              >
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  className="h-16 sm:h-20 md:h-24 object-contain"
+                />
+              </a>
+            ))}
           </div>
         </motion.section>
       </div>

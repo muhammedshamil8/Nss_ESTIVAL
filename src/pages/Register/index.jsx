@@ -21,6 +21,7 @@ const Register = () => {
     college: "",
     officer: "",
     officerPhone: "",
+    unit_number: "",
     participants: [], // will be objects: { name, phone }
     receipt: null, // optional File
   });
@@ -124,6 +125,10 @@ const Register = () => {
       message.warning("Please fill the college and program officer details.");
       return false;
     }
+    if (form.unit_number.trim() === "") {
+      message.warning("Please fill the Unit Number.");
+      return false;
+    }
 
     // Check if we have at least the minimum required participants
     if (form.participants.length < event.minparticipants) {
@@ -172,6 +177,7 @@ const Register = () => {
       college: form.college,
       officer: form.officer,
       officer_phone: form.officerPhone,
+      unit_number: form.unit_number,
       participants: form.participants,
       receipt_url: receipt_url || null,
       payment_verified: "pending",
@@ -197,6 +203,7 @@ const Register = () => {
         college: "",
         officer: "",
         officerPhone: "",
+        unit_number: "",
         participants: Array.from({ length: event.participants }).map(() => ({
           name: "",
           phone: "",
@@ -220,7 +227,7 @@ const Register = () => {
   // success screen
   if (submitted) {
     return (
-      <div className="max-w-3xl mx-auto py-16 px-4 text-center">
+      <div className="max-w-3xl mx-auto py-16 px-4 text-center mt-10">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -312,6 +319,11 @@ const Register = () => {
                     ? `${event.participants} to ${event.maxParticipants} Members`
                     : `${event.participants} Member`}
                 </span>
+
+                <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-medium">
+                  🛡️
+                   Only for NSS volunteers
+                  </span>
               </div>
             </div>
 
@@ -331,9 +343,6 @@ const Register = () => {
             </div>
             
           </div>
-           <p className="flex items-center justify-center bg-[#17776B] text-white shadow w-fit mx-auto px-4 py-1 rounded-2xl mt-4">
-                Only for NSS volunteers
-              </p>
         </div>
 
         <div className="mb-8 bg-white rounded-2xl border border-gray-100  shadow-sm p-4 sm:p-6">
@@ -463,6 +472,18 @@ const Register = () => {
               onChange={(e) => setValue("officerPhone", e.target.value)}
               className="w-full input px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-200 outline-none"
               placeholder="Enter phone number"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Unit Number *
+            </label>
+            <input
+              value={form.unit_number}
+              onChange={(e) => setValue("unit_number", e.target.value)}
+              className="w-full input px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-200 outline-none"
+              placeholder="Enter your NSS Unit Number"
             />
           </div>
 
