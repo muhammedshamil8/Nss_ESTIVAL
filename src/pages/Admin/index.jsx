@@ -80,6 +80,13 @@ const EVENTS = [
     slug: "face-painting",
     emoji: "🎨",
     color: "from-red-500 to-pink-600",
+  },
+  {
+    name: "Next Talk",
+    prize: "0",
+    slug: "next-talk",
+    emoji: "🗣️",
+    color: "from-green-500 to-teal-600",
   }
 ];
 

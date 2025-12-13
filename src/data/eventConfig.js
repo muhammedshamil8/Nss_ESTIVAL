@@ -1,7 +1,8 @@
 //payment qr codes
 import {
   Group_dance_QR, Best_volunteer_QR,
-  Fashion_show_QR, Spot_photography_QR, Reel_Making_QR, Treasure_hunt_QR, Face_Painting_QR
+  Fashion_show_QR, Spot_photography_QR, Reel_Making_QR,
+  Treasure_hunt_QR, Face_Painting_QR, Next_Talk_QR
 }
   from "@/assets/paymentqrcodes";
 
@@ -238,6 +239,29 @@ export const EVENTS = {
     coordinators: [
       { name: "Anshiba ", phone: "8301977257" },
       { name: "Shahana ", phone: "8891173918" }
+    ]
+  },
+  "next-talk": {
+    title: "Next Talk",
+    fee: 0,
+    perfee: 50,
+    description:
+      "A powerful talk series featuring achievers from diverse fields-sharing their journey, challenges & success.",
+    participants: 1,
+    minparticipants: 1,
+    maxParticipants: 1,
+    rules: [
+      "Listen , learn and get inspired by the speakers.",
+      "Be punctual and respectful during the sessions.",
+    ],
+    paymentDetails: {
+      Gpay: " 9048616489",
+      upi_id: "liyana904861@okicici",
+      qrcode: Next_Talk_QR
+    },
+    coordinators: [
+      { name: "Liyana c", phone: "9048616489" },
+      { name: "Ajlan", phone: "7510241597" }
     ]
   }
 };
