@@ -20,7 +20,7 @@ import Sponser5 from "@/assets/sponsers/image4.svg";
 import Sponser6 from "@/assets/sponsers/image5.svg";
 import Sponser7 from "@/assets/sponsers/image6.svg";
 import Sponser8 from "@/assets/sponsers/image7.svg";
-import Sponser9 from "@/assets/sponsers/image8.svg";
+import Sponser9 from "@/assets/sponsers/image8.png";
 import Logo from "@/assets/logo/EstivalNObg.webp";
 
 const EVENTS = [
