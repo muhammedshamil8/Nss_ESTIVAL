@@ -135,11 +135,9 @@ function AdminDashboard() {
       
       if (error) throw error;
       
-      // Ensure payment_verified field exists (default to false if not)
       const registrationsWithPayment = data.map(reg => ({
         ...reg,
-        payment_verified: reg.payment_verified || false,
-        payment_status: reg.payment_verified ? 'verified' : 'pending'
+        payment_verified: reg.payment_verified === 'verified' ? 'verified' : 'pending',
       }));
       
       setRegistrations(registrationsWithPayment || []);
@@ -151,29 +149,49 @@ function AdminDashboard() {
     }
   }
 
-  const calculateStats = () => {
-    const total = registrations.length;
-    const verified = registrations.filter(reg => reg.payment_verified).length;
-    const pending = registrations.filter(reg => !reg.payment_verified).length;
-    
-    // Calculate per event stats
-    const eventStats = {};
-    EVENTS.forEach(event => {
-      const eventRegs = registrations.filter(reg => reg.event_slug === event.slug);
-      eventStats[event.slug] = {
-        total: eventRegs.length,
-        verified: eventRegs.filter(reg => reg.payment_verified).length,
-        pending: eventRegs.filter(reg => !reg.payment_verified).length,
-      };
-    });
+ const calculateStats = () => {
+  const total = registrations.length;
 
-    setStats({
-      total,
-      verified,
-      pending,
-      eventStats
-    });
+  const verified = registrations.filter(
+    reg => reg.payment_verified === "verified"
+  ).length;
+
+  const pending = registrations.filter(
+    reg => reg.payment_verified === "pending"
+  ).length;
+
+  const eventStats = {};
+
+  EVENTS.forEach(event => {
+    const eventRegs = registrations.filter(
+      reg => reg.event_slug === event.slug
+    );
+
+    eventStats[event.slug] = {
+      total: eventRegs.length,
+      verified: eventRegs.filter(
+        reg => reg.payment_verified === "verified"
+      ).length,
+      pending: eventRegs.filter(
+        reg => reg.payment_verified === "pending"
+      ).length,
+    };
+  });
+
+  setStats({
+    total,
+    verified,
+    pending,
+    eventStats
+  });
+};
+
+const calculateTotalParticipants = (registrations) => {
+    return registrations.reduce((total, reg) => {
+      return total + (reg.participants ? reg.participants.length : 0);
+    }, 0);
   };
+
 
   const filterRegistrations = () => {
     let filtered = [...registrations];
@@ -213,7 +231,7 @@ function AdminDashboard() {
       const { error } = await supabase
         .from('registrations')
         .update({ 
-          payment_verified: true,
+          payment_verified: "verified",
           verified_at: new Date().toISOString(),
           // verified_by: user?.email || 'admin'
         })
@@ -226,7 +244,7 @@ function AdminDashboard() {
         prev.map(reg =>
           reg.id === registrationId ? { 
             ...reg, 
-            payment_verified: true,
+            payment_verified: "verified",
             verified_at: new Date().toISOString(),
             // verified_by: user?.email || 'admin'
           } : reg
@@ -246,7 +264,7 @@ function AdminDashboard() {
       const { error } = await supabase
         .from('registrations')
         .update({ 
-          payment_verified: false,
+          payment_verified: "pending",
           verified_at: null,
           // verified_by: null
         })
@@ -259,7 +277,7 @@ function AdminDashboard() {
         prev.map(reg =>
           reg.id === registrationId ? { 
             ...reg, 
-            payment_verified: false,
+            payment_verified: "pending",
             verified_at: null,
             // verified_by: null
           } : reg
@@ -311,7 +329,7 @@ function AdminDashboard() {
           'College': reg.college || 'N/A',
           'Program Officer': reg.officer || 'N/A',
           'Officer Phone': reg.officer_phone || 'N/A',
-          'Payment Verified': reg.payment_verified ? 'Yes' : 'No',
+          'Payment Verified': reg.payment_verified === 'verified' ? 'Yes' : 'No',
           'Receipt URL': reg.receipt_url || 'N/A',
           'Registration Date': reg.created_at ? new Date(reg.created_at).toLocaleString() : 'N/A',
           ...participantData,
@@ -379,10 +397,10 @@ function AdminDashboard() {
       key: 'payment_status',
       render: (_, record) => (
         <Tag 
-          color={record.payment_verified ? 'green' : 'orange'}
-          icon={record.payment_verified ? <CheckCircleOutlined /> : <ClockCircleOutlined />}
+          color={record.payment_verified === 'verified' ? 'green' : 'orange'}
+          icon={record.payment_verified === 'verified' ? <CheckCircleOutlined /> : <ClockCircleOutlined />}
         >
-          {record.payment_verified ? 'Verified' : 'Pending'}
+          {record.payment_verified === 'verified' ? 'Verified' : 'Pending'}
         </Tag>
       ),
       filters: [
@@ -552,6 +570,13 @@ function AdminDashboard() {
       }
     }
   };
+  
+  const normalizeCollege = (name) =>
+  name
+    .toLowerCase()
+    .replace(/\(.*?\)/g, "") // remove (AUTONOMOUS)
+    .replace(/\s+/g, " ")
+    .trim();
 
   // Render content based on active menu
   const renderContent = () => {
@@ -564,6 +589,9 @@ function AdminDashboard() {
               <div className="text-center">
                 <div className="text-3xl font-bold text-blue-600">{stats.total || 0}</div>
                 <div className="text-gray-600">Total Registrations</div>
+                <div className="text-sm text-gray-500 mt-2">
+                  Total Participants: {calculateTotalParticipants(registrations)}
+                </div>
               </div>
             </Card>
             <Card>
@@ -581,7 +609,7 @@ function AdminDashboard() {
             <Card>
               <div className="text-center">
                 <div className="text-3xl font-bold text-purple-600">
-                  {new Set(registrations.map(reg => reg.college)).size}
+                  {new Set(registrations.map(reg => normalizeCollege(reg.college))).size}
                 </div>
                 <div className="text-gray-600">Colleges</div>
               </div>
