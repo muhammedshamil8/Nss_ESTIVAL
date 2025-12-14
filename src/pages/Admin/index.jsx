@@ -329,6 +329,7 @@ const calculateTotalParticipants = (registrations) => {
           'College': reg.college || 'N/A',
           'Program Officer': reg.officer || 'N/A',
           'Officer Phone': reg.officer_phone || 'N/A',
+          'Unit No': req.unit_number || 'N/A',
           'Payment Verified': reg.payment_verified === 'verified' ? 'Yes' : 'No',
           'Receipt URL': reg.receipt_url || 'N/A',
           'Registration Date': reg.created_at ? new Date(reg.created_at).toLocaleString() : 'N/A',
@@ -386,12 +387,17 @@ const calculateTotalParticipants = (registrations) => {
         </div>
       ),
     },
-    {
-      title: 'College',
-      dataIndex: 'college',
+     {
+      title: 'College & Unit',
       key: 'college',
-      ellipsis: true,
+      render: (_, record) => (
+        <div>
+          <div>{record.college}</div>
+          <div className="text-xs text-gray-500">unit: {record.unit_number}</div>
+        </div>
+      ),
     },
+   
     {
       title: 'Payment Status',
       key: 'payment_status',
@@ -972,6 +978,11 @@ const calculateTotalParticipants = (registrations) => {
                         <div>
                           <strong>Officer Phone:</strong>
                           <div className="font-mono">{selectedRegistration.officer_phone}</div>
+                        </div>
+                        <div>
+                          <strong>Unit Number:</strong>
+                          <div className="font-mono">{selectedRegistration.unit_number}</div>
+
                         </div>
                       </div>
                     </div>
