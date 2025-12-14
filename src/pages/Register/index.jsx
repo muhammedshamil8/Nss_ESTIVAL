@@ -117,17 +117,23 @@ const Register = () => {
   };
 
   const validateForm = () => {
-    if (
-      !form.college?.trim() ||
-      !form.officer?.trim() ||
-      !form.officerPhone?.trim()
-    ) {
-      message.warning("Please fill the college and program officer details.");
-      return false;
-    }
-    if (form.unit_number.trim() === "") {
-      message.warning("Please fill the Unit Number.");
-      return false;
+    if (slug === "next-talk") {
+      if (!form.college?.trim()) {
+        message.warning("Please fill the college field");
+      }
+    } else {
+      if (
+        !form.college?.trim() ||
+        !form.officer?.trim() ||
+        !form.officerPhone?.trim()
+      ) {
+        message.warning("Please fill the college and program officer details.");
+        return false;
+      }
+      if (form.unit_number.trim() === "") {
+        message.warning("Please fill the Unit Number.");
+        return false;
+      }
     }
 
     // Check if we have at least the minimum required participants
@@ -320,10 +326,11 @@ const Register = () => {
                     : `${event.participants} Member`}
                 </span>
 
-                <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-medium">
-                  🛡️
-                   Only for NSS volunteers
+                {slug !== "next-talk" && (
+                  <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-medium">
+                    🛡️ Only for NSS volunteers
                   </span>
+                )}
               </div>
             </div>
 
@@ -341,7 +348,6 @@ const Register = () => {
                 ))}
               </div>
             </div>
-            
           </div>
         </div>
 
@@ -453,7 +459,7 @@ const Register = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Name of Program Officer *
+              Name of Program Officer {slug === "next-talk" ? "(optional)" : "*"}
             </label>
             <input
               value={form.officer}
@@ -463,6 +469,7 @@ const Register = () => {
             />
           </div>
 
+{slug !== "next-talk" && (
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Phone No of Program Officer *
@@ -474,10 +481,10 @@ const Register = () => {
               placeholder="Enter phone number"
             />
           </div>
-
+)}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Unit Number *
+              Unit Number {slug === "next-talk" ? "(optional)" : "*"}
             </label>
             <input
               value={form.unit_number}
