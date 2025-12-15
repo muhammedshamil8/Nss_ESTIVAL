@@ -326,7 +326,7 @@ const Register = () => {
                     : `${event.participants} Member`}
                 </span>
 
-                {slug !== "next-talk" || slug !== "fashion-show" && (
+                {!["next-talk", "fashion-show"].includes(slug) && (
                   <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-medium">
                     🛡️ Only for NSS volunteers
                   </span>
@@ -459,7 +459,8 @@ const Register = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Name of Program Officer {slug === "next-talk" ? "(optional)" : "*"}
+              Name of Program Officer{" "}
+              {slug === "next-talk" ? "(optional)" : "*"}
             </label>
             <input
               value={form.officer}
@@ -469,19 +470,19 @@ const Register = () => {
             />
           </div>
 
-{slug !== "next-talk" && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Phone No of Program Officer *
-            </label>
-            <input
-              value={form.officerPhone}
-              onChange={(e) => setValue("officerPhone", e.target.value)}
-              className="w-full input px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-200 outline-none"
-              placeholder="Enter phone number"
-            />
-          </div>
-)}
+          {slug !== "next-talk" && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Phone No of Program Officer *
+              </label>
+              <input
+                value={form.officerPhone}
+                onChange={(e) => setValue("officerPhone", e.target.value)}
+                className="w-full input px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-200 outline-none"
+                placeholder="Enter phone number"
+              />
+            </div>
+          )}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Unit Number {slug === "next-talk" ? "(optional)" : "*"}
