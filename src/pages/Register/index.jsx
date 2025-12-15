@@ -6,11 +6,13 @@ import { EVENTS } from "@/data/eventConfig";
 import { supabase } from "@/libs/createClient";
 import { FaCheckCircle } from "react-icons/fa";
 import { Copy, Users } from "lucide-react";
+import Closed from "@/assets/images/closed.svg";
 
 const Register = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const event = EVENTS[slug];
+  const isClosed = slug === "treasure-hunt";
 
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
@@ -22,12 +24,11 @@ const Register = () => {
     officer: "",
     officerPhone: "",
     unit_number: "",
-    participants: [], // will be objects: { name, phone }
-    receipt: null, // optional File
+    participants: [],
+    receipt: null,
   });
 
   useEffect(() => {
-    // This ensures we're at top after component mounts
     const timer = setTimeout(() => {
       if (window.scrollY > 0) {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -38,10 +39,8 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    // Initialize with minimum required participants
     if (event) {
       setForm((prev) => {
-        // Start with minimum required participants
         const initialParticipants = Array.from({
           length: event.minparticipants,
         }).map((_, i) => prev.participants[i] || { name: "", phone: "" });
@@ -51,17 +50,14 @@ const Register = () => {
         };
       });
 
-      // Default to collapsed on mobile, expanded on desktop
       if (window.innerWidth > 768) {
         setIsRulesExpanded(true);
       }
     }
 
-    // Cleanup preview URL on unmount
     return () => {
       if (preview) URL.revokeObjectURL(preview);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, event]);
 
   if (!event) {
@@ -72,6 +68,41 @@ const Register = () => {
         <p className="text-gray-600 mt-2">
           Please select a valid event to register.
         </p>
+      </div>
+    );
+  }
+
+  if (isClosed) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#E5F2FF] px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-white rounded-3xl p-10 max-w-lg text-center shadow-2xl border"
+        >
+          <img
+            src={Closed}
+            alt="Registrations Closed"
+            className="w-40 mx-auto mb-6"
+          />
+
+          <h2 className="text-3xl font-bold text-red-600 mb-3">
+            Registrations Closed
+          </h2>
+
+          <p className="text-gray-600 mb-6">
+            Registrations for{" "}
+            <span className="font-semibold">{event.title}</span> have been
+            officially closed.
+          </p>
+
+          <button
+            onClick={() => navigate("/")}
+            className="px-6 py-3 bg-[#005AAB] text-white rounded-xl font-semibold hover:bg-[#004080] transition"
+          >
+            Go Back Home
+          </button>
+        </motion.div>
       </div>
     );
   }
@@ -89,7 +120,6 @@ const Register = () => {
 
   const handleReceiptChange = (file) => {
     if (!file) return;
-    // revoke old preview
     if (preview) URL.revokeObjectURL(preview);
     setPreview(URL.createObjectURL(file));
     setValue("receipt", file);
@@ -160,6 +190,10 @@ const Register = () => {
 
   const submit = async () => {
     if (!validateForm()) return;
+    if (isClosed) {
+      message.warning("Registrations for this event are closed.");
+      return;
+    }
 
     setLoading(true);
     let receipt_url = null;
@@ -167,7 +201,6 @@ const Register = () => {
     if (form.receipt) {
       const uploadedUrl = await uploadReceipt(form.receipt);
       if (!uploadedUrl) {
-        // allow continuing without receipt (per your earlier instruction) but warn
         message.warning(
           "Receipt upload failed — proceeding without receipt (you can upload later)."
         );

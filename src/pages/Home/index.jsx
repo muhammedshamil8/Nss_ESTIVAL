@@ -22,6 +22,7 @@ import Sponser7 from "@/assets/sponsers/image6.svg";
 import Sponser8 from "@/assets/sponsers/image7.svg";
 import Sponser9 from "@/assets/sponsers/image8.png";
 import Logo from "@/assets/logo/EstivalNObg.webp";
+import Closed from "@/assets/images/closed.svg";
 
 const EVENTS = [
   {
@@ -275,8 +276,8 @@ const Sponsers = [
   },
   {
     name: "Biofix",
-    logo: Sponser9
-  }
+    logo: Sponser9,
+  },
 ];
 
 const fadeUp = {
@@ -612,43 +613,60 @@ const HomePage = () => {
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mt-12  "
             >
-              {EVENTS.map((event, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  whileHover={{ scale: 1.03, translateY: -8 }}
-                  onClick={() => openEvent(event.slug)}
-                  onMouseEnter={() => setHoveredEvent(idx)}
-                  onMouseLeave={() => setHoveredEvent(null)}
-                  className={`relative cursor-pointer bg-white p-5 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
-                  ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}`}
-                >
-                  <div className="flex items-center justify-between w-full gap-3 mb-3">
-                    <div className="flex flex-col">
-                      <p className="text-base sm:text-xl md:text-xl font-semibold self-start text-nowrap">
-                        {event.name}
-                      </p>
-                      <p className="mt-1 text-xs md:text-xs text-gray-500 flex-grow">
-                        {event.description}
-                      </p>
+              {EVENTS.map((event, idx) => {
+                const isClosed = event.slug === "treasure-hunt"; 
+
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    whileHover={
+                      !isClosed ? { scale: 1.03, translateY: -8 } : {}
+                    }
+                    onClick={() => !isClosed && openEvent(event.slug)}
+                    onMouseEnter={() => !isClosed && setHoveredEvent(idx)}
+                    onMouseLeave={() => setHoveredEvent(null)}
+                    className={`relative cursor-pointer bg-white p-5 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
+      ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}
+      ${isClosed ? "pointer-events-none" : ""}`}
+                  >
+                    {isClosed && (
+                      <div className="absolute inset-0 z-20 bg-white/60 rounded-3xl flex items-center justify-center">
+                        <img
+                          src={Closed}
+                          alt="Registration Closed"
+                          className="w-40 md:w-48 object-contain"
+                        />
+                      </div>
+                    )}
+
+                    <div className="flex items-center justify-between w-full gap-3 mb-3 relative z-10">
+                      <div className="flex flex-col">
+                        <p className="text-base sm:text-xl md:text-xl font-semibold text-nowrap">
+                          {event.name}
+                        </p>
+                        <p className="mt-1 text-xs md:text-xs text-gray-500">
+                          {event.description}
+                        </p>
+                      </div>
+
+                      {React.cloneElement(event.arrow, {
+                        className:
+                          "w-full h-full max-w-[55px] max-h-[55px] min-w-[50px] object-contain",
+                      })}
                     </div>
 
-                    {React.cloneElement(event.arrow, {
-                      className:
-                        "w-full h-full max-w-[55px] max-h-[55px] min-w-[50px] object-contain",
-                    })}
-                  </div>
-
-                  <img
-                    src={event.img}
-                    alt=""
-                    className="object-cover w-full "
-                  />
-                </motion.div>
-              ))}
+                    <img
+                      src={event.img}
+                      alt=""
+                      className="object-cover w-full relative z-10"
+                    />
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
         </section>
