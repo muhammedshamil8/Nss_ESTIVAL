@@ -160,6 +160,10 @@ function AdminDashboard() {
     reg => reg.payment_verified === "pending"
   ).length;
 
+  const noPayment = registrations.filter(
+    reg => !reg.receipt_url
+  ).length;
+
   const eventStats = {};
 
   EVENTS.forEach(event => {
@@ -175,6 +179,9 @@ function AdminDashboard() {
       pending: eventRegs.filter(
         reg => reg.payment_verified === "pending"
       ).length,
+      noPayment: eventRegs.filter(
+        reg => !reg.receipt_url
+      ).length,
     };
   });
 
@@ -182,7 +189,8 @@ function AdminDashboard() {
     total,
     verified,
     pending,
-    eventStats
+    eventStats,
+    noPayment
   });
 };
 
@@ -206,6 +214,8 @@ const calculateTotalParticipants = (registrations) => {
       filtered = filtered.filter(reg => reg.payment_verified);
     } else if (paymentFilter === 'pending') {
       filtered = filtered.filter(reg => !reg.payment_verified);
+    } else if (paymentFilter === 'no_payment') {
+      filtered = filtered.filter(reg => !reg.receipt_url);
     }
 
     // Apply search filter
@@ -533,6 +543,7 @@ const calculateTotalParticipants = (registrations) => {
   // Payment filter options
   const paymentOptions = [
     { value: 'all', label: 'All Payments' },
+    { value: 'no_payment', label: 'No Payment' },
     { value: 'verified', label: 'Verified Only' },
     { value: 'pending', label: 'Pending Only' },
   ];
@@ -681,6 +692,7 @@ const calculateTotalParticipants = (registrations) => {
                   <Tag color="blue">Total: {stats.eventStats?.[selectedEvent.slug]?.total || 0}</Tag>
                   <Tag color="green">Verified: {stats.eventStats?.[selectedEvent.slug]?.verified || 0}</Tag>
                   <Tag color="orange">Pending: {stats.eventStats?.[selectedEvent.slug]?.pending || 0}</Tag>
+                  <Tag color="purple">No Payment: {stats.eventStats?.[selectedEvent.slug]?.noPayment || 0}</Tag>
                 </div>
               </div>
               <Button 
