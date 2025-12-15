@@ -326,6 +326,7 @@ const calculateTotalParticipants = (registrations) => {
   const handleExportExcel = () => {
     try {
       const data = filteredRegistrations.map((reg, index) => {
+        console.log('Processing registration:', reg);
         const participants = reg.participants || [];
         const participantData = participants.reduce((acc, participant, idx) => {
           acc[`Participant ${idx + 1} Name`] = participant.name || '';
@@ -339,7 +340,7 @@ const calculateTotalParticipants = (registrations) => {
           'College': reg.college || 'N/A',
           'Program Officer': reg.officer || 'N/A',
           'Officer Phone': reg.officer_phone || 'N/A',
-          'Unit No': req.unit_number || 'N/A',
+          'Unit No': reg.unit_number || 'N/A',
           'Payment Verified': reg.payment_verified === 'verified' ? 'Yes' : 'No',
           'Receipt URL': reg.receipt_url || 'N/A',
           'Registration Date': reg.created_at ? new Date(reg.created_at).toLocaleString() : 'N/A',
