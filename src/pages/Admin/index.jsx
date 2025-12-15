@@ -781,7 +781,7 @@ const calculateTotalParticipants = (registrations) => {
             {renderContent()}
 
             {/* Filters and Actions */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 p-4 bg-gray-50 rounded-lg flex-wrap">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 w-full md:w-auto">
                 <div className="flex flex-col md:flex-row gap-4">
                   <Select
