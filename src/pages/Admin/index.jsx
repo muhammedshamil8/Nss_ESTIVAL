@@ -493,7 +493,7 @@ const calculateTotalParticipants = (registrations) => {
             />
           </Tooltip>
           
-          {!record.payment_verified ? (
+          {record.payment_verified !== "verified" ? (
             <Popconfirm
               title="Verify Payment"
               description="Are you sure you want to verify this payment?"
@@ -903,11 +903,11 @@ const calculateTotalParticipants = (registrations) => {
                         color={selectedRegistration.payment_verified ? 'green' : 'orange'}
                         icon={selectedRegistration.payment_verified ? <CheckCircleOutlined /> : <ClockCircleOutlined />}
                       >
-                        {selectedRegistration.payment_verified ? 'Verified' : 'Pending'}
+                        {selectedRegistration.payment_verified ? 'verified' : 'Pending'}
                       </Tag>
                     }
                   >
-                    {selectedRegistration.payment_verified ? (
+                    {selectedRegistration.payment_verified === "verified" ? (
                       <div className="space-y-3">
                         <div className="text-green-600 font-semibold">
                           ✓ Payment Verified
