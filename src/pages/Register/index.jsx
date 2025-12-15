@@ -326,7 +326,7 @@ const Register = () => {
                     : `${event.participants} Member`}
                 </span>
 
-                {slug !== "next-talk" && (
+                {slug !== "next-talk" || slug !== "fashion-show" && (
                   <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-medium">
                     🛡️ Only for NSS volunteers
                   </span>
