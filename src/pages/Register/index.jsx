@@ -72,7 +72,7 @@ const Register = () => {
     );
   }
 
-  if (isClosed) {
+  if (true) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#E5F2FF] px-4">
         <motion.div

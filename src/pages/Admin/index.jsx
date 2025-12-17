@@ -194,12 +194,18 @@ function AdminDashboard() {
   });
 };
 
+
+
+
 const calculateTotalParticipants = (registrations) => {
     return registrations.reduce((total, reg) => {
       return total + (reg.participants ? reg.participants.length : 0);
     }, 0);
   };
 
+  const treasureHuntParticipants = calculateTotalParticipants(
+  registrations.filter(reg => reg.event_slug === "treasure-hunt")
+);
 
   const filterRegistrations = () => {
     let filtered = [...registrations];
@@ -609,6 +615,9 @@ const calculateTotalParticipants = (registrations) => {
                 <div className="text-gray-600">Total Registrations</div>
                 <div className="text-sm text-gray-500 mt-2">
                   Total Participants: {calculateTotalParticipants(registrations)}
+
+              
+
                 </div>
               </div>
             </Card>
@@ -630,10 +639,14 @@ const calculateTotalParticipants = (registrations) => {
                   {new Set(registrations.map(reg => normalizeCollege(reg.college))).size}
                 </div>
                 <div className="text-gray-600">Colleges</div>
+
+                
               </div>
             </Card>
           </div>
-
+ <div>
+  🗺️ Treasure Hunt Participants: {treasureHuntParticipants}
+</div>
           {/* Event Cards */}
           <Title level={4} className="mb-4">Events Overview</Title>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">

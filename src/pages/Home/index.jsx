@@ -614,7 +614,7 @@ const HomePage = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mt-12  "
             >
               {EVENTS.map((event, idx) => {
-                const isClosed = event.slug === "treasure-hunt"; 
+                const isClosed = event.slug === "treasure-hunt";
 
                 return (
                   <motion.div
@@ -623,25 +623,23 @@ const HomePage = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    whileHover={
-                      !isClosed ? { scale: 1.03, translateY: -8 } : {}
-                    }
-                    onClick={() => !isClosed && openEvent(event.slug)}
-                    onMouseEnter={() => !isClosed && setHoveredEvent(idx)}
-                    onMouseLeave={() => setHoveredEvent(null)}
+                    whileHover={{ scale: 1.03, translateY: -8 }}
+                    // onClick={() => !isClosed && openEvent(event.slug)}
+                    // onMouseEnter={() => !isClosed && setHoveredEvent(idx)}
+                    // onMouseLeave={() => setHoveredEvent(null)}
                     className={`relative cursor-pointer bg-white p-5 md:p-6 rounded-3xl shadow-xl border border-gray-200 flex flex-col items-start text-left transition-all duration-300 hover:shadow-2xl group
       ${idx === EVENTS.length - 1 ? "md:col-start-2" : ""}
       ${isClosed ? "pointer-events-none" : ""}`}
                   >
-                    {isClosed && (
-                      <div className="absolute inset-0 z-20 bg-white/60 rounded-3xl flex items-center justify-center">
-                        <img
-                          src={Closed}
-                          alt="Registration Closed"
-                          className="w-40 md:w-48 object-contain"
-                        />
-                      </div>
-                    )}
+                    {/* {isClosed && ( */}
+                    <div className="absolute inset-0 z-20 bg-white/60 rounded-3xl flex items-center justify-center">
+                      <img
+                        src={Closed}
+                        alt="Registration Closed"
+                        className="w-40 md:w-48 object-contain"
+                      />
+                    </div>
+                    {/* )} */}
 
                     <div className="flex items-center justify-between w-full gap-3 mb-3 relative z-10">
                       <div className="flex flex-col">
